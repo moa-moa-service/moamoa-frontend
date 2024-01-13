@@ -37,4 +37,7 @@ export const ItemsContainer = styled.div`
 overflow-x: auto; /* 가로 스크롤을 가능하게 하는 속성 */
 white-space: nowrap; /* 자식 요소들이 가로로 나열되도록 함 */
 }
+&::-webkit-scrollbar {
+    display: none;
+}
 `
