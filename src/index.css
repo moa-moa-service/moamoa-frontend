@@ -128,10 +128,3 @@ table {
   border-collapse: collapse;
   border-spacing: 0;
 }
-
-@media screen and (min-width: 431px) {
-  :root {
-    display: flex;
-    justify-content: center;
-  }
-}
