@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const InfoContainer = styled.div`
     background-color: #FFFFFF;
     width: 430px;
-    height: 500px;
+    height: 390px;
     margin-top: -130px;
     border-top-left-radius : 13px;
     border-top-right-radius: 13px;
@@ -18,12 +18,11 @@ export const InfoContainer = styled.div`
     }
 `
 
-export const HomeIndicator = styled.div`
+export const HomeIndicator = styled.hr`
     width: 88px;
-    height: 5px;
+    border: 2px solid #CDCDCD;
     margin: 10px auto;
     border-radius: 3px;
-    background-color: #CDCDCD;
 `
 
 export const UserInfoContainer = styled.div`
@@ -124,11 +123,9 @@ export const ProductInfoValue = styled.div`
     }
 `
 
-export const Line = styled.div`
-    width: 95%;
-    height: 1px;
-    background-color: #E4E4E4;
-    margin: 10px 0 ;
+export const Line = styled.hr`
+    margin: 10px 0 15px 0;
+    border: 0.5px solid rgb(228, 228, 228);
 `
 
 export const addressText = styled.div`
@@ -148,3 +145,4 @@ export const ProductDetailText = styled.div`
     font-size: 11px;
     margin-bottom: 100px;
 `
+

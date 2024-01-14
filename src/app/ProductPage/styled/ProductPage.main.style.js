@@ -39,6 +39,6 @@ export const ChatBtn = styled.div`
     font-size: 13px;
     font-weight: 500;
     position: absolute;
-    bottom: 20px;
+    bottom: 15px;
     left: 5%;
 `
