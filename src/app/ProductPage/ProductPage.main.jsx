@@ -1,15 +1,12 @@
 import * as itemS from "./styled/ProductPage.main.style"
-import backIcon from "../../../public/ProductPage/back.png"
 import ProductInfo from "./ProductPage.main.info"
-
-// import * as itemS from "./styled/MainPage.main.style"
-// import SearchImg from "./public/MainPage/Search.png"
-// import CategoryList from "./MainPage.main.CategoryList"
+import ImgModal from "./ProductPage.main.imgModal"
 
 function ProductPage() {
     return (
-        <>
+        <> 
             <itemS.ProductPageContainer>
+                <ImgModal></ImgModal>
                 <itemS.ImgContainer>
                     <itemS.IconContainer>
                         <img src="../../../public/ProductPage/back.png" alt="back Icon"/>

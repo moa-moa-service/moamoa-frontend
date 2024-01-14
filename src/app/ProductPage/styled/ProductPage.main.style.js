@@ -5,6 +5,8 @@ export const ProductPageContainer = styled.div`
     flex-direction: column;
     background-color: #2B4760;
     position: relative;
+    justify-content: center;
+    align-items: center;
 `
 
 export const ImgContainer = styled.div`
