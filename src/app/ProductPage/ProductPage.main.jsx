@@ -1,12 +1,14 @@
 import * as itemS from "./styled/ProductPage.main.style"
 import ProductInfo from "./ProductPage.main.info"
 import ImgModal from "./ProductPage.main.imgModal"
+import CopyLinkModal from "./ProductPage.main.copyLinkModal"
 
 function ProductPage() {
     return (
         <> 
             <itemS.ProductPageContainer>
                 <ImgModal></ImgModal>
+                <CopyLinkModal></CopyLinkModal>
                 <itemS.ImgContainer>
                     <itemS.IconContainer>
                         <img src="../../../public/ProductPage/back.png" alt="back Icon"/>
