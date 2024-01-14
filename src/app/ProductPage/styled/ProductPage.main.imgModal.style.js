@@ -1,15 +1,22 @@
 import styled from "styled-components";
 
 export const ImgModalContainer = styled.div`
+    ${(props) => 
+        props.type === "Hidden" 
+        ? `
+            display: none ;
+        ` : `
+            display: flex ;
+        `
+    }
+
     width: 100%;
     height: 100%;
     background-color: rgba(0,0,0,0.5);
     position: absolute;
     margin: auto;
-    display: flex;
     justify-content: center;
     align-items: center;
-    display: flex;
     flex-direction: column;
     z-index: 10;
 `

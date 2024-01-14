@@ -3,7 +3,7 @@ import * as itemS from "./styled/ProductPage.main.imgModal.style"
 function ImgModal() {
     return(
         <>
-            <itemS.ImgModalContainer>
+            <itemS.ImgModalContainer type="Hidden">
                 <itemS.ImgModal></itemS.ImgModal>
                 <itemS.ImgPageIconContainer>
                     <itemS.ImgPageIcon type="Current"></itemS.ImgPageIcon>
