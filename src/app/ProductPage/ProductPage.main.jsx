@@ -16,7 +16,10 @@ function ProductPage() {
                     </itemS.IconContainer>
                 </itemS.ImgContainer>
                 <ProductInfo></ProductInfo>
-                <itemS.ChatBtn>채팅하기</itemS.ChatBtn>
+                <itemS.BtnContainer>
+                    <itemS.Btn>채팅하기</itemS.Btn>
+                    <itemS.Btn>참여하기</itemS.Btn>
+                </itemS.BtnContainer>
             </itemS.ProductPageContainer>
         </>
     )

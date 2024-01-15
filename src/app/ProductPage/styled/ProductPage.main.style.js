@@ -26,19 +26,25 @@ export const IconContainer = styled.div`
     display: flex;
     justify-content: space-between;
 `
-
-export const ChatBtn = styled.div`
+export const BtnContainer = styled.div`
     width: 90%;
     height: 50px;
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    bottom: 15px;
+    left: 5%;
+    background-color: #FFFFFF;
+`
+
+export const Btn = styled.div`
+    width: 48%;
     background-color: #FF424D;
-    border-radius: 12px;
+    border-radius: 13px;
     color: #FFFFFF ;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 500;
-    position: absolute;
-    bottom: 15px;
-    left: 5%;
 `

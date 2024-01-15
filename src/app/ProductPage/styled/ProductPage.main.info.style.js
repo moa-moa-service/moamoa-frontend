@@ -46,7 +46,7 @@ export const UserIcon = styled.div`
 `
 
 export const UserText = styled.div`
-    width: 90px;
+    width: 75%;
     height: 50px;
     margin-left: 10px;
     background-color: white;
@@ -138,6 +138,7 @@ export const addressText = styled.div`
 export const addressDetailText = styled.div`
     font-size: 10px;
     color: #BEBEBE ;
+    margin-bottom: 5px;
 `
 
 export const ProductDetailText = styled.div`
