@@ -22,15 +22,15 @@ export const ModalContainer = styled.div`
 `
 
 export const Modal = styled.div`
-    width: 250px;
-    height: 300px;
+    width: 70% ;
+    height: 45%;
     background-color: #FFFFFF;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 40px 0 20px 0;
+    padding: 60px 0 20px 0;
     box-sizing: border-box;
 `
 
@@ -41,9 +41,23 @@ export const Icon = styled.div`
     border-radius: 10px;
 `
 
+export const TextContainer = styled.div`
+    height: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 70px;
+`
+
 export const InfoTitle = styled.div`
     font-size: 18px;
     font-weight: 600;
+`
+
+export const InfoText = styled.div`
+    font-size: 13px;
+    color: #848484;
 `
 
 export const TextInput = styled.input`

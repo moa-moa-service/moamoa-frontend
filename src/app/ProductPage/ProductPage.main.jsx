@@ -3,6 +3,7 @@ import ProductInfo from "./ProductPage.main.info"
 import ImgModal from "./ProductPage.main.imgModal"
 import CopyLinkModal from "./ProductPage.main.copyLinkModal"
 import QuantityModal from "./ProductPage.main.quantityModal"
+import CompleteModal from "./ProductPage.main.completeModal"
 
 function ProductPage() {
     return (
@@ -11,6 +12,7 @@ function ProductPage() {
                 <ImgModal></ImgModal>
                 <CopyLinkModal></CopyLinkModal>
                 <QuantityModal></QuantityModal>
+                <CompleteModal></CompleteModal>
                 <itemS.ImgContainer>
                     <itemS.IconContainer>
                         <img src="../../../public/ProductPage/back.png" alt="back Icon"/>
