@@ -28,7 +28,8 @@ export const Modal = styled.div`
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /* justify-content: space-between; */
+    justify-content: space-around;
     align-items: center;
     padding: 60px 0 20px 0;
     box-sizing: border-box;
@@ -47,7 +48,8 @@ export const TextContainer = styled.div`
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 70px;
+    margin-bottom: 15px;
+    /* margin-bottom: 70px; */
 `
 
 export const InfoTitle = styled.div`
