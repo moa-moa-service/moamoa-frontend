@@ -66,6 +66,10 @@ const AddressSetupFooterWrapper = styled.div`
         border-radius: 8px;
 `
 
+const AddressSetupFooterContentWrapper = styled.div`
+    display: flex;
+`;
+
 const AddressSetupFooterTitleWrapper = styled.div`
     display: flex;
 `;
@@ -88,6 +92,7 @@ export {
     AddressSetupLogoTitleWrapper,
     AddressSetupLogoTitle,
     AddressSetupFooterWrapper,
+    AddressSetupFooterContentWrapper,
     AddressSetupFooterTitleWrapper,
     AddressSetupFooterTitle,
     AddressSetupFooterContentLogoWrapper,
