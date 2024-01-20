@@ -8,6 +8,7 @@ import {
     AddressSetupFooterWrapper,
     AddressSetupFooterTitleWrapper,
     AddressSetupFooterTitle,
+    AddressSetupFooterContentWrapper,
     AddressSetupFooterContentLogoWrapper,
     AddressSetupFooterContentLogo,
     AddressSetupFooterContentWrapper as FooterContentWrapper, // Rename the import

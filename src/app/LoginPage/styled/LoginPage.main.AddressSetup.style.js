@@ -77,6 +77,8 @@ const AddressSetupFooterTitle = styled.div`
     text-align: center;
 `
 
+const AddressSetupFooterContentWrapper = styled.div``
+
 const AddressSetupFooterContentLogoWrapper = styled.div`
     display: flex;
 `
@@ -95,6 +97,7 @@ export {
     AddressSetupFooterWrapper,
     AddressSetupFooterTitleWrapper,
     AddressSetupFooterTitle,
+    AddressSetupFooterContentWrapper,
     AddressSetupFooterContentLogoWrapper,
     AddressSetupFooterContentLogo,
 }
