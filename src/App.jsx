@@ -1,4 +1,5 @@
 import MainPage from './app/MainPage/MainPage.main.jsx'
+import LoginPageComponent from './app/LoginPage/LoginPage.main.jsx'
 
 import {
   Route,
@@ -12,6 +13,7 @@ function App() {
     <>
     <Routes>
       <Route path="/" element={<MainPage />} />
+      <Route path="/login" element={<LoginPageComponent />} />
     </Routes>
     </>
   )
