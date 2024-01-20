@@ -4,7 +4,7 @@ export const CategoryContainer = styled.div`
 display: flex;
 height: 242px;
 flex-direction: column;
-margin: 25px;
+margin: 10px 25px 25px 25px;
 padding: 0 3px 0 3px;
 `
 
