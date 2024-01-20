@@ -1,6 +1,7 @@
 import * as itemS from "./styled/MainPage.main.style"
 // import SearchImg from "./public/MainPage/Search.png"
 import CategoryList from "./MainPage.main.CategoryList"
+import MenuNav from "../MenuNav/MenuNav.main"
 
 function MainPage() {
     return (
@@ -14,6 +15,7 @@ function MainPage() {
                 </itemS.SearchContainer>
                 <CategoryList />
             </itemS.MainPageContainer>
+            <MenuNav />
         </>
     )
 }

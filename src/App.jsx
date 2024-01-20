@@ -1,4 +1,5 @@
 import MainPage from './app/MainPage/MainPage.main.jsx'
+import CategoryDetailPage from './app/MainPage/MainPage.CategoryDetailPage.jsx'
 
 import {
   Route,
@@ -12,6 +13,7 @@ function App() {
     <>
     <Routes>
       <Route path="/" element={<MainPage />} />
+      <Route path='/detail' element={<CategoryDetailPage />} />
     </Routes>
     </>
   )
