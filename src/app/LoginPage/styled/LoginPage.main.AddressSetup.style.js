@@ -66,10 +66,6 @@ const AddressSetupFooterWrapper = styled.div`
         border-radius: 8px;
 `
 
-const AddressSetupFooterContentWrapper = styled.div`
-    display: flex;
-`;
-
 const AddressSetupFooterTitleWrapper = styled.div`
     display: flex;
 `;
@@ -80,7 +76,14 @@ const AddressSetupFooterTitle = styled.div`
     align-items: center;
     text-align: center;
 `
+
+const AddressSetupFooterContentWrapper = styled.div``
+
 const AddressSetupFooterContentLogoWrapper = styled.div`
+    display: flex;
+`
+
+const AddressSetupFooterContentLogo = styled.div`
     align-items: flex-start;
 `
 
@@ -92,8 +95,9 @@ export {
     AddressSetupLogoTitleWrapper,
     AddressSetupLogoTitle,
     AddressSetupFooterWrapper,
-    AddressSetupFooterContentWrapper,
     AddressSetupFooterTitleWrapper,
     AddressSetupFooterTitle,
+    AddressSetupFooterContentWrapper,
     AddressSetupFooterContentLogoWrapper,
+    AddressSetupFooterContentLogo,
 }

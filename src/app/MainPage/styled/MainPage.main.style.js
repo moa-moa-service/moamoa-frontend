@@ -6,6 +6,7 @@ justify-content: center;
 // align-items: center;
 flex-direction: column;
 background-color: #2B4760;
+margin-bottom: 91px
 `;
 
 export const SearchContainer = styled.div`
