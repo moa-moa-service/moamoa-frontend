@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalContainer = styled.div`
+export const SelectModalContainer = styled.div`
     ${(props) => 
         props.type === "Hidden" 
         ? `
@@ -21,7 +21,7 @@ export const ModalContainer = styled.div`
     z-index: 10;
 `
 
-export const Modal = styled.div`
+export const SelectModal = styled.div`
     width: 70% ;
     height: 45%;
     background-color: #FFFFFF;
@@ -37,8 +37,10 @@ export const Modal = styled.div`
 
 export const Icon = styled.div`
     width: 140px;
-    height: 100px;
-    background-color: #D9D9D9;
+    height: 90px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
 `
 
@@ -71,21 +73,34 @@ export const TextInput = styled.input`
     &::placeholder {
         color: #848484;
     }
+    border-radius: 10px;
 `
 export const BtnContainer = styled.div`
     display: flex;
     width: 80%;
     height: 30px;
-    background-color: #D9D9D9;
-    border-radius: 10px;
+    justify-content: space-between;
 `
 
 export const CheckBtn = styled.div`
-    width: 100%;
+
+    ${(props) => 
+        props.color === "red" 
+        ? `
+            background-color: #FF424D;
+        ` : `
+            background-color: #B7B7B7;
+        `
+    }
+
+    /* width: 100%; */
     height: 100% ;
+    width: 49%;
     display: flex ;
     justify-content: center ;
     align-items:center;
     color: #848484 ;
     font-size: 13px ;
+    border-radius: 10px ;
+    color: #FFFFFF ;
 `

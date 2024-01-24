@@ -11,11 +11,11 @@ export const InfoContainer = styled.div`
     flex-direction: column;
     padding: 0 20px;
     box-sizing: border-box;
-    overflow-y: scroll;
+    /* overflow-y: scroll;
     
     &::-webkit-scrollbar {
         display: none;
-    }
+    } */
 `
 
 export const HomeIndicator = styled.hr`

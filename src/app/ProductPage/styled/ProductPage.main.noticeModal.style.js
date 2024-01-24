@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CopyLinkModalContainer = styled.div`
+export const NoticeModalContainer = styled.div`
     ${(props) => 
         props.type === 'Hidden'
         ? `
@@ -20,7 +20,7 @@ export const CopyLinkModalContainer = styled.div`
     flex-direction: column ;
 `
 
-export const CopyIcon = styled.div`
+export const NoticeIcon = styled.div`
     width: 140px;
     height: 140px;
     border-radius: 50%;
@@ -30,7 +30,7 @@ export const CopyIcon = styled.div`
     align-items: center;
 `
 
-export const CopyText = styled.div`
+export const NoticeText = styled.div`
     color: #FFFFFF;
     ${(props) => 
         props.size === 'small' 
@@ -41,6 +41,6 @@ export const CopyText = styled.div`
             font-weight: 600 ;
         `
     }
-    margin-top: 13px ;
+    margin-top: 15px ;
     
 `
