@@ -1,7 +1,13 @@
 import styled from "styled-components"
 
 export const CategoryTitleContainer = styled.div`
-width: 287px;
+${(props) =>
+    props.type === 'recruit'
+    ? `
+    width: 226px;
+    ` : `
+    width: 287px;
+    `}
 height: 50px;
 margin: 67px 109px 25px 25px;
 display: flex;
