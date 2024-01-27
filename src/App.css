@@ -4,9 +4,19 @@
   font-family: 'Inter', sans-serif;
 }
 
+@media screen and (max-width: 430px) {
+  :root {
+    width: 100vw;
+    height: 100vh;
+  }
+}
+
 @media screen and (min-width: 431px) {
   :root {
     display: flex;
     justify-content: center;
+  }
+  .App {
+    width: 430px;
   }
 }
