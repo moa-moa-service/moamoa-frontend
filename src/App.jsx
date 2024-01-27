@@ -2,6 +2,8 @@ import MainPage from './app/MainPage/MainPage.main.jsx'
 import CategoryDetailPage from './app/MainPage/MainPage.CategoryDetailPage.jsx'
 import LoginPageComponent from './app/LoginPage/LoginPage.main.jsx'
 import RecruitmentPage from './app/RecruitmentPage/Recruitment.main.jsx'
+import SearchPageMain from './app/SearchPage/SearchPage.main.jsx'
+import ProductPage from './app/ProductPage/ProductPage.main.jsx'
 
 import {
   Route,
@@ -18,6 +20,8 @@ function App() {
       <Route path='/detail' element={<CategoryDetailPage />} />
       <Route path="/login" element={<LoginPageComponent />} />
       <Route path="/recruitment" element={<RecruitmentPage />} />
+      <Route path="/search" element={<SearchPageMain />} />
+      <Route path="/product" element={<ProductPage />} />
     </Routes>
     </>
   )
