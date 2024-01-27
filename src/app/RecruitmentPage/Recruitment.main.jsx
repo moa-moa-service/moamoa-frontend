@@ -3,11 +3,35 @@ import * as itemCategory from "../MainPage/styled/MainPage.main.CategoryList.sty
 import * as itemCategoryDetails from "../MainPage/styled/MainPage.CategoryDatailPage.style"
 import * as itemS from "./styled/Recruitment.main.style"
 
+import RecruitmentModal from "./Recruitment.modal"
+
+import React, { useState } from 'react';
 
 function Recruitment() {
-    return(
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [isType, setIsType] = useState('');
+
+    const toggleModal = (type) => {
+        console.log("click");
+        setIsType(type);
+        setModalOpen(!isModalOpen);
+    };
+    return (
         <>
             <itemMainPage.MainPageContainer>
+                {/* 모달이 열려있을 때만 모달 컴포넌트를 렌더링 */}
+                {isModalOpen && (
+                    <>
+                        <itemS.Backdrop onClick={toggleModal}>
+                            <RecruitmentModal data={isType}/>
+                        </itemS.Backdrop>
+                    </>
+                )}
+                {!isModalOpen && (
+                    <>
+                        <itemS.CompleteBtn>모집 완료</itemS.CompleteBtn>
+                    </>
+                )}
                 <itemCategoryDetails.CategoryTitleContainer type='recruit'>
                     <itemCategoryDetails.BackBtn />
                     <itemCategoryDetails.CategoryTitle>모집하기</itemCategoryDetails.CategoryTitle>
@@ -15,13 +39,13 @@ function Recruitment() {
                 <itemCategory.CategoryListContainer>
                     <itemS.FiltersContainer>
                         <itemS.FilterWrapper>
-                            <itemS.FilterText>카테고리 선택</itemS.FilterText>
+                            <itemS.FilterText onClick={() => toggleModal('category')}>카테고리 선택</itemS.FilterText>
                         </itemS.FilterWrapper>
                         <itemS.FilterWrapper>
-                            <itemS.FilterText>모집 기간 선택</itemS.FilterText>
+                            <itemS.FilterText onClick={() => toggleModal('date')}>모집 기간 선택</itemS.FilterText>
                         </itemS.FilterWrapper>
                         <itemS.FilterWrapper>
-                            <itemS.FilterText>모집 인원 선택</itemS.FilterText>
+                            <itemS.FilterText onClick={() => toggleModal('people')}>모집 인원 선택</itemS.FilterText>
                         </itemS.FilterWrapper>
                     </itemS.FiltersContainer>
                     <itemS.ProductInfoContainer>
@@ -47,7 +71,6 @@ function Recruitment() {
                         </itemS.InfoElementContainer>
                     </itemS.ProductInfoContainer>
                 </itemCategory.CategoryListContainer>
-                <itemS.CompleteBtn>모집 완료</itemS.CompleteBtn>
             </itemMainPage.MainPageContainer>
         </>
     )

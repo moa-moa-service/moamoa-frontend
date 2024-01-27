@@ -107,3 +107,12 @@ font-weight: 600;
 line-height: 25.382px; /* 172.943% */
 letter-spacing: -0.577px;
 `
+
+export const Backdrop = styled.div`
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.3);
+`;
