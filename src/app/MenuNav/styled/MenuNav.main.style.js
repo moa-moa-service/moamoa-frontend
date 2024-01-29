@@ -4,6 +4,7 @@ export const MenuNavWrapper = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
+width: 430px;
 height: 91px;
 background-color: #FFFFFF;
 border-radius: 15px 15px 0 0;
@@ -11,8 +12,6 @@ box-shadow: 0px -2px 10px 4px rgba(0, 0, 0, 0.09);
 
 position: fixed;
 bottom: 0;
-left: 0;
-right: 0;
 `
 
 export const MenuIconListContainer = styled.div`
