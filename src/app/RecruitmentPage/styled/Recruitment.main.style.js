@@ -95,6 +95,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: fixed;
+margin-left: 20px;
 bottom: 25px;
 
 color: #888;
