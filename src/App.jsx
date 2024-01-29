@@ -14,16 +14,16 @@ import './App.css'
 
 function App() {
   return (
-    <>
-    <Routes>
-      <Route path="/" element={<MainPage />} />
-      <Route path='/detail' element={<CategoryDetailPage />} />
-      <Route path="/login" element={<LoginPageComponent />} />
-      <Route path="/recruitment" element={<RecruitmentPage />} />
-      <Route path="/search" element={<SearchPageMain />} />
-      <Route path="/product" element={<ProductPage />} />
-    </Routes>
-    </>
+    <div className='App'>
+      <Routes>
+        <Route path="/" element={<MainPage />} />
+        <Route path='/detail' element={<CategoryDetailPage />} />
+        <Route path="/login" element={<LoginPageComponent />} />
+        <Route path="/recruitment" element={<RecruitmentPage />} />
+        <Route path="/search" element={<SearchPageMain />} />
+        <Route path="/product" element={<ProductPage />} />
+      </Routes>
+    </div>
   )
 }
 

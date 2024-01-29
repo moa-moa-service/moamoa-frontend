@@ -19,6 +19,13 @@ export const SelectModalContainer = styled.div`
     align-items: center;
     flex-direction: column;
     z-index: 10;
+    position: fixed ;
+    top:0 ;
+
+
+    @media screen and (min-width:431px){
+        width: 430px;
+    }
 `
 
 export const SelectModal = styled.div`

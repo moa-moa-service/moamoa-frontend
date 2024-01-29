@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const InfoContainer = styled.div`
     background-color: #FFFFFF;
-    width: 430px;
-    height: 390px;
+    width: 100%;
+    height: 100%;
     margin-top: -130px;
     border-top-left-radius : 13px;
     border-top-right-radius: 13px;
