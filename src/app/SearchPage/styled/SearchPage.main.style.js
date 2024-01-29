@@ -1,20 +1,19 @@
 import styled from "styled-components";
 
 export const SearchPageContainer = styled.div`
-    position: relative;
     display: flex;
     flex-direction: column;
     background-color: #2B4760;
-    width: 430px;
-    height: 930px;
+    width: 100%;
+    height: 100%;
 `
 
 export const SearchContainer = styled.div`
     background-color: #FFFFFF;
-    width: 400px;
-    height: 65px;
+    width: 92%;
+    height: 60px;
     border-radius: 15px;
-    margin: 60px auto 30px auto;
+    margin: 60px auto 20px auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,17 +31,19 @@ export const SearchBox = styled.input`
 `
 
 export const KeywordContainer = styled.div`
-    width: 430px;
-    height: 770px;
+    width: 100%;
+    height: 80%;
     background-color: #FFFFFF;
     border-top-left-radius : 15px;
     border-top-right-radius: 15px;
-    position: absolute;
-    bottom: 0;
     display: flex;
     flex-direction: column;
     padding: 0 20px;
     box-sizing: border-box;
+
+    @media screen and (min-width:431px){
+        width: 430px;
+    }
 `
 
 export const KeywordTitle = styled.div`

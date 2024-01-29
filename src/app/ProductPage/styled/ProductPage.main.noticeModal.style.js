@@ -18,6 +18,13 @@ export const NoticeModalContainer = styled.div`
     justify-content: center ;
     align-items: center ;
     flex-direction: column ;
+    position: fixed ;
+    top: 0 ;
+
+
+    @media screen and (min-width:431px){
+        width: 430px;
+    }
 `
 
 export const NoticeIcon = styled.div`
