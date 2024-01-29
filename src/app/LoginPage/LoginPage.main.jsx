@@ -1,5 +1,6 @@
 import React from 'react'
-import AddressSetup from './LoginPage.main.AddressSetup'
+// import BasicInformation from './LoginPage.main.BasicInformation'
+import Welcome from './LoginPage.main.Welcome'
 
 const LoginPageComponent = () => {
     // const [step, setStep] = useState(0)
@@ -18,7 +19,7 @@ const LoginPageComponent = () => {
             )
         </LoginPageContainer>
         */
-       <AddressSetup />
+       <Welcome />
     )
 }
 

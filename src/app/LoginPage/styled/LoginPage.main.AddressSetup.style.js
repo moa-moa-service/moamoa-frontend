@@ -80,6 +80,60 @@ const AddressSetupBottomSheetWrapper = styled.div`
     border-radius: 15px 15px 0 0;
     gap: 5px;
 `
+const AddressSetupBottomLocationWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 30px 0;
+    background-color: #ffffff;
+    border-radius: 15px 15px 0 0;
+    gap: 5px;
+`
+const AddressSetupBottomLocationTitle = styled.div`
+    color: #2B4760;
+    color: #2B4760;
+    font-family: Inter;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 25.382px; /* 141.011% */
+    sletter-spacing: -0.577px;
+    text-align: left;
+`
+const Input = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: (100%-44px);
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 15px;
+    color: #000000;
+    border: 2px solid #2B4760;
+`
+
+const AddressSetupBottomButtonWrapper = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 5px;
+`
+const AddressSetupBottomButton = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #FF424D;
+    border-radius: 15px;
+    text-align: center;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 14.676px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25.382px; /* 172.943% */
+    letter-spacing: -0.577px;
+`
+
+
 
 export {
     AddressSetupContainer,
@@ -90,5 +144,10 @@ export {
     AddressSetupMapWrapper,
     AddressSetupBottomWrapper,
     AddressSetupCurrentLocationWrapper,
-    AddressSetupBottomSheetWrapper
+    AddressSetupBottomSheetWrapper,
+    AddressSetupBottomLocationWrapper,
+    AddressSetupBottomLocationTitle,
+    Input,
+    AddressSetupBottomButtonWrapper,
+    AddressSetupBottomButton,
 }
