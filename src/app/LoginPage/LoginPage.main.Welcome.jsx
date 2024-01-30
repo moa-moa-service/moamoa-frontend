@@ -1,35 +1,46 @@
 import React from "react";
 import {
-    BasicInformationContainer,
-    BasicInformationTitleWrapper,
-    BasicInformationTitle,
-    BasicInformationContentWrapper,
-    BasicInformationContentFormItemWrapper,
-    BasicInformationContentFormTitleWrapper,
-    BasicInformationContentFormContentWrapper,
-    BasicInformationContentFormInput,
-    BasicInformationLocationSettingButton,
-    BasicInformationContentFormGuideText,
-    BasicInformationFooterWrapper
-} from './styled/LoginPage.main.BasicInformation.style'
+    WelcomeContainer,
+    WelcomeContentWrapper,
+    WelcomeLogoWrapper,
+    WelcomeLogoTitle,
+    WelcomeFooterWrapper,
+    WelcomeFooterTitleWrapper,
+    WelcomeFooterTitle,
+    WelcomeFooterContentWrapper,
+    WelcomeFooterContentLogoWrapper,
+    WelcomeFooterContentLogo
+} from "./styled/LoginPage.main.Welcome.style";
 
-const BasicInformation = () => {
+const Welcome = () => {
     return (
         <WelcomeContainer>
-            <WelcomeTitleContainerWrapper>
-                <WelcomeIconContainerWrapper>
-                    <img src="" alt="" />
-                </WelcomeIconContainerWrapper>
-                <WelcomeTitle>우리 동네 설정</WelcomeTitle>
-            </WelcomeTitleContainerWrapper>
-            <WelcomeDirectionIconContainer>
-                <img src="" alt="" />
-            </WelcomeDirectionIconContainer>
-            <WelcomeFooterContentWrapper>
+            <WelcomeContentWrapper>
+                <WelcomeLogoWrapper>
+                    {/* Use the correct component name: AddressSetupLogoTitle */}
+                    <WelcomeLogoTitle>
+                        우리동네 공동구매<br /> <strong>모아모아</strong>로 시작해요!
+                    </WelcomeLogoTitle>
+                </WelcomeLogoWrapper>
+            </WelcomeContentWrapper>
 
-            </WelcomeFooterContentWrapper>
+            <WelcomeFooterWrapper>
+                <WelcomeFooterTitleWrapper>
+                    <WelcomeFooterTitle>
+                        SNS계정으로 시작하기
+                    </WelcomeFooterTitle>
+                </WelcomeFooterTitleWrapper>
+                <WelcomeFooterContentWrapper>
+                    <button>
+                        <WelcomeFooterContentLogoWrapper>
+                            <WelcomeFooterContentLogo src="" />
+                        </WelcomeFooterContentLogoWrapper>
+                        카카오 로그인
+                    </button>
+                </WelcomeFooterContentWrapper>
+            </WelcomeFooterWrapper>
         </WelcomeContainer>
-    )
-}
+    );
+};
 
-export default BasicInformation
+export default Welcome;
