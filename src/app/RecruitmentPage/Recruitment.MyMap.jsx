@@ -5,11 +5,10 @@ function MyMap() {
     const navermaps = useNavermaps()
 
     return (
-        <MapDiv
-            style={{
-                width: '100%',
-                height: '767px',
-            }}>
+        <MapDiv style={{
+            width: '100%',
+            height: '900px',
+        }}>
             <NaverMap
                 defaultCenter={new navermaps.LatLng(37.3595704, 127.105399)}
                 defaultZoom={15}
@@ -21,5 +20,4 @@ function MyMap() {
         </MapDiv>
     )
 }
-
 export default MyMap
