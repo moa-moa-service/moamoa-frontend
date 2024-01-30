@@ -1,14 +1,16 @@
 import * as itemS from "./styled/SearchPage.main.style"
+import * as C from "./styled/SearchPage.component.style"
+
 function SearchPageMain() {
     return (
         <>
-            <itemS.SearchPageContainer>
-                <itemS.SearchContainer>
+            <C.SearchPageContainer>
+                <C.SearchContainer>
                     <img src="../../../public/SearchPage/backIcon.png" alt="뒤로가기" />
-                    <itemS.SearchBox></itemS.SearchBox>
+                    <C.SearchBox></C.SearchBox>
                     <img src="../../../public/SearchPage/searchIcon.png" alt="검색" />
-                </itemS.SearchContainer>
-                <itemS.KeywordContainer>
+                </C.SearchContainer>
+                <C.KeywordContainer>
                     <itemS.KeywordTitle>우리 동네 인기 검색어</itemS.KeywordTitle>
                     <itemS.TopKeywordContainer>
                         <itemS.TopKeyword>캘린더</itemS.TopKeyword>
@@ -33,8 +35,8 @@ function SearchPageMain() {
                         <itemS.RecentKeyword>텀블러</itemS.RecentKeyword>
                         <itemS.RecentKeywordDelete>X</itemS.RecentKeywordDelete>
                     </itemS.RecentKeywordContainer>
-                </itemS.KeywordContainer>
-            </itemS.SearchPageContainer>
+                </C.KeywordContainer>
+            </C.SearchPageContainer>
         </>
     )
 }

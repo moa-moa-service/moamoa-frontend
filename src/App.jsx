@@ -3,6 +3,7 @@ import CategoryDetailPage from './app/MainPage/MainPage.CategoryDetailPage.jsx'
 import LoginPageComponent from './app/LoginPage/LoginPage.main.jsx'
 import RecruitmentPage from './app/RecruitmentPage/Recruitment.main.jsx'
 import SearchPageMain from './app/SearchPage/SearchPage.main.jsx'
+import Search from "./app/SearchPage/SearchPage.search.jsx"
 import ProductPage from './app/ProductPage/ProductPage.main.jsx'
 import MyMap from './app/RecruitmentPage/Recruitment.MyMap.jsx'
 import TradingLocation from './app/RecruitmentPage/Recruitment.TradingLocation.jsx'
@@ -25,6 +26,7 @@ function App() {
           <Route path="/login" element={<LoginPageComponent />} />
           <Route path="/recruitment" element={<RecruitmentPage />} />
           <Route path="/search" element={<SearchPageMain />} />
+          <Route path="/search/:keyword" element={<Search />} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/mymap" element={<MyMap />} />
           <Route path="/tradinglocation" element={<TradingLocation />} />
