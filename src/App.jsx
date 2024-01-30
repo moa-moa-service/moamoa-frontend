@@ -5,6 +5,7 @@ import RecruitmentPage from './app/RecruitmentPage/Recruitment.main.jsx'
 import SearchPageMain from './app/SearchPage/SearchPage.main.jsx'
 import ProductPage from './app/ProductPage/ProductPage.main.jsx'
 import MyMap from './app/RecruitmentPage/Recruitment.MyMap.jsx'
+import TradingLocation from './app/RecruitmentPage/Recruitment.TradingLocation.jsx'
 import {
   Route,
   Routes,
@@ -14,9 +15,10 @@ import { NavermapsProvider } from 'react-naver-maps'
 import './App.css'
 
 function App() {
+  const ncpClientId = import.meta.env.VITE_CLIENT_ID
   return (
     <div className='App'>
-      <NavermapsProvider ncpClientId='%import.meta.env.VITE_CLIENT_ID%'>
+      <NavermapsProvider ncpClientId={ncpClientId}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path='/detail' element={<CategoryDetailPage />} />
@@ -25,6 +27,7 @@ function App() {
           <Route path="/search" element={<SearchPageMain />} />
           <Route path="/product" element={<ProductPage />} />
           <Route path="/mymap" element={<MyMap />} />
+          <Route path="/tradinglocation" element={<TradingLocation />} />
         </Routes>
       </NavermapsProvider>
     </div>
