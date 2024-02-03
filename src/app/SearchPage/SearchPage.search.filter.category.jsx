@@ -1,5 +1,5 @@
 import * as C from "./styled/SearchPage.search.filter.style"
-import * as itemS from "./styled/ScarchPage.search.filter.category.style"
+import * as itemS from "./styled/SearchPage.search.filter.category.style"
 
 function FilterCategory() {
     return(
