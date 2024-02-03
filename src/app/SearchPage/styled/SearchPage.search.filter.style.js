@@ -30,6 +30,7 @@ export const FilterContent = styled.div`
     border-top-right-radius: 15px;
     padding: 20px 0;
     box-sizing: border-box;
+    
 `
 
 export const FilterTitle = styled.div`
@@ -42,7 +43,7 @@ export const FilterTitle = styled.div`
 export const BtnContainer = styled.div`
     width: inherit;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
 `
 
 export const Btn = styled.div`
@@ -59,7 +60,7 @@ export const Btn = styled.div`
         `
     }
 
-    width: 180px;
+    width: 40%;
     height: 45px;
     border-radius: 10px ;
     display: flex ;
