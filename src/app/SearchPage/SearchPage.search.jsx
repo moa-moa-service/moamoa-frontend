@@ -4,6 +4,7 @@ import * as C from "./styled/SearchPage.component.style"
 import ProductItem from '../MainPage/MainPage.CategoryDetailPage.Item'
 import FilterCategory from "./SearchPage.search.Filter.Category"
 import FilterQuantity from "./SearchPage.search.filter.quantity"
+import FilterPrice from "./SearchPage.search.filter.price"
 
 function Search() {
     return(
@@ -30,6 +31,7 @@ function Search() {
             </C.MainContainer>
             <FilterCategory />
             <FilterQuantity />
+            <FilterPrice />
         </C.SearchPageContainer>
         </>
     )
