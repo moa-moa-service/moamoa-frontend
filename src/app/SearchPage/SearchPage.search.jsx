@@ -2,6 +2,7 @@ import * as itemS from "./styled/SearchPage.search.style"
 import * as C from "./styled/SearchPage.component.style"
 
 import ProductItem from '../MainPage/MainPage.CategoryDetailPage.Item'
+import FilterCategory from "./SearchPage.search.Filter.Category"
 
 function Search() {
     return(
@@ -25,8 +26,8 @@ function Search() {
                 <ProductItem />
                 <itemS.ContourLine />
                 <ProductItem />
-                <itemS.ContourLine />
             </C.MainContainer>
+            <FilterCategory />
         </C.SearchPageContainer>
         </>
     )
