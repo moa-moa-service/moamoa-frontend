@@ -5,6 +5,7 @@ import ProductItem from '../MainPage/MainPage.CategoryDetailPage.Item'
 import FilterCategory from "./SearchPage.search.Filter.Category"
 import FilterQuantity from "./SearchPage.search.filter.quantity"
 import FilterPrice from "./SearchPage.search.filter.price"
+import FilterPeriod from "./SearchPage.search.filter.period"
 
 function Search() {
     return(
@@ -32,6 +33,7 @@ function Search() {
             <FilterCategory />
             <FilterQuantity />
             <FilterPrice />
+            <FilterPeriod />
         </C.SearchPageContainer>
         </>
     )

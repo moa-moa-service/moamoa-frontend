@@ -36,8 +36,10 @@ export const FilterContent = styled.div`
 export const FilterTitle = styled.div`
     color: #2B4760;
     font-size: 18px;
-    font-weight: 600;
-    margin-left: 30px;
+    font-weight: 700;
+    margin: 0 30px;
+    display: flex;
+    justify-content: space-between;
 `
 
 export const BtnContainer = styled.div`
