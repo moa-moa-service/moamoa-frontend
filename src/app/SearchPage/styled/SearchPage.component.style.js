@@ -30,7 +30,7 @@ export const SearchBox = styled.input`
     outline: none;
 `
 
-export const KeywordContainer = styled.div`
+export const MainContainer = styled.div`
     width: 100%;
     height: 80%;
     background-color: #FFFFFF;
@@ -38,10 +38,42 @@ export const KeywordContainer = styled.div`
     border-top-right-radius: 15px;
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 20px 0 0 0;
     box-sizing: border-box;
 
     @media screen and (min-width:431px){
         width: 430px;
     }
+`
+
+export const KeywordContainer = styled.div`
+    display: flex;
+    margin-bottom: 30px;
+    white-space: nowrap;
+    overflow-x: auto;
+    padding: 0 20px;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+`
+
+export const Keyword = styled.div`
+    ${(props) => 
+        props.select === "true"
+        ? `
+            background-color: #2B4760 ;
+            color: #FFFFFF ;
+        ` : `
+            background-color: #FFFFFF ;
+            color: #2B4760;
+        `
+    }
+
+    width: auto;
+    height: 15px;
+    margin-right: 10px;
+    padding: 7px 18px;
+    border-radius: 20px;
+    border: 1px solid #2B4760;
 `

@@ -1,33 +1,12 @@
 import styled from "styled-components";
 
 export const KeywordTitle = styled.div`
-    margin: 25px 0 20px 0;
+    margin: 0 20px 20px 20px;
     font-size: 18px;
     font-weight: 600;
     color: #000000;
     display: flex;
     justify-content: space-between;
-`
-
-export const TopKeywordContainer = styled.div`
-    display: flex;
-    margin-bottom: 10px;
-    white-space: nowrap;
-    overflow-x: auto;
-
-    &::-webkit-scrollbar {
-        display: none;
-    }
-`
-
-export const TopKeyword = styled.div`
-    width: auto;
-    height: 15px;
-    margin-right: 10px;
-    padding: 7px 18px;
-    border-radius: 20px;
-    border: 1px solid #2B4760;
-    color: #2B4760;
 `
 
 export const deleteText = styled.div`

@@ -10,15 +10,15 @@ function SearchPageMain() {
                     <C.SearchBox></C.SearchBox>
                     <img src="../../../public/SearchPage/searchIcon.png" alt="검색" />
                 </C.SearchContainer>
-                <C.KeywordContainer>
+                <C.MainContainer>
                     <itemS.KeywordTitle>우리 동네 인기 검색어</itemS.KeywordTitle>
-                    <itemS.TopKeywordContainer>
-                        <itemS.TopKeyword>캘린더</itemS.TopKeyword>
-                        <itemS.TopKeyword>보조배터리</itemS.TopKeyword>
-                        <itemS.TopKeyword>다이어리</itemS.TopKeyword>
-                        <itemS.TopKeyword>행거</itemS.TopKeyword>
-                        <itemS.TopKeyword>김치</itemS.TopKeyword>
-                    </itemS.TopKeywordContainer>
+                    <C.KeywordContainer>
+                        <C.Keyword>캘린더</C.Keyword>
+                        <C.Keyword>보조배터리</C.Keyword>
+                        <C.Keyword>다이어리</C.Keyword>
+                        <C.Keyword>행거</C.Keyword>
+                        <C.Keyword>김치</C.Keyword>
+                    </C.KeywordContainer>
                     <itemS.KeywordTitle>
                         최근 검색어
                         <itemS.deleteText>전체 삭제</itemS.deleteText>
@@ -35,7 +35,7 @@ function SearchPageMain() {
                         <itemS.RecentKeyword>텀블러</itemS.RecentKeyword>
                         <itemS.RecentKeywordDelete>X</itemS.RecentKeywordDelete>
                     </itemS.RecentKeywordContainer>
-                </C.KeywordContainer>
+                </C.MainContainer>
             </C.SearchPageContainer>
         </>
     )
