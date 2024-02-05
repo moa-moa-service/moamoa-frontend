@@ -1,14 +1,15 @@
 import * as itemS from "./styled/NoticePage.write.style"
+import * as C from "./styled/NoticePage.component.style"
 
 function NoticeWritePage() {
     return(
         <>
-            <itemS.NoticeWriteContainer>
-                <itemS.NoticeHeader>
+            <C.NoticeWriteContainer>
+                <C.NoticeHeader>
                     <img src="../../../public/SearchPage/backIcon.png" alt="backIcon" />
                     <div>공지사항</div>
-                </itemS.NoticeHeader>
-                <itemS.WriteContainer>
+                </C.NoticeHeader>
+                <C.WriteContainer>
                     <itemS.Title>
                         <div>제목</div>
                         <itemS.EssentialIcon>*</itemS.EssentialIcon>
@@ -21,8 +22,8 @@ function NoticeWritePage() {
                         <itemS.EssentialIcon>*</itemS.EssentialIcon>
                     </itemS.Title>
                     <itemS.ContentInput placeholder="내용을 입력해주세요."/>
-                </itemS.WriteContainer>
-            </itemS.NoticeWriteContainer>
+                </C.WriteContainer>
+            </C.NoticeWriteContainer>
             <itemS.BtnContainer>
                 <itemS.Btn>작성 완료</itemS.Btn>
             </itemS.BtnContainer>
