@@ -6,6 +6,7 @@ import SearchPageMain from './app/SearchPage/SearchPage.main.jsx'
 import ProductPage from './app/ProductPage/ProductPage.main.jsx'
 import MyMap from './app/RecruitmentPage/Recruitment.MyMap.jsx'
 import TradingLocation from './app/RecruitmentPage/Recruitment.TradingLocation.jsx'
+import NoticeWritePage from './app/NoticePage/NoticePage.write.jsx'
 import {
   Route,
   Routes,
@@ -26,6 +27,7 @@ function App() {
           <Route path="/recruitment" element={<RecruitmentPage />} />
           <Route path="/search" element={<SearchPageMain />} />
           <Route path="/product" element={<ProductPage />} />
+          <Route path="/product/notice/write" element={<NoticeWritePage />} />
           <Route path="/mymap" element={<MyMap />} />
           <Route path="/tradinglocation" element={<TradingLocation />} />
         </Routes>
