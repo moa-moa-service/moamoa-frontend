@@ -32,6 +32,11 @@ function NoticePage() {
                         <Comment />
                     </itemS.CommentContainer>
                 </C.WriteContainer>
+                <itemS.WriteCommentContainer>
+                    <itemS.UserImg />
+                    <itemS.CommentInput placeholder="댓글을 입력해 주세요." />
+                    <itemS.DoneBtn>완료</itemS.DoneBtn>
+                </itemS.WriteCommentContainer>
             </C.NoticeWriteContainer>
         </>
     )
