@@ -1,8 +1,8 @@
 import React from 'react'
-// import BasicInformation from './LoginPage.main.BasicInformation'
-import Welcome from './LoginPage.main.Welcome'
+import NickNamePage from './MyPage.main.NickNamePage'
+import NickNamePage2 from './MyPage.main.NickNamePage2'
 
-const LoginPageComponent = () => {
+const MyPageComponent = () => {
     // const [step, setStep] = useState(0)
     // 0 - LoginWelcome
     // 1 - Basic Information
@@ -19,8 +19,10 @@ const LoginPageComponent = () => {
             )
         </LoginPageContainer>
         */
-       <Welcome />
+       <>
+        <NickNamePage />
+       </>
     )
 }
 
-export default LoginPageComponent
+export default MyPageComponent

@@ -1,5 +1,7 @@
 import * as itemS from "./styled/ProductPage.main.info.style"
 
+import Notice from "./ProductPage.main.info.notice"
+
 function Info() {
     return(
         <>
@@ -34,13 +36,18 @@ function Info() {
                         <itemS.ProductInfoValue type="Done">마감</itemS.ProductInfoValue>
                     </itemS.ProductInfo>
                 </itemS.ProductInfoContainer>
-                <itemS.Line></itemS.Line>
+                <itemS.Line />
                 <itemS.ProductInfoTitle>여기서 물건 받아요!</itemS.ProductInfoTitle>
                 <itemS.addressText>우성아파트</itemS.addressText>
                 <itemS.addressDetailText>서울특별시 서대문구 남가좌동 81-3번길 상가 앞</itemS.addressDetailText>
-                <itemS.Line></itemS.Line>
+                <itemS.Line />
                 <itemS.ProductInfoTitle>상세 설명</itemS.ProductInfoTitle>
                 <itemS.ProductDetailText>상세 설명입니다.</itemS.ProductDetailText>
+                <itemS.Line />
+                <itemS.Title>공지사항</itemS.Title>
+                <Notice />
+                <Notice />
+                <Notice />
             </itemS.InfoContainer>
         </>
     )

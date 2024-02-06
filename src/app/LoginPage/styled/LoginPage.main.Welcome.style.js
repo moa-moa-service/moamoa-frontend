@@ -3,7 +3,8 @@ import styled from 'styled-components'
 const WelcomeContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     gap: 60px;
     background-color: #ffffff;
     width: 100%;
@@ -13,110 +14,74 @@ const WelcomeContainer = styled.div`
 
 const WelcomeContentWrapper = styled.div`
     display: flex;
-    width: 100%;
-    height: 25vh;
     flex-direction: column;
-    justify-content: flex-end;
-    background-color: #222222;
-    border-radius: 0 0 40px 0;   
+    justify-content: center;
+    align-items: center;
+    gap: 27px;
 `
 
-const WelcomeLogoWrapper = styled.h1`
-    font-size: 40px;
-    font-weight: bold;
-    color: #ffffff;
-    margin-left: 20px;
-    margin-bottom: 20px;
+const WelcomeLogoWrapper = styled.div`
+    display: flex;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    background-color: #000000;
 `
-
-// const AddressSetupLogo = styled.div`
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: flex-start;
-//     align-items: center;
-//     gap: 30px;
-//     padding: 0 20px;
-// `
-
-// const AddressSetupLogoTitleWrapper = styled.div`
-//     display: flex;
-//     flex-direction: column;
-//     width: 100%;
-//     gap: 10px;
-//     align-items: center;
-// `
 
 const WelcomeLogoTitle = styled.div`
-    width: 100%;
-    font-size: 20px;
-    font-weight: bold;
-    color: #222222;
-    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    color: #2b4760;
+    font-weight: 600;
+
+    strong {
+        font-size: 32px;
+        color: #ff424d;
+    }
 `
 
 const WelcomeFooterWrapper = styled.div`
+    position: absolute;
+    bottom: 50px;
+    left: 0;
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     width: 100%;
-    gap: 6px;
 `
 
 const WelcomeFooterTitleWrapper = styled.div`
-    width: calc(100% - 20px);
-    padding: 14px 10px;
-    background-color: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 10px;
-    font-size: 14px;
+    text-align: center;
+    margin-bottom: 6px;
 `
 
-const WelcomeFooterTitle = styled.button`
-    position: relative;
-    width: 100%;
-    padding: 22px 10px;
-    background-color: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 10px;
-    font-size: 14px;
-    cursor: pointer;
-
-    &::after {
-        content: ">";
-        position: absolute;
-        top: 50%;
-        right: 10px;
-        transform: translate(0, -50%);
-        font-size: 20px;
-    }
+const WelcomeFooterTitle = styled.div`
+    color: #939393;
+    font-size: 15px;
+    font-weight: 100;
 `
-
 const WelcomeFooterContentWrapper = styled.div`
+    text-align: center;
     display: flex;
-    flex-direction: column;
-    width: 100%;
+    justify-content: center;
+    align-items: center;
 `
 
-const WelcomeFooterContentLogoWrapper = styled.div`
-    font-size: 10px;
-    color: #000000;
+const WelcomeFooterContentLogoWrapper = styled.button`
+padding: 0;
+margin: 0;
+background-color: transparent;
+line-height: 0;
+border: none;
+
 `
 
-const WelcomeFooterContentLogo = styled.div`
-    display: flex;
-    padding: 0 20px;
-    margin-bottom: 20px;
-
-    > button {
-        width: 100%;
-        padding: 20px 0;
-        text-align: center;
-        border: transparent;
-        background-color: #222222;
-        color: #ffffff;
-        font-weight: bold;
-        font-size: 14px;
-        border-radius: 8px;
-    }
+const WelcomeFooterContentLogo = styled.img`
+    width: 207px;
 `
 
 export {

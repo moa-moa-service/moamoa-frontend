@@ -9,7 +9,13 @@ import {
     AddressSetupMapWrapper,
     AddressSetupBottomWrapper,
     AddressSetupCurrentLocationWrapper,
-    AddressSetupBottomSheetWrapper
+    AddressSetupBottomSheetWrapper,
+    AddressSetupBottomLocationWrapper,
+    AddressSetupBottomLocationTitle,
+    Input,
+    AddressSetupBottomButtonWrapper,
+    AddressSetupBottomButton,
+
 } from './styled/LoginPage.main.AddressSetup.style'
 
 const AddressSetup = () => {
@@ -32,7 +38,17 @@ const AddressSetup = () => {
                 </AddressSetupCurrentLocationWrapper>
 
                 <AddressSetupBottomSheetWrapper>
-
+                    <AddressSetupBottomLocationWrapper>
+                        <AddressSetupBottomLocationTitle>
+                            내 위치
+                        </AddressSetupBottomLocationTitle>
+                        <Input>남가좌동</Input>
+                    </AddressSetupBottomLocationWrapper>
+                    <AddressSetupBottomButtonWrapper>
+                        <AddressSetupBottomButton>
+                            선택 확정
+                        </AddressSetupBottomButton>
+                    </AddressSetupBottomButtonWrapper>
                 </AddressSetupBottomSheetWrapper>
             </AddressSetupBottomWrapper>
         </AddressSetupContainer>

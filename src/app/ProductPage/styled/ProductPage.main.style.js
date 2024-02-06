@@ -41,8 +41,8 @@ export const BtnContainer = styled.div`
 `
 
 export const Btn = styled.div`
-    width: 40%;
-    background-color: #2B4760;
+    width: 90%;
+    background-color: #FF424D;
     border-radius: 13px;
     color: #FFFFFF ;
     display: flex;

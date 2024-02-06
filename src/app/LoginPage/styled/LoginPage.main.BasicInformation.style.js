@@ -17,7 +17,7 @@ const BasicInformationTitleWrapper = styled.div`
     height: 25vh;
     flex-direction: column;
     justify-content: flex-end;
-    background-color: #222222;
+    background-color: #2B4760;
     border-radius: 0 0 40px 0;   
 `
 
@@ -49,9 +49,14 @@ const BasicInformationContentFormItemWrapper = styled.div`
 const BasicInformationContentFormTitleWrapper = styled.div`
     width: 100%;
     font-size: 20px;
-    font-weight: bold;
     color: #222222;
     text-align: left;
+    color: #2B4760;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 25.382px; /* 126.91% */
+    letter-spacing: -0.577px;
 `
 
 const BasicInformationContentFormContentWrapper = styled.div`
@@ -65,9 +70,10 @@ const BasicInformationContentFormInput = styled.input`
     width: calc(100% - 20px);
     padding: 14px 10px;
     background-color: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 10px;
+    border-radius: 15px;
+    border: 2px solid #2B4760;
     font-size: 14px;
+
 `
 
 const BasicInformationLocationSettingButton = styled.button`
@@ -75,8 +81,8 @@ const BasicInformationLocationSettingButton = styled.button`
     width: 100%;
     padding: 22px 10px;
     background-color: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 10px;
+    border-radius: 15px;
+    border: 2px solid #2B4760;
     font-size: 14px;
     cursor: pointer;
 
@@ -105,7 +111,7 @@ const BasicInformationFooterWrapper = styled.div`
         padding: 20px 0;
         text-align: center;
         border: transparent;
-        background-color: #222222;
+        background-color: #888888;
         color: #ffffff;
         font-weight: bold;
         font-size: 14px;
