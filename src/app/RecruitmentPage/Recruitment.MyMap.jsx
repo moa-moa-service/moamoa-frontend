@@ -1,11 +1,15 @@
-import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps'
+import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps';
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function MyMap() {
     // instead of window.naver.maps
-    const navermaps = useNavermaps()
-    const [isMapLoading, setIsMapLoading] = useState(false)
-    const [myLocation, setMyLocation] = useState({ latitude: null, longitude: null })
+    const ncpClientId = import.meta.env.VITE_CLIENT_ID;
+    const ClientSecret = import.meta.env.VITE_CLIENT_SECRET;
+
+    const navermaps = useNavermaps();
+    const [isMapLoading, setIsMapLoading] = useState(true);
+    const [myLocation, setMyLocation] = useState({ latitude: null, longitude: null });
 
     useEffect(() => {
         setIsMapLoading(true);
@@ -22,8 +26,35 @@ function MyMap() {
         function error() {
             console.log('사용자 위치 불러오기 실패');
             setMyLocation({ latitude: 37.4979517, longitude: 127.0276188 });
+            setIsMapLoading(false);
         }
     }, []);
+
+    useEffect(() => {
+        // myLocation이 변경될 때마다 호출되는 부분
+        if (myLocation.latitude !== null && myLocation.longitude !== null) {
+            // 역 지오코딩 API 호출
+            const fetchData = async () => {
+                try {
+                    const response = await axios.get(
+                        `map/gc?request=coordsToaddr&coords=129.1133567,35.2982640&sourcecrs=epsg:4326&output=json&orders=addr,admcode,roadaddr`,
+                        {
+                            headers: {
+                                'X-NCP-APIGW-API-KEY-ID': ncpClientId,
+                                'X-NCP-APIGW-API-KEY': ClientSecret,
+                            },
+                        }
+                    );
+                    // Assuming that the response structure contains the required address information
+                    console.log('Reverse Geocoding Result:', response);
+                } catch (error) {
+                    console.error('Error fetching reverse geocoding data:', error);
+                }
+            };
+
+            fetchData(); // fetchData 함수 호출
+        }
+    }, [myLocation]);
 
     return (
         <MapDiv style={{
@@ -51,6 +82,7 @@ function MyMap() {
                 </NaverMap>
             )}
         </MapDiv>
-    )
+    );
 }
-export default MyMap
+
+export default MyMap;
