@@ -1,4 +1,5 @@
 import React from "react";
+import naverSnsButton from '/public/naver-sns-button.png'
 import {
     WelcomeContainer,
     WelcomeContentWrapper,
@@ -18,10 +19,11 @@ const Welcome = () => {
             <WelcomeContentWrapper>
                 <WelcomeLogoWrapper>
                     {/* Use the correct component name: AddressSetupLogoTitle */}
-                    <WelcomeLogoTitle>
-                        우리동네 공동구매<br /> <strong>모아모아</strong>로 시작해요!
-                    </WelcomeLogoTitle>
                 </WelcomeLogoWrapper>
+                <WelcomeLogoTitle>
+                        <span>우리동네 공동구매</span>
+                        <span><strong>모아모아</strong>로 시작해요!</span>
+                    </WelcomeLogoTitle>
             </WelcomeContentWrapper>
 
             <WelcomeFooterWrapper>
@@ -31,12 +33,10 @@ const Welcome = () => {
                     </WelcomeFooterTitle>
                 </WelcomeFooterTitleWrapper>
                 <WelcomeFooterContentWrapper>
-                    <button>
                         <WelcomeFooterContentLogoWrapper>
-                            <WelcomeFooterContentLogo src="" />
+                            <WelcomeFooterContentLogo src={naverSnsButton} />
                         </WelcomeFooterContentLogoWrapper>
-                        카카오 로그인
-                    </button>
+                    
                 </WelcomeFooterContentWrapper>
             </WelcomeFooterWrapper>
         </WelcomeContainer>

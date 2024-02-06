@@ -1,8 +1,7 @@
 import React from 'react'
-// import BasicInformation from './LoginPage.main.BasicInformation'
-import Welcome from './LoginPage.main.Welcome'
+import Recruting from './UserPage.main.Recruting'
 
-const LoginPageComponent = () => {
+const UserPageComponent = () => {
     // const [step, setStep] = useState(0)
     // 0 - LoginWelcome
     // 1 - Basic Information
@@ -19,8 +18,10 @@ const LoginPageComponent = () => {
             )
         </LoginPageContainer>
         */
-       <Welcome />
+       <>
+        <Recruting />
+       </>
     )
 }
 
-export default LoginPageComponent
+export default UserPageComponent
