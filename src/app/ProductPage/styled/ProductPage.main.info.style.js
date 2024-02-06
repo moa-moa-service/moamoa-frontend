@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const InfoContainer = styled.div`
+    font-family: 'Inter', sans-serif;
     background-color: #FFFFFF;
     width: 100%;
     height: 100%;
@@ -9,7 +10,7 @@ export const InfoContainer = styled.div`
     border-top-right-radius: 13px;
     display: flex;
     flex-direction: column;
-    padding: 0 20px;
+    padding: 0 20px 100px 20px;
     box-sizing: border-box;
     /* overflow-y: scroll;
     
@@ -125,7 +126,7 @@ export const ProductInfoValue = styled.div`
 
 export const Line = styled.hr`
     margin: 10px 0 15px 0;
-    border: 0.5px solid rgb(228, 228, 228);
+    border: 0.2px solid rgb(228, 228, 228);
 `
 
 export const addressText = styled.div`
@@ -144,6 +145,12 @@ export const addressDetailText = styled.div`
 export const ProductDetailText = styled.div`
     color: #888888 ;
     font-size: 11px;
-    margin-bottom: 100px;
+    margin: 5px 0;
 `
 
+export const Title = styled.div`
+    color: #2B4760 ;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 20px;
+`
