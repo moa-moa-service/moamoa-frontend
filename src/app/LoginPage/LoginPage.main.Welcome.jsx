@@ -13,7 +13,9 @@ import {
     WelcomeFooterContentLogo
 } from "./styled/LoginPage.main.Welcome.style";
 
-const Welcome = () => {
+const Welcome = ({
+    onNextStep
+}) => {
     return (
         <WelcomeContainer>
             <WelcomeContentWrapper>
@@ -28,7 +30,9 @@ const Welcome = () => {
 
             <WelcomeFooterWrapper>
                 <WelcomeFooterTitleWrapper>
-                    <WelcomeFooterTitle>
+                    <WelcomeFooterTitle onClick={() => {
+                            onNextStep()
+                        }}>
                         SNS계정으로 시작하기
                     </WelcomeFooterTitle>
                 </WelcomeFooterTitleWrapper>

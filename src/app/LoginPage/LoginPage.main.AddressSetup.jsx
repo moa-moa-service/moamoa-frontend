@@ -1,4 +1,5 @@
-import React from "react";
+import React, { Suspense } from "react";
+import MyMap from "../RecruitmentPage/Recruitment.MyMap.jsx";
 
 import {
     AddressSetupContainer,
@@ -15,7 +16,6 @@ import {
     Input,
     AddressSetupBottomButtonWrapper,
     AddressSetupBottomButton,
-
 } from './styled/LoginPage.main.AddressSetup.style'
 
 const AddressSetup = () => {
@@ -29,7 +29,9 @@ const AddressSetup = () => {
             </AddressSetupHeaderContainer>
 
             <AddressSetupMapWrapper>
-
+                <Suspense fallback={null}>
+                    <MyMap />
+                </Suspense>
             </AddressSetupMapWrapper>
 
             <AddressSetupBottomWrapper>
@@ -45,7 +47,9 @@ const AddressSetup = () => {
                         <Input>남가좌동</Input>
                     </AddressSetupBottomLocationWrapper>
                     <AddressSetupBottomButtonWrapper>
-                        <AddressSetupBottomButton>
+                        <AddressSetupBottomButton onClick={() => {
+                            console.log('로그인 화면으로 routing')
+                        }}>
                             선택 확정
                         </AddressSetupBottomButton>
                     </AddressSetupBottomButtonWrapper>
