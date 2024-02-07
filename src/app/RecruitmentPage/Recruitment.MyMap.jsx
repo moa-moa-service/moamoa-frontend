@@ -1,8 +1,9 @@
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function MyMap({ onResponseChange }) {
     const navermaps = useNavermaps();
+    const mapRef = useRef(null);
 
     const [isMapLoading, setIsMapLoading] = useState(true);
     const [myLocation, setMyLocation] = useState({ lat: null, lng: null });
@@ -26,6 +27,13 @@ function MyMap({ onResponseChange }) {
         }
     }, []);
 
+    const handleCenterChanged = () => {
+        if (mapRef.current) {
+            const center = mapRef.current.getCenter();
+            setMyLocation({ lat: center.lat(), lng: center.lng() });
+        }
+    };
+
     useEffect(() => {
         if (myLocation.lat !== null && myLocation.lng !== null) {
             const geocoder = navermaps.Service.reverseGeocode(
@@ -41,7 +49,6 @@ function MyMap({ onResponseChange }) {
                         return alert('Something Wrong!');
                     }
                     onResponseChange(response);
-                    // 여기서 response를 원하는 방식으로 처리할 수 있습니다.
                 }
             );
         }
@@ -62,12 +69,16 @@ function MyMap({ onResponseChange }) {
                 }}>Loading...</div>
             ) : (
                 <NaverMap
+                    ref={mapRef}
                     defaultCenter={new navermaps.LatLng(myLocation.lat, myLocation.lng)}
-                    defaultZoom={15}
+                    defaultZoom={20}
+                    onCenterChanged={handleCenterChanged}
                 >
-                    <Marker
-                        defaultPosition={new navermaps.LatLng(myLocation.lat, myLocation.lng)}
-                    />
+                    {myLocation.lat && myLocation.lng && (
+                        <Marker
+                            position={new navermaps.LatLng(myLocation.lat, myLocation.lng)}
+                        />
+                    )}
                 </NaverMap>
             )}
         </MapDiv>
