@@ -1,14 +1,22 @@
+import { useNavigate } from 'react-router-dom';
 import * as itemS from './styled/MenuNav.main.style'
 
 function MenuNav() {
-    const menuTexts = ['홈', '우리동네',  '모집하기', '채팅', '마이페이지'];
+    const navigate = useNavigate();
+
+    const handleCategoryClick = (path) => {
+        navigate(path);
+    };
+
+    const menuTexts = ['홈', '검색하기',  '모집하기', '우리동네', '마이페이지'];
+    const menuPaths = ['/', '/search', '/recruitment', '/neighborhood', '/mypage'];
 
     return (
         <>
             <itemS.MenuNavWrapper>
                 <itemS.MenuIconListContainer>
                     {menuTexts.map((text, index) => (
-                        <itemS.MenuIconContainer key={index}>
+                        <itemS.MenuIconContainer key={index} onClick={() => handleCategoryClick(menuPaths[index])}>
                             <itemS.MenuIconImgWrapper>
                             </itemS.MenuIconImgWrapper>
                             <itemS.MenuIconText>{text}</itemS.MenuIconText>
@@ -20,4 +28,4 @@ function MenuNav() {
     );
 }
 
-export default MenuNav
+export default MenuNav;
