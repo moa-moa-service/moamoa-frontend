@@ -1,12 +1,12 @@
 import * as itemS from './styled/Recruitment.TradingLocation.style'
 import MyMap from './Recruitment.MyMap'
 
-function TradingLocation() {
+function TradingLocation({openTradingLocation}) {
     return (
         <>
             <itemS.TopWrapper>
                 <itemS.TopContentContainer>
-                    <itemS.BackBtn />
+                    <itemS.BackBtn onClick={openTradingLocation}/>
                     <itemS.Text>거래 희망 장소</itemS.Text>
                 </itemS.TopContentContainer>
             </itemS.TopWrapper>
