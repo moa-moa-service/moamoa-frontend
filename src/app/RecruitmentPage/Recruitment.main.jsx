@@ -6,8 +6,11 @@ import * as itemS from "./styled/Recruitment.main.style"
 import RecruitmentModal from "./Recruitment.modal"
 
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom"
 
 function Recruitment() {
+    const navigate = useNavigate();
+
     const [isModalOpen, setModalOpen] = useState(false);
     const [isType, setIsType] = useState('');
 
@@ -33,7 +36,7 @@ function Recruitment() {
                     </>
                 )}
                 <itemCategoryDetails.CategoryTitleContainer type='recruit'>
-                    <itemCategoryDetails.BackBtn />
+                    <itemCategoryDetails.BackBtn onClick={() => { navigate(-1); }} />
                     <itemCategoryDetails.CategoryTitle>모집하기</itemCategoryDetails.CategoryTitle>
                 </itemCategoryDetails.CategoryTitleContainer>
                 <itemCategory.CategoryListContainer>
@@ -57,7 +60,7 @@ function Recruitment() {
                             <itemS.ProductText>이미지 선택<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
                             <itemS.SelectImg></itemS.SelectImg>
                         </itemS.InfoElementContainer>
-                        <itemS.InfoElementContainer>
+                        <itemS.InfoElementContainer onClick={() => { navigate('/tradinglocation'); }}>
                             <itemS.ProductText>거래 희망 장소<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
                             <itemS.ProductInput placeholder='위치 추가'></itemS.ProductInput>
                         </itemS.InfoElementContainer>

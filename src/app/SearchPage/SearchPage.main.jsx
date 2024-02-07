@@ -1,7 +1,9 @@
+import { useNavigate } from "react-router-dom";
 import * as itemS from "./styled/SearchPage.main.style"
 import * as C from "./styled/SearchPage.component.style"
 
 function SearchPageMain() {
+    const navigate = useNavigate();
     return (
         <>
             <C.SearchPageContainer>
@@ -24,7 +26,7 @@ function SearchPageMain() {
                         <itemS.deleteText>전체 삭제</itemS.deleteText>
                     </itemS.KeywordTitle>
                     <itemS.RecentKeywordContainer>
-                        <itemS.RecentKeyword>2024년 달력</itemS.RecentKeyword>
+                        <itemS.RecentKeyword onClick={() => { navigate('/search/:keyword'); }}>2024년 달력</itemS.RecentKeyword>
                         <itemS.RecentKeywordDelete>X</itemS.RecentKeywordDelete>
                     </itemS.RecentKeywordContainer>
                     <itemS.RecentKeywordContainer>
