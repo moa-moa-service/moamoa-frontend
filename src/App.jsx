@@ -23,7 +23,7 @@ function App() {
   const ncpClientId = import.meta.env.VITE_CLIENT_ID
   return (
     <div className='App'>
-      <NavermapsProvider ncpClientId={ncpClientId}>
+      <NavermapsProvider ncpClientId={ncpClientId} submodules={["geocoder"]}>
         <Routes>
           <Route path="/" element={<MainPage />} />
           <Route path='/detail' element={<CategoryDetailPage />} />
