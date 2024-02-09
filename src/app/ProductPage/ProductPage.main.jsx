@@ -5,17 +5,25 @@ import CopyLinkModal from "./ProductPage.main.copyLinkModal"
 import QuantityModal from "./ProductPage.main.quantityModal"
 import CompleteModal from "./ProductPage.main.completeModal"
 import CancelModal from "./ProductPage.main.CancelModal"
+import { useState } from "react"
 
 function ProductPage() {
+    const [imgOpen, setImgOpen] = useState(false) ;
+
+    const openImgModalHandler = () => {
+        setImgOpen(!imgOpen)
+    } ;
+    
+
     return (
         <> 
             <itemS.ProductPageContainer>
-                <ImgModal></ImgModal>
+                {imgOpen ? <ImgModal openImgModalHandler={openImgModalHandler}/> : null}
                 <CopyLinkModal></CopyLinkModal>
                 <QuantityModal></QuantityModal>
                 <CompleteModal></CompleteModal>
                 <CancelModal></CancelModal>
-                <itemS.ImgContainer>
+                <itemS.ImgContainer onClick={openImgModalHandler} >
                     <itemS.IconContainer>
                         <img src="../../../public/ProductPage/back.png" alt="back Icon"/>
                         <img src="../../../public/ProductPage/button_share.png" alt="share button" />
