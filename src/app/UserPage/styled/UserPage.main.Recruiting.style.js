@@ -190,7 +190,6 @@ const RecruitingTabbarWrapper = styled.div`
     display: flex;
     flex-direction: row;
     position: relative;
-    gap: 141px;
     flex-grow: 1;
     width: 100%;
     background-color: #ffffff;
@@ -212,6 +211,8 @@ const RecruitingTabbarWrapper = styled.div`
 `
 
 const RecruitingTabbar = styled.div`
+    flex-basis: 50%;
+    text-align: center;
     color: #888;
     font-family: Inter;
     font-size: 16px;
@@ -219,13 +220,10 @@ const RecruitingTabbar = styled.div`
     font-weight: 600;
     line-height: 25.382px; /* 158.637% */
     letter-spacing: -0.577px;
-    // width: 193px;
-    // height: 7px;
     flex-shrink: 0;
     cursor: pointer;
-    border-radius: 15px;
 
-    &.active {
+    &.tab-active {
     border-bottom: 2px solid #222222; 
     z-index: 10;
 }

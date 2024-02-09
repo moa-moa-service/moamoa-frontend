@@ -1,155 +1,92 @@
-import React from "react";
-import IconAngleLeft from "/public/SearchPage/backIcon.png"
+import React, { useState } from 'react'
+import IconAngleLeft from '/public/SearchPage/backIcon.png'
 
 import {
-    RecruitingContainer,
-    RecruitingHeaderContainer,
-    RecruitingHeaderWrapper,
-    RecruitingBackButton,
-    RecruitingHeaderTitle,
-    RecruitingBottomWrapper,
-    RecruitingProfileImageWrapper,
-    RecruitingProfileImage,
-    RecruitingBottomSheetWrapper,
-    RecruitingBottomNickNameWrapper,
-    RecruitingBottomNickNameTitle,
-    RecruitingBottomLocationTitle,
-    RecruitingBottomMainContentWrapper,
-    RecruitingMapWrapper,
-    RecruitingTabbarWrapper,
-    RecruitingTabbar,
-    RecruitingItemWholeWrapper,
-    RecruitingItemWrapper,
-    RecruitingItemPhotoWrapper,
-    RecruitingItemPhoto,
-    RecruitingItemDefaultThumbnail,
-    RecruitingItemDetailWrapper,
-    RecruitingItemDetail,
-    RecruitingItemDetailTitle,
-    RecruitingItemDetailContent,
-    RecruitingItemDetailPrice,
-
-
-
+	RecruitingContainer,
+	RecruitingHeaderContainer,
+	RecruitingHeaderWrapper,
+	RecruitingBackButton,
+	RecruitingHeaderTitle,
+	RecruitingBottomWrapper,
+	RecruitingProfileImageWrapper,
+	RecruitingProfileImage,
+	RecruitingBottomSheetWrapper,
+	RecruitingBottomNickNameWrapper,
+	RecruitingBottomNickNameTitle,
+	RecruitingBottomLocationTitle,
+	RecruitingBottomMainContentWrapper,
+	RecruitingMapWrapper,
+	RecruitingTabbarWrapper,
+	RecruitingTabbar,
+	RecruitingItemWholeWrapper,
+	RecruitingItemWrapper,
+	RecruitingItemPhotoWrapper,
+	RecruitingItemPhoto,
+	RecruitingItemDefaultThumbnail,
+	RecruitingItemDetailWrapper,
+	RecruitingItemDetail,
+	RecruitingItemDetailTitle,
+	RecruitingItemDetailContent,
+	RecruitingItemDetailPrice,
 } from './styled/UserPage.main.Recruiting.style.js'
-import MenuNav from '../MenuNav/MenuNav.main';
-import { RecentKeywordContainer } from '../SearchPage/styled/SearchPage.main.style';
+import MenuNav from '../MenuNav/MenuNav.main'
+import { RecentKeywordContainer } from '../SearchPage/styled/SearchPage.main.style'
 
 const Recruiting = () => {
-    return (
-        <RecruitingContainer>
-            <RecruitingHeaderContainer>
-                <RecruitingHeaderWrapper>
-                    <RecruitingBackButton>
-                        <img src={IconAngleLeft} alt="" />
-                    </RecruitingBackButton>
-                    <RecruitingHeaderTitle>닉네임의 공동구매</RecruitingHeaderTitle>
-                </RecruitingHeaderWrapper>
-            </RecruitingHeaderContainer>
+	const [toggleState, setToggleState] = useState(1)
+	const toggleTab = (index) => {
+		console.log(index)
+		setToggleState(index)
+	}
+	console.log(toggleState)
 
-            <RecruitingMapWrapper>
+	const renderToggleTabContent = () => {
+		switch (toggleState) {
+			case 1:
+				return <RecruitingList />
 
-            </RecruitingMapWrapper>
+			case 2:
+				return <RecruitCompletedList />
 
-            <RecruitingBottomWrapper>
-                
-                <RecruitingBottomSheetWrapper>
-                <RecruitingProfileImageWrapper>
-                <RecruitingProfileImage />
-            </RecruitingProfileImageWrapper>
+			default:
+				return null
+		}
+	}
 
-                    <RecruitingBottomNickNameWrapper>
-                        
-                        <RecruitingBottomNickNameTitle>
-                            닉네임
-                        </RecruitingBottomNickNameTitle>
-                        <RecruitingBottomLocationTitle>
-                            서대문구 남가좌동
-                        </RecruitingBottomLocationTitle>
-                        <RecruitingBottomMainContentWrapper>
-                            <RecruitingTabbarWrapper>
-                                <RecruitingTabbar>
-                                    모집 중
-                                </RecruitingTabbar>
-                                <RecruitingTabbar>
-                                    모집 완료
-                                </RecruitingTabbar>
-                            </RecruitingTabbarWrapper>
-                            <RecruitingItemWholeWrapper>
-                                <RecruitingItemWrapper>
-                                    <RecruitingItemPhotoWrapper>
-                                        <RecruitingItemPhoto>
-                                            <RecruitingItemDefaultThumbnail>
-                                            </RecruitingItemDefaultThumbnail>
-                                        </RecruitingItemPhoto>
-                                    </RecruitingItemPhotoWrapper>
-                                    <RecruitingItemDetailWrapper>
-                                        <RecruitingItemDetail>
-                                            <RecruitingItemDetailTitle>
-                                                상품명
-                                            </RecruitingItemDetailTitle>
-                                            <RecruitingItemDetailContent>
-                                                모집 인원 | 2명 <br />
-                                                모집 마감 | D-2
-                                            </RecruitingItemDetailContent>
-                                            <RecruitingItemDetailPrice>
-                                                25000원
-                                            </RecruitingItemDetailPrice>
-                                        </RecruitingItemDetail>
-                                    </RecruitingItemDetailWrapper>
-                                </RecruitingItemWrapper>
+	return (
+		<RecruitingContainer>
+			<RecruitingHeaderContainer>
+				<RecruitingHeaderWrapper>
+					<RecruitingBackButton>
+						<img src={IconAngleLeft} alt="" />
+					</RecruitingBackButton>
+					<RecruitingHeaderTitle>닉네임의 공동구매</RecruitingHeaderTitle>
+				</RecruitingHeaderWrapper>
+			</RecruitingHeaderContainer>
 
-                                <RecruitingItemWrapper>
-                                    <RecruitingItemPhotoWrapper>
-                                        <RecruitingItemPhoto>
-                                            <RecruitingItemDefaultThumbnail>
-                                            </RecruitingItemDefaultThumbnail>
-                                        </RecruitingItemPhoto>
-                                    </RecruitingItemPhotoWrapper>
-                                    <RecruitingItemDetailWrapper>
-                                        <RecruitingItemDetail>
-                                            <RecruitingItemDetailTitle>
-                                                상품명
-                                            </RecruitingItemDetailTitle>
-                                            <RecruitingItemDetailContent>
-                                                모집 인원 | 5명 <br />
-                                                모집 마감 | D-5
-                                            </RecruitingItemDetailContent>
-                                            <RecruitingItemDetailPrice>
-                                                12000원
-                                            </RecruitingItemDetailPrice>
-                                        </RecruitingItemDetail>
-                                    </RecruitingItemDetailWrapper>
-                                </RecruitingItemWrapper>
+			<RecruitingMapWrapper></RecruitingMapWrapper>
 
-                                <RecruitingItemWrapper>
-                                    <RecruitingItemPhotoWrapper>
-                                        <RecruitingItemPhoto>
-                                            <RecruitingItemDefaultThumbnail>
-                                            </RecruitingItemDefaultThumbnail>
-                                        </RecruitingItemPhoto>
-                                    </RecruitingItemPhotoWrapper>
-                                    <RecruitingItemDetailWrapper>
-                                        <RecruitingItemDetail>
-                                            <RecruitingItemDetailTitle>
-                                                상품명
-                                            </RecruitingItemDetailTitle>
-                                            <RecruitingItemDetailContent>
-                                                모집 인원 | 1명 <br />
-                                                모집 마감 | D-4
-                                            </RecruitingItemDetailContent>
-                                            <RecruitingItemDetailPrice>
-                                                7000원
-                                            </RecruitingItemDetailPrice>
-                                        </RecruitingItemDetail>
-                                    </RecruitingItemDetailWrapper>
-                                </RecruitingItemWrapper>
+			<RecruitingBottomWrapper>
+				<RecruitingBottomSheetWrapper>
+					<RecruitingProfileImageWrapper>
+						<RecruitingProfileImage />
+					</RecruitingProfileImageWrapper>
 
-                                
-                            </RecruitingItemWholeWrapper>
-                        </RecruitingBottomMainContentWrapper>
-                    </RecruitingBottomNickNameWrapper>
-                    {/* <RecruitingContentWrapper>
+					<RecruitingBottomNickNameWrapper>
+						<RecruitingBottomNickNameTitle>닉네임</RecruitingBottomNickNameTitle>
+
+						<RecruitingBottomLocationTitle>서대문구 남가좌동</RecruitingBottomLocationTitle>
+						<RecruitingBottomMainContentWrapper>
+							<RecruitingTabbarWrapper>
+								<RecruitingTabbar className={`${toggleState === 1 ? 'tab-active' : ''}`} onClick={() => toggleTab(1)}>모집 중</RecruitingTabbar>
+								<RecruitingTabbar className={`${toggleState === 2 ? 'tab-active' : ''}`} onClick={() => toggleTab(2)}>모집 완료</RecruitingTabbar>
+							</RecruitingTabbarWrapper>
+
+							{renderToggleTabContent()}
+						</RecruitingBottomMainContentWrapper>
+					</RecruitingBottomNickNameWrapper>
+
+					{/* <RecruitingContentWrapper>
                         <RecruitingContent>
                             우리 동네 설정
                         </RecruitingContent>
@@ -166,9 +103,9 @@ const Recruiting = () => {
                             계정 탈퇴
                         </RecruitingContent>
                     </RecruitingContentWrapper> */}
-                </RecruitingBottomSheetWrapper>
-            </RecruitingBottomWrapper>
-            {/* <NickNamePageFixedBottomWrapper>
+				</RecruitingBottomSheetWrapper>
+			</RecruitingBottomWrapper>
+			{/* <NickNamePageFixedBottomWrapper>
                 <NickNamePageFixedBottomButtonWrapper>
                     <button>
                         <img src="../MyPage/Home.png" alt="Home" />
@@ -200,8 +137,128 @@ const Recruiting = () => {
                     </button>
                 </NickNamePageFixedBottomButtonWrapper>
             </NickNamePageFixedBottomWrapper> */}
-        </RecruitingContainer>
-    )
+		</RecruitingContainer>
+	)
+}
+
+const RecruitingList = () => {
+	return (
+		<RecruitingItemWholeWrapper>
+			<RecruitingItemWrapper>
+				<RecruitingItemPhotoWrapper>
+					<RecruitingItemPhoto>
+						<RecruitingItemDefaultThumbnail></RecruitingItemDefaultThumbnail>
+					</RecruitingItemPhoto>
+				</RecruitingItemPhotoWrapper>
+				<RecruitingItemDetailWrapper>
+					<RecruitingItemDetail>
+						<RecruitingItemDetailTitle>상품명</RecruitingItemDetailTitle>
+						<RecruitingItemDetailContent>
+							모집 인원 | 2명 <br />
+							모집 마감 | D-2
+						</RecruitingItemDetailContent>
+						<RecruitingItemDetailPrice>25000원</RecruitingItemDetailPrice>
+					</RecruitingItemDetail>
+				</RecruitingItemDetailWrapper>
+			</RecruitingItemWrapper>
+
+			<RecruitingItemWrapper>
+				<RecruitingItemPhotoWrapper>
+					<RecruitingItemPhoto>
+						<RecruitingItemDefaultThumbnail></RecruitingItemDefaultThumbnail>
+					</RecruitingItemPhoto>
+				</RecruitingItemPhotoWrapper>
+				<RecruitingItemDetailWrapper>
+					<RecruitingItemDetail>
+						<RecruitingItemDetailTitle>상품명</RecruitingItemDetailTitle>
+						<RecruitingItemDetailContent>
+							모집 인원 | 5명 <br />
+							모집 마감 | D-5
+						</RecruitingItemDetailContent>
+						<RecruitingItemDetailPrice>12000원</RecruitingItemDetailPrice>
+					</RecruitingItemDetail>
+				</RecruitingItemDetailWrapper>
+			</RecruitingItemWrapper>
+
+			<RecruitingItemWrapper>
+				<RecruitingItemPhotoWrapper>
+					<RecruitingItemPhoto>
+						<RecruitingItemDefaultThumbnail></RecruitingItemDefaultThumbnail>
+					</RecruitingItemPhoto>
+				</RecruitingItemPhotoWrapper>
+				<RecruitingItemDetailWrapper>
+					<RecruitingItemDetail>
+						<RecruitingItemDetailTitle>상품명</RecruitingItemDetailTitle>
+						<RecruitingItemDetailContent>
+							모집 인원 | 1명 <br />
+							모집 마감 | D-4
+						</RecruitingItemDetailContent>
+						<RecruitingItemDetailPrice>7000원</RecruitingItemDetailPrice>
+					</RecruitingItemDetail>
+				</RecruitingItemDetailWrapper>
+			</RecruitingItemWrapper>
+		</RecruitingItemWholeWrapper>
+	)
+}
+
+const RecruitCompletedList = () => {
+	return (
+		<RecruitingItemWholeWrapper>
+			<RecruitingItemWrapper>
+				<RecruitingItemPhotoWrapper>
+					<RecruitingItemPhoto>
+						<RecruitingItemDefaultThumbnail></RecruitingItemDefaultThumbnail>
+					</RecruitingItemPhoto>
+				</RecruitingItemPhotoWrapper>
+				<RecruitingItemDetailWrapper>
+					<RecruitingItemDetail>
+						<RecruitingItemDetailTitle>상품명</RecruitingItemDetailTitle>
+						<RecruitingItemDetailContent>
+							모집 인원 | 5명 <br />
+							모집 마감 | 마감
+						</RecruitingItemDetailContent>
+						<RecruitingItemDetailPrice>25000원</RecruitingItemDetailPrice>
+					</RecruitingItemDetail>
+				</RecruitingItemDetailWrapper>
+			</RecruitingItemWrapper>
+
+			<RecruitingItemWrapper>
+				<RecruitingItemPhotoWrapper>
+					<RecruitingItemPhoto>
+						<RecruitingItemDefaultThumbnail></RecruitingItemDefaultThumbnail>
+					</RecruitingItemPhoto>
+				</RecruitingItemPhotoWrapper>
+				<RecruitingItemDetailWrapper>
+					<RecruitingItemDetail>
+						<RecruitingItemDetailTitle>상품명</RecruitingItemDetailTitle>
+						<RecruitingItemDetailContent>
+							모집 인원 | 5명 <br />
+							모집 마감 | 마감
+						</RecruitingItemDetailContent>
+						<RecruitingItemDetailPrice>12000원</RecruitingItemDetailPrice>
+					</RecruitingItemDetail>
+				</RecruitingItemDetailWrapper>
+			</RecruitingItemWrapper>
+
+			<RecruitingItemWrapper>
+				<RecruitingItemPhotoWrapper>
+					<RecruitingItemPhoto>
+						<RecruitingItemDefaultThumbnail></RecruitingItemDefaultThumbnail>
+					</RecruitingItemPhoto>
+				</RecruitingItemPhotoWrapper>
+				<RecruitingItemDetailWrapper>
+					<RecruitingItemDetail>
+						<RecruitingItemDetailTitle>상품명</RecruitingItemDetailTitle>
+						<RecruitingItemDetailContent>
+							모집 인원 | 1명 <br />
+							모집 마감 | 마감
+						</RecruitingItemDetailContent>
+						<RecruitingItemDetailPrice>7000원</RecruitingItemDetailPrice>
+					</RecruitingItemDetail>
+				</RecruitingItemDetailWrapper>
+			</RecruitingItemWrapper>
+		</RecruitingItemWholeWrapper>
+	)
 }
 
 export default Recruiting

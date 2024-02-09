@@ -13,7 +13,9 @@ import {
     BasicInformationFooterWrapper
 } from './styled/LoginPage.main.BasicInformation.style'
 
-const BasicInformation = () => {
+const BasicInformation = ({
+    onNextStep
+}) => {
     return (
         <BasicInformationContainer>
             <BasicInformationTitleWrapper>
@@ -38,9 +40,7 @@ const BasicInformation = () => {
                         우리 동네 설정
                     </BasicInformationContentFormTitleWrapper>
                     <BasicInformationContentFormContentWrapper>
-                        <BasicInformationLocationSettingButton onClick={() => {
-                            console.log('지도 화면으로 routing')
-                        }}>남가좌동</BasicInformationLocationSettingButton>
+                        <BasicInformationLocationSettingButton>남가좌동</BasicInformationLocationSettingButton>
                         <BasicInformationContentFormGuideText>
                             우리 동네를 설정해 주세요!
                         </BasicInformationContentFormGuideText>
@@ -48,7 +48,9 @@ const BasicInformation = () => {
                 </BasicInformationContentFormItemWrapper>
             </BasicInformationContentWrapper>
 
-            <BasicInformationFooterWrapper>
+            <BasicInformationFooterWrapper onClick={() => {
+                onNextStep()
+            }}>
                 <button>확인</button>
             </BasicInformationFooterWrapper>
         </BasicInformationContainer>
