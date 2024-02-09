@@ -1,10 +1,10 @@
 import styled from "styled-components";
 
 export const ProductListContainer = styled.div`
-width: 382px;
+width: 100%;
 height: 110px;
 // background-color: #FF424D;
-margin: 18px 0 18px 25px;
+padding: 20px 0;
 display: flex;
 `
 export const ProductImg = styled.div`

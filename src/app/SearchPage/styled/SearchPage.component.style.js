@@ -38,7 +38,7 @@ export const MainContainer = styled.div`
     border-top-right-radius: 15px;
     display: flex;
     flex-direction: column;
-    padding: 20px 0 0 0;
+    padding: 20px 20px;
     box-sizing: border-box;
 
     @media screen and (min-width:431px){
@@ -51,7 +51,6 @@ export const KeywordContainer = styled.div`
     margin-bottom: 30px;
     white-space: nowrap;
     overflow-x: auto;
-    padding: 0 20px;
 
     &::-webkit-scrollbar {
         display: none;
