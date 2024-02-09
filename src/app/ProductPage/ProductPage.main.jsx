@@ -10,6 +10,7 @@ import { useState } from "react"
 function ProductPage() {
     const [imgOpen, setImgOpen] = useState(false) ;
     const [copyNoticeOpen, setCopyNoticeOpen] = useState(false) ;
+    const [quantityOpen, setQuantityOpen] = useState(false) ;
 
     const openImgModalHandler = () => {
         setImgOpen(!imgOpen) ;
@@ -19,13 +20,16 @@ function ProductPage() {
         setCopyNoticeOpen(!copyNoticeOpen) ;
     }
     
+    const openQuantityModalHandler = () => {
+        setQuantityOpen(!quantityOpen) ;
+    }
 
     return (
         <> 
             <itemS.ProductPageContainer>
                 {imgOpen && <ImgModal openImgModalHandler={openImgModalHandler}/> }
                 {copyNoticeOpen && <CopyLinkModal openCopyNoticeModalHandler={openCopyNoticeModalHandler} /> }
-                <QuantityModal></QuantityModal>
+                {quantityOpen && <QuantityModal openQuantityModalHandler={openQuantityModalHandler} />}
                 <CompleteModal></CompleteModal>
                 <CancelModal></CancelModal>
                 <itemS.ImgContainer onClick={openImgModalHandler} >
@@ -39,7 +43,7 @@ function ProductPage() {
                 </itemS.ImgContainer>
                 <ProductInfo></ProductInfo>
                 <itemS.BtnContainer>
-                    <itemS.Btn>참여하기</itemS.Btn>
+                    <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn>
                 </itemS.BtnContainer>
             </itemS.ProductPageContainer>
         </>

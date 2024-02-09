@@ -1,10 +1,10 @@
 import * as itemS from "./styled/ProductPage.main.selectModalComponent.style"
 
-function QuantityModal() {
+function QuantityModal({openQuantityModalHandler}) {
     return(
         <>
-            <itemS.SelectModalContainer type="Hidden">
-                <itemS.SelectModal>
+            <itemS.SelectModalContainer onClick={openQuantityModalHandler}>
+                <itemS.SelectModal onClick={(e) => e.stopPropagation()}>
                     <itemS.Icon>
                         <img src="../../../public/ProductPage/shopping_cart.png" alt="장바구니" />
                     </itemS.Icon>
