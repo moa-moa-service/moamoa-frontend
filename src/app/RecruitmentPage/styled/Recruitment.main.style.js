@@ -1,12 +1,11 @@
 import styled from "styled-components"
 
 export const FiltersContainer = styled.div`
-width: 377px;
+width: 100%;
 height: 31px;
 // background-color: red;
 display: flex;
 justify-content: space-between;
-margin: 10px 0 20px 27px;
 
 `;
 
@@ -19,6 +18,7 @@ border: 1px solid #2B4760;
 display: flex;
 justify-content: center;
 align-items: center;
+overflow: hidden;
 `
 
 export const FilterText = styled.span`
@@ -33,15 +33,14 @@ letter-spacing: -0.593px;
 `
 
 export const ProductInfoContainer = styled.div`
-width: 370px;
+width: 100%;
 display: flex;
 flex-direction: column;
-margin: 0 0px 0 30px;
-// background-color: blue;
+margin-top: 20px;
 `
 
 export const InfoElementContainer = styled.div`
-width: 369px;
+width: 100%;
 display: flex;  
 flex-direction: column;
 margin-bottom: 30px;
@@ -87,7 +86,7 @@ border-radius: 15px;
 `
 
 export const CompleteBtn = styled.div`
-width: 400px;
+width: 90%;
 height: 55px;
 border-radius: 7px;
 background-color: #C4C4C4;
@@ -95,7 +94,7 @@ display: flex;
 justify-content: center;
 align-items: center;
 position: fixed;
-margin-left: 20px;
+left: 5%;
 bottom: 25px;
 
 color: #888;

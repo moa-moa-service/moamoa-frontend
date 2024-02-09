@@ -18,6 +18,7 @@ import {
 import { NavermapsProvider } from 'react-naver-maps'
 
 import './App.css'
+import Alarm from './app/MainPage/MainPage.Alarm.jsx'
 
 function App() {
   const ncpClientId = import.meta.env.VITE_CLIENT_ID
@@ -34,8 +35,7 @@ function App() {
           <Route path="/product" element={<ProductPage />} />
           <Route path="/product/notice" element={<NoticePage />} />
           <Route path="/product/notice/write" element={<NoticeWritePage />} />
-          <Route path="/mymap" element={<MyMap />} />
-          <Route path="/tradinglocation" element={<TradingLocation />} />
+          <Route path="/alarm" element={<Alarm />} />
           <Route path="/mypage" element={<MyPageComponent />} />
           <Route path="/userpage" element={<UserPageComponent />} />
         </Routes>
