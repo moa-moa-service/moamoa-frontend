@@ -1,13 +1,12 @@
 import styled from "styled-components"
 
 export const CategoryTitleContainer = styled.div`
-${(props) =>
-    props.type === 'recruit'
-    ? `
-    width: 226px;
-    ` : `
-    width: 287px;
-    `}
+width: ${(props) =>
+        props.type === 'recruit'
+            ? '226px'
+            : props.type === 'alarm'
+                ? '208px'
+                : '287px'};
 height: 50px;
 margin: 67px 109px 25px 25px;
 display: flex;
@@ -35,7 +34,6 @@ letter-spacing: -0.434px;
 
 export const ContourLine = styled.div`
 background-color: #E4E4E4;
-width: 385px;
+width: 100%;
 height: 1px;
-margin-left: 25px;
 `
