@@ -1,9 +1,9 @@
 import * as itemS from "./styled/ProductPage.main.noticeModal.style"
 
-function CopyLinkModal() {
+function CopyLinkModal({openCopyNoticeModalHandler}) {
     return (
         <>
-            <itemS.NoticeModalContainer type="Hidden">
+            <itemS.NoticeModalContainer onClick={openCopyNoticeModalHandler}>
                 <itemS.NoticeIcon>
                     <img src="../../../public/ProductPage/copyIcon.png" alt="링크 복사" />
                 </itemS.NoticeIcon>

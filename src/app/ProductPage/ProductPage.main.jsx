@@ -9,24 +9,32 @@ import { useState } from "react"
 
 function ProductPage() {
     const [imgOpen, setImgOpen] = useState(false) ;
+    const [copyNoticeOpen, setCopyNoticeOpen] = useState(false) ;
 
     const openImgModalHandler = () => {
-        setImgOpen(!imgOpen)
+        setImgOpen(!imgOpen) ;
     } ;
+
+    const openCopyNoticeModalHandler = () => {
+        setCopyNoticeOpen(!copyNoticeOpen) ;
+    }
     
 
     return (
         <> 
             <itemS.ProductPageContainer>
-                {imgOpen ? <ImgModal openImgModalHandler={openImgModalHandler}/> : null}
-                <CopyLinkModal></CopyLinkModal>
+                {imgOpen && <ImgModal openImgModalHandler={openImgModalHandler}/> }
+                {copyNoticeOpen && <CopyLinkModal openCopyNoticeModalHandler={openCopyNoticeModalHandler} /> }
                 <QuantityModal></QuantityModal>
                 <CompleteModal></CompleteModal>
                 <CancelModal></CancelModal>
                 <itemS.ImgContainer onClick={openImgModalHandler} >
                     <itemS.IconContainer>
                         <img src="../../../public/ProductPage/back.png" alt="back Icon"/>
-                        <img src="../../../public/ProductPage/button_share.png" alt="share button" />
+                        <img src="../../../public/ProductPage/button_share.png" alt="share button" onClick={(e) => {
+                            e.stopPropagation() ;
+                            openCopyNoticeModalHandler() ;
+                        }}/>
                     </itemS.IconContainer>
                 </itemS.ImgContainer>
                 <ProductInfo></ProductInfo>
