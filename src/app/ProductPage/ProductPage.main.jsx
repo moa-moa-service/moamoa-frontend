@@ -6,9 +6,12 @@ import QuantityModal from "./ProductPage.main.quantityModal"
 import CompleteModal from "./ProductPage.main.completeModal"
 import CancelModal from "./ProductPage.main.CancelModal"
 import { useState } from "react"
-import { useLocation } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom"
 
 function ProductPage() {
+
+    const navigate = useNavigate() ;
+
     const [imgOpen, setImgOpen] = useState(false) ;
     const [copyNoticeOpen, setCopyNoticeOpen] = useState(false) ;
     const [quantityOpen, setQuantityOpen] = useState(false) ;
@@ -46,7 +49,10 @@ function ProductPage() {
                 <CancelModal></CancelModal>
                 <itemS.ImgContainer onClick={openImgModalHandler} >
                     <itemS.IconContainer>
-                        <img src="../../../public/ProductPage/back.png" alt="back Icon"/>
+                        <img src="../../../public/ProductPage/back.png" alt="back Icon" onClick={(e) => { 
+                            e.stopPropagation() ;
+                            navigate(-1) ;
+                        }}/>
                         <img src="../../../public/ProductPage/button_share.png" alt="share button" onClick={(e) => {
                             e.stopPropagation() ;
                             openCopyNoticeModalHandler() ;
