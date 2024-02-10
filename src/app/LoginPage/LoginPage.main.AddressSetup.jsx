@@ -1,6 +1,8 @@
 import React, { Suspense } from "react";
 import MyMap from "../RecruitmentPage/Recruitment.MyMap.jsx";
 
+import { useState } from 'react';
+
 import {
     AddressSetupContainer,
     AddressSetupHeaderContainer,
@@ -19,6 +21,11 @@ import {
 } from './styled/LoginPage.main.AddressSetup.style'
 
 const AddressSetup = () => {
+    const [response, setResponse] = useState({});
+
+    function handleResponseChange(response) {
+        setResponse(response);
+    }
     return (
         <AddressSetupContainer>
             <AddressSetupHeaderContainer>
@@ -30,7 +37,7 @@ const AddressSetup = () => {
 
             <AddressSetupMapWrapper>
                 <Suspense fallback={null}>
-                    <MyMap />
+                    <MyMap onResponseChange={handleResponseChange}/>
                 </Suspense>
             </AddressSetupMapWrapper>
 
@@ -44,7 +51,7 @@ const AddressSetup = () => {
                         <AddressSetupBottomLocationTitle>
                             내 위치
                         </AddressSetupBottomLocationTitle>
-                        <Input>남가좌동</Input>
+                        <Input>{response.v2.results[0].region.area3.name}</Input>
                     </AddressSetupBottomLocationWrapper>
                     <AddressSetupBottomButtonWrapper>
                         <AddressSetupBottomButton onClick={() => {

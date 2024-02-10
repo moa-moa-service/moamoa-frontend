@@ -7,10 +7,10 @@ import Search from "./app/SearchPage/SearchPage.search.jsx"
 import ProductPage from './app/ProductPage/ProductPage.main.jsx'
 import MyPageComponent from './app/MyPage/MyPage.main.jsx'
 import UserPageComponent from './app/UserPage/UserPage.main.jsx'
-import MyMap from './app/RecruitmentPage/Recruitment.MyMap.jsx'
-import TradingLocation from './app/RecruitmentPage/Recruitment.TradingLocation.jsx'
 import NoticeWritePage from './app/NoticePage/NoticePage.write.jsx'
 import NoticePage from './app/NoticePage/NoticePage.notice.jsx'
+import AddressSetup from './app/LoginPage/LoginPage.main.AddressSetup.jsx'
+
 import {
   Route,
   Routes,
@@ -26,6 +26,7 @@ function App() {
     <div className='App'>
       <NavermapsProvider ncpClientId={ncpClientId} submodules={["geocoder"]}>
         <Routes>
+          <Route path='/addresssetup' element={<AddressSetup />} />
           <Route path="/" element={<MainPage />} />
           <Route path='/detail' element={<CategoryDetailPage />} />
           <Route path="/login" element={<LoginPageComponent />} />
