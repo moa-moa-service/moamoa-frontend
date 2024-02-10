@@ -10,6 +10,7 @@ import UserPageComponent from './app/UserPage/UserPage.main.jsx'
 import NoticeWritePage from './app/NoticePage/NoticePage.write.jsx'
 import NoticePage from './app/NoticePage/NoticePage.notice.jsx'
 import AddressSetup from './app/LoginPage/LoginPage.main.AddressSetup.jsx'
+import MyTown from './app/MyTownPage/MyTownPage.main.jsx'
 
 import {
   Route,
@@ -39,6 +40,7 @@ function App() {
           <Route path="/alarm" element={<Alarm />} />
           <Route path="/mypage" element={<MyPageComponent />} />
           <Route path="/userpage" element={<UserPageComponent />} />
+          <Route path="/mytown" element={<MyTown />} />
         </Routes>
       </NavermapsProvider>
     </div>
