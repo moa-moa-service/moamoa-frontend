@@ -1,10 +1,10 @@
 import * as C from "./styled/SearchPage.search.filter.style"
 import * as itemS from "./styled/SearchPage.search.filter.category.style"
 
-function FilterCategory() {
+function FilterCategory({openCategoryFilter}) {
     return(
         <>
-        <C.FilterContainer display="none">
+        <C.FilterContainer>
              <C.FilterContent>
                 <C.FilterTitle>카테고리</C.FilterTitle>
                 <itemS.CategoryContainer>
@@ -30,8 +30,8 @@ function FilterCategory() {
                     </itemS.CategoryList>
                 </itemS.CategoryContainer>
                 <C.BtnContainer>
-                    <C.Btn>취소</C.Btn>
-                    <C.Btn color="navy">선택 완료</C.Btn>
+                    <C.Btn onClick={openCategoryFilter}>취소</C.Btn>
+                    <C.Btn color="navy" onClick={openCategoryFilter}>선택 완료</C.Btn>
                 </C.BtnContainer>
             </C.FilterContent>
         </C.FilterContainer>

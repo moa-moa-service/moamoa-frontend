@@ -1,10 +1,10 @@
 import * as C from "./styled/SearchPage.search.filter.style"
 import * as itemS from "./styled/SearchPage.search.filter.period.style"
 
-function FilterPeriod() {
+function FilterPeriod({openPeriodFilter}) {
     return(
         <>
-        <C.FilterContainer display="none">
+        <C.FilterContainer>
              <C.FilterContent>
                 <C.FilterTitle>
                     <div>모집 기간</div>
@@ -129,8 +129,8 @@ function FilterPeriod() {
                     </itemS.Calendar>
                 </itemS.CalendarContainer>
                 <C.BtnContainer>
-                    <C.Btn>취소</C.Btn>
-                    <C.Btn color="navy">선택 완료</C.Btn>
+                    <C.Btn onClick={openPeriodFilter}>취소</C.Btn>
+                    <C.Btn color="navy" onClick={openPeriodFilter}>선택 완료</C.Btn>
                 </C.BtnContainer>
             </C.FilterContent>
         </C.FilterContainer>
