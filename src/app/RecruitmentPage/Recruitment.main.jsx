@@ -2,11 +2,12 @@ import * as itemMainPage from "../MainPage/styled/MainPage.main.style"
 import * as itemCategory from "../MainPage/styled/MainPage.main.CategoryList.style"
 import * as itemCategoryDetails from "../MainPage/styled/MainPage.CategoryDatailPage.style"
 import * as itemS from "./styled/Recruitment.main.style"
+import * as itemC from "../MainPage/styled/MainPage.main.CategoryList.Category.style";
 
 import TradingLocation from "./Recruitment.TradingLocation"
 import RecruitmentModal from "./Recruitment.modal"
 
-import React, { useState, startTransition } from 'react';
+import React, { useState, startTransition, useRef } from 'react';
 import { useNavigate } from "react-router-dom"
 
 function Recruitment() {
@@ -15,6 +16,10 @@ function Recruitment() {
     const [isModalOpen, setModalOpen] = useState(false);
     const [isTradingLocation, setIsTradingLocation] = useState(false);
     const [isType, setIsType] = useState('');
+    const inputFileRef = useRef(null);
+    const MAX_IMAGES = 10; // 최대 이미지 수
+    const [selectedImages, setSelectedImages] = useState([]);
+
 
     const toggleModal = (type) => {
         setIsType(type);
@@ -27,6 +32,17 @@ function Recruitment() {
             console.log(isTradingLocation);
         });
     }
+
+    const handleFileChange = (event) => {
+        const file = event.target.files[0];
+        if (selectedImages.length < MAX_IMAGES) { // 이미지 수 제한 확인
+            setSelectedImages([...selectedImages, file]);
+        } else {
+            // 이미지 수 초과 처리
+            alert('이미지는 최대 열 개까지 선택할 수 있습니다.');
+        }
+    };
+
     return (
         <>
             <itemMainPage.MainPageContainer>
@@ -72,7 +88,25 @@ function Recruitment() {
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>이미지 선택<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
-                                <itemS.SelectImg></itemS.SelectImg>
+                                <itemS.ImgContainer>
+                                    <itemS.SelectImg
+                                        type="file"
+                                        accept="image/*"
+                                        ref={inputFileRef}
+                                        onChange={handleFileChange}
+                                    />
+                                    <itemC.ItemsContainer>
+                                        {selectedImages.map((image, index) => (
+                                            <itemS.ImgWrapper key={index}>
+                                                <img
+                                                    src={URL.createObjectURL(image)}
+                                                    alt={`Image ${index}`}
+                                                    style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "15px" }}
+                                                />
+                                            </itemS.ImgWrapper>
+                                        ))}
+                                    </itemC.ItemsContainer>
+                                </itemS.ImgContainer>
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>거래 희망 장소<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
