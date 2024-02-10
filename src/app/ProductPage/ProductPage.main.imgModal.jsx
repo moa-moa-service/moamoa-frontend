@@ -1,9 +1,10 @@
 import * as itemS from "./styled/ProductPage.main.imgModal.style"
 
-function ImgModal() {
+function ImgModal({openImgModalHandler}) {
+
     return(
         <>
-            <itemS.ImgModalContainer type="Hidden">
+            <itemS.ImgModalContainer onClick={openImgModalHandler} >
                 <itemS.ImgModal></itemS.ImgModal>
                 <itemS.ImgPageIconContainer>
                     <itemS.ImgPageIcon type="Current"></itemS.ImgPageIcon>

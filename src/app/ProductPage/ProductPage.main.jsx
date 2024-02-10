@@ -5,25 +5,64 @@ import CopyLinkModal from "./ProductPage.main.copyLinkModal"
 import QuantityModal from "./ProductPage.main.quantityModal"
 import CompleteModal from "./ProductPage.main.completeModal"
 import CancelModal from "./ProductPage.main.CancelModal"
+import { useState } from "react"
+import { useLocation, useNavigate } from "react-router-dom"
 
 function ProductPage() {
+
+    const navigate = useNavigate() ;
+
+    const [imgOpen, setImgOpen] = useState(false) ;
+    const [copyNoticeOpen, setCopyNoticeOpen] = useState(false) ;
+    const [quantityOpen, setQuantityOpen] = useState(false) ;
+
+    const openImgModalHandler = () => {
+        setImgOpen(!imgOpen) ;
+    } ;
+
+    const location = useLocation() ;
+
+    const copyLink = async(link) => {
+        try {
+            await navigator.clipboard.writeText(link) ;
+        } catch (error) {
+            console.log("링크 복사 실패") ;
+            console.log(error) ;
+        }
+    }
+
+    const openCopyNoticeModalHandler = () => {
+        setCopyNoticeOpen(!copyNoticeOpen) ;
+    }
+    
+    const openQuantityModalHandler = () => {
+        setQuantityOpen(!quantityOpen) ;
+    }
+
     return (
         <> 
             <itemS.ProductPageContainer>
-                <ImgModal></ImgModal>
-                <CopyLinkModal></CopyLinkModal>
-                <QuantityModal></QuantityModal>
+                {imgOpen && <ImgModal openImgModalHandler={openImgModalHandler}/> }
+                {copyNoticeOpen && <CopyLinkModal openCopyNoticeModalHandler={openCopyNoticeModalHandler} /> }
+                {quantityOpen && <QuantityModal openQuantityModalHandler={openQuantityModalHandler} />}
                 <CompleteModal></CompleteModal>
                 <CancelModal></CancelModal>
-                <itemS.ImgContainer>
+                <itemS.ImgContainer onClick={openImgModalHandler} >
                     <itemS.IconContainer>
-                        <img src="../../../public/ProductPage/back.png" alt="back Icon"/>
-                        <img src="../../../public/ProductPage/button_share.png" alt="share button" />
+                        <img src="../../../public/ProductPage/back.png" alt="back Icon" onClick={(e) => { 
+                            e.stopPropagation() ;
+                            navigate(-1) ;
+                        }}/>
+                        <img src="../../../public/ProductPage/button_share.png" alt="share button" onClick={(e) => {
+                            e.stopPropagation() ;
+                            openCopyNoticeModalHandler() ;
+                            copyLink(`http://localhost:5173${location.pathname}`)
+                        }}/>
                     </itemS.IconContainer>
                 </itemS.ImgContainer>
                 <ProductInfo></ProductInfo>
                 <itemS.BtnContainer>
-                    <itemS.Btn>참여하기</itemS.Btn>
+                    <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn>
                 </itemS.BtnContainer>
             </itemS.ProductPageContainer>
         </>
