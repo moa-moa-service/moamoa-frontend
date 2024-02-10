@@ -18,6 +18,11 @@ function ProductPage() {
 
     const openCopyNoticeModalHandler = () => {
         setCopyNoticeOpen(!copyNoticeOpen) ;
+        // setTimeout(function(){
+
+        //     setCopyNoticeOpen(!copyNoticeOpen) ;
+        //     console.log("2초 뒤 사라짐")
+        // },2000)
     }
     
     const openQuantityModalHandler = () => {

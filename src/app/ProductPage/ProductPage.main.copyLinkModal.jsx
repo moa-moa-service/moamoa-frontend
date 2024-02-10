@@ -1,6 +1,17 @@
+import { useEffect } from "react";
 import * as itemS from "./styled/ProductPage.main.noticeModal.style"
 
 function CopyLinkModal({openCopyNoticeModalHandler}) {
+
+    const removeHandler = () => {
+        setTimeout(function(){
+            openCopyNoticeModalHandler() ;
+        },2000)
+        clearTimeout() ;
+    }
+
+    removeHandler() ;
+    
     return (
         <>
             <itemS.NoticeModalContainer onClick={openCopyNoticeModalHandler}>
