@@ -18,7 +18,7 @@ function TradingLocation({ openTradingLocation }) {
                     <itemS.Text>거래 희망 장소</itemS.Text>
                 </itemS.TopContentContainer>
             </itemS.TopWrapper>
-            <MyMap onResponseChange={handleResponseChange} />
+            <MyMap onResponseChange={handleResponseChange} isTradingLocation={true} />
             <itemS.BottomWrapper>
                 <itemS.DetailAddressContainer>
                     <itemS.DetailAddressText type='bold'>상세 주소</itemS.DetailAddressText>

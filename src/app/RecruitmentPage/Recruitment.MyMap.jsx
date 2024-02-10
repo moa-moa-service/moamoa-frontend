@@ -1,7 +1,7 @@
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps';
 import { useState, useEffect, useRef } from 'react';
 
-function MyMap({ onResponseChange }) {
+function MyMap({ onResponseChange, isTradingLocation }) {
     const navermaps = useNavermaps();
     const mapRef = useRef(null);
 
@@ -72,7 +72,7 @@ function MyMap({ onResponseChange }) {
                     ref={mapRef}
                     defaultCenter={new navermaps.LatLng(myLocation.lat, myLocation.lng)}
                     defaultZoom={20}
-                    onCenterChanged={handleCenterChanged}
+                    onCenterChanged={isTradingLocation ? handleCenterChanged : undefined}
                 >
                     {myLocation.lat && myLocation.lng && (
                         <Marker
