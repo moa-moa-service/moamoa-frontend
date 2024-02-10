@@ -1,11 +1,21 @@
 import * as C from "./styled/SearchPage.search.filter.style"
 import * as itemS from "./styled/SearchPage.search.filter.period.style"
 import { useState } from "react"
-import { format, addDays, endOfMonth, endOfWeek, startOfMonth, startOfWeek, isSameMonth, isSameDay } from "date-fns" 
+import { format, addDays, endOfMonth, endOfWeek, startOfMonth, startOfWeek, isSameMonth, isSameDay, subMonths } from "date-fns" 
 
 function FilterPeriod({openPeriodFilter}) {
 
-    const currentDate = new Date() ;   // 현재 날짜
+    const [currentDate, setCurrentDate] = useState(new Date()) ;  // 현재 날짜
+
+    // 이전 달로 이동하는 함수
+    const movePrevMonth = () => {
+        setCurrentDate(subMonths(currentDate, 1)) ;
+    }
+
+    // 다음 달로 이동하는 함수
+    const moveNextMonth = () => {
+        setCurrentDate(subMonths(currentDate, -1)) ;
+    }
 
     const startDate = startOfMonth(currentDate) ;   // 현재 월의 시작일
     const endDate = endOfMonth(currentDate) ;       // 현재 월의 마지막일
@@ -51,11 +61,11 @@ function FilterPeriod({openPeriodFilter}) {
                 <itemS.CalendarContainer>
                     <itemS.CalendarNav>
                         <itemS.btn>
-                            <img src="../../../public/SearchPage/angle_left.png" />
+                            <img src="../../../public/SearchPage/angle_left.png" onClick={movePrevMonth}/>
                         </itemS.btn>
                         <itemS.MonthText>{format(currentDate, "yyyy년 M월")}</itemS.MonthText>
                         <itemS.btn>
-                            <img src="../../../public/SearchPage/angle_right.png" />
+                            <img src="../../../public/SearchPage/angle_right.png" onClick={moveNextMonth} />
                         </itemS.btn>
                     </itemS.CalendarNav>
                     <itemS.Calendar>
