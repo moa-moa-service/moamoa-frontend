@@ -4,21 +4,26 @@ export const TopWrapper = styled.div`
 
 border-radius: 0px 0px 15px 15px;
 background: #2B4760;
-padding: 67px 27px 25px;
+padding: ${(props) =>
+        props.type === 'town'
+            ? '67px 0px 25px 25px;' : '67px 27px 25px;'};
 `
 
 export const TopContentContainer = styled.div`
 height: 50px;
 display: flex;
 align-items: center;
-`
+`;
 
 export const BackBtn = styled.div`
 width: 50px;
 height: 50px;
 background-color: #FF424D;
 border-radius: 15px;
-margin-right: 83px;
+margin-right: ${(props) =>
+        props.type === 'town'
+            ? '20px;' : '83px;'};
+
 `
 
 export const Text = styled.span`
@@ -38,7 +43,9 @@ bottom: 0;
 border-radius: 15px 15px 0px 0px;
 background: #FFF;
 width: 430px;
-height: 214px;
+height: ${(props) =>
+    props.type === 'town'
+        ? '' : '214px;'};
 box-shadow: 0px -2px 10px 4px rgba(0, 0, 0, 0.09);
 `
 export const DetailAddressContainer = styled.div`

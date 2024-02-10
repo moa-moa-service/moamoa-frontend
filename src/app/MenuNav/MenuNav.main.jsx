@@ -9,7 +9,7 @@ function MenuNav() {
     };
 
     const menuTexts = ['홈', '검색하기',  '모집하기', '우리동네', '마이페이지'];
-    const menuPaths = ['/', '/search', '/recruitment', '/neighborhood', '/mypage'];
+    const menuPaths = ['/', '/search', '/recruitment', '/mytown', '/mypage'];
 
     return (
         <>

@@ -37,7 +37,9 @@ const AddressSetup = () => {
             </AddressSetupHeaderContainer>
 
             <AddressSetupMapWrapper>
-                <MyMap onResponseChange={handleResponseChange} />
+                <Suspense fallback={null}>
+                    <MyMap onResponseChange={handleResponseChange} />
+                </Suspense>
             </AddressSetupMapWrapper>
 
             <AddressSetupBottomWrapper>
