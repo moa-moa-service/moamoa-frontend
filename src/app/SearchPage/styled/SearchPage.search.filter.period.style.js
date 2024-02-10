@@ -65,14 +65,22 @@ export const dayText = styled.div`
     font-weight: 600;
 
     background-color: ${(props) => {
-        if(props.color === 'gray') {
+        if(props.checkday === 'today') {
             return "#D9D9D9" ;
-        } else if (props.color === "red") {
-            return "#FF424D"
+        } else if (props.checkday === 'selectday') {
+            return "#FF424D" ;
         }
     }} ;
 
-    color: ${props => props.color==="red" ? "#FFFFFF" : "#000000"}
+    color : ${(props) => {
+        if(props.color === 'gray') {
+            return "#888888" ;
+        } else if (props.checkday === 'selectday') {
+            return "#FFFFFF" ;
+        } else {
+            return "#000000" ;
+        }
+    }}
 `
 
 export const todayText = styled.div`

@@ -8,7 +8,7 @@ function SearchPageMain() {
         <>
             <C.SearchPageContainer>
                 <C.SearchContainer>
-                    <img src="../../../public/SearchPage/backIcon.png" alt="뒤로가기" />
+                    <img src="../../../public/SearchPage/backIcon.png" alt="뒤로가기" onClick={() => navigate(-1)} />
                     <C.SearchBox></C.SearchBox>
                     <img src="../../../public/SearchPage/searchIcon.png" alt="검색" />
                 </C.SearchContainer>

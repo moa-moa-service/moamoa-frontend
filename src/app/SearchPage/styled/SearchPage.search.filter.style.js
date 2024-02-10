@@ -1,17 +1,9 @@
 import styled from "styled-components";
 
 export const FilterContainer = styled.div`
-    ${(props) => 
-            props.display === "none"
-            ? `
-                display: none ;
-            ` : `
-                display: flex ;
-            `
-        }
-
     width: 100%;
     height: 100%;
+    display: flex ;
     position: fixed;
     top: 0;
     background-color: rgba(0,0,0,0.5);
