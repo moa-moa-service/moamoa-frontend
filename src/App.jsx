@@ -32,8 +32,8 @@ function App() {
           <Route path="/recruitment" element={<RecruitmentPage />} />
           <Route path="/search" element={<SearchPageMain />} />
           <Route path="/search/:keyword" element={<Search />} />
-          <Route path="/product" element={<ProductPage />} />
-          <Route path="/product/notice" element={<NoticePage />} />
+          <Route path="/product/:id" element={<ProductPage />} />
+          <Route path="/product/:id/notice" element={<NoticePage />} />
           <Route path="/product/notice/write" element={<NoticeWritePage />} />
           <Route path="/alarm" element={<Alarm />} />
           <Route path="/mypage" element={<MyPageComponent />} />
