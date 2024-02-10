@@ -25,6 +25,7 @@ const AddressSetup = () => {
 
     function handleResponseChange(response) {
         setResponse(response);
+        console.log(response);
     }
     return (
         <AddressSetupContainer>
@@ -36,9 +37,7 @@ const AddressSetup = () => {
             </AddressSetupHeaderContainer>
 
             <AddressSetupMapWrapper>
-                <Suspense fallback={null}>
-                    <MyMap onResponseChange={handleResponseChange}/>
-                </Suspense>
+                <MyMap onResponseChange={handleResponseChange} />
             </AddressSetupMapWrapper>
 
             <AddressSetupBottomWrapper>
@@ -51,7 +50,7 @@ const AddressSetup = () => {
                         <AddressSetupBottomLocationTitle>
                             내 위치
                         </AddressSetupBottomLocationTitle>
-                        <Input>{response.v2.results[0].region.area3.name}</Input>
+                        <Input>{response.v2?.results[0]?.region?.area3?.name}</Input>
                     </AddressSetupBottomLocationWrapper>
                     <AddressSetupBottomButtonWrapper>
                         <AddressSetupBottomButton onClick={() => {
