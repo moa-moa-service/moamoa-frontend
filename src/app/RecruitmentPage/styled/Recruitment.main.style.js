@@ -46,6 +46,18 @@ flex-direction: column;
 margin-bottom: 30px;
 `
 
+export const ImgContainer = styled.div`
+display: flex;
+flex-direction: row;
+`
+
+export const ImgWrapper = styled.div`
+width: 150px;
+height: 150px;
+margin-left: 8px;
+display: inline-block;
+`
+
 export const ProductText = styled.span`
 font-family: Inter;
 font-size: 14.676px;
@@ -56,8 +68,8 @@ letter-spacing: -0.577px;
 margin: 0 0 5px 5px;
 
 ${(props) =>
-    props.type === 'asterisk'
-    ? `
+        props.type === 'asterisk'
+            ? `
     color: #FF424D;
     ` : `
     color: #2B4760;
@@ -70,19 +82,23 @@ border-radius: 15px;
 padding-left :15px;
 
 ${(props) =>
-    props.type === 'desc'
-    ? `
+        props.type === 'desc'
+            ? `
     height: 160px;
     ` : `
     height: 44px;
     `}
 `
 
-export const SelectImg = styled.div`
+export const SelectImg = styled.input`
 width: 150px;
 height: 150px;
 border: 2px solid #2B4760;
 border-radius: 15px;
+
+&::-webkit-file-upload-button {
+    visibility: hidden;
+}
 `
 
 export const CompleteBtn = styled.div`
