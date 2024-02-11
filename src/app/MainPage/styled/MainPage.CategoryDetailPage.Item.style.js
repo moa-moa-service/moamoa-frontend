@@ -7,7 +7,7 @@ height: 110px;
 padding: 20px 0;
 display: flex;
 `
-export const ProductImg = styled.div`
+export const ProductImg = styled.img`
 width: 110px;
 height: 110px;
 background-color: #D9D9D9;

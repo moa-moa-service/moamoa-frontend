@@ -8,12 +8,11 @@ margin-bottom: 20px;
 `
 
 export const CategoryTextContainer = styled.div`
-width: 201px;
 height: 31px;
 display: flex;
 align-items: center;
-justify-content: space-between;
 `
+
 export const CategoryText = styled.span`
 color: #2B4760;
 font-size: 18px;

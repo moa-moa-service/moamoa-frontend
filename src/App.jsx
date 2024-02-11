@@ -29,7 +29,7 @@ function App() {
         <Routes>
           <Route path='/addresssetup' element={<AddressSetup />} />
           <Route path="/" element={<MainPage />} />
-          <Route path='/detail' element={<CategoryDetailPage />} />
+          <Route path='/post/:category' element={<CategoryDetailPage />} />
           <Route path="/login" element={<LoginPageComponent />} />
           <Route path="/recruitment" element={<RecruitmentPage />} />
           <Route path="/search" element={<SearchPageMain />} />
