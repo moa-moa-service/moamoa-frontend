@@ -6,6 +6,7 @@ import * as itemMain from './styled/MainPage.main.style';
 import * as itemCategory from "./styled/MainPage.main.CategoryList.style";
 import * as itemS from './styled/MainPage.CategoryDatailPage.style';
 import ProductItem from './MainPage.CategoryDetailPage.Item';
+import client from "../../client";
 
 function CategoryDetailPage() {
     const navigate = useNavigate();
@@ -13,6 +14,7 @@ function CategoryDetailPage() {
     const [categoryText, setCategoryText] = useState('');
 
     useEffect(() => {
+        const auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImlkIjozLCJleHAiOjE3MDc2NjkyMTJ9.kCcWyzYmzD7bmWWe4L5VmzTqveektLDd-Tixd3XvrTx7l43mDU7GOd985GUmoXRBrz8GG0PFU7DH-3y0T7DjLQ";
         const currentURL = window.location.href;
         const pathParts = currentURL.split("/");
         const category = pathParts[pathParts.length - 1];
@@ -38,13 +40,8 @@ function CategoryDetailPage() {
 
         const fetchData = async () => {
             try {
-                const response = await axios.get(
-                    `http://develop.moa-moa.site/api/posts/${category}`,
-                    {
-                        headers: {
-                            'Authorization': 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImlkIjozLCJleHAiOjE3MDc2NjIwMTd9._3ZW0aA9cqZEtYg8KulinRADyHfPwTIOG7RJp6bF4oD1X5nq84ngpfQuxadDaykZA0EZzD5Z-Oh98CQJxYvFZw',
-                        },
-                    }
+                const response = await client(auth).get(
+                    `http://develop.moa-moa.site/api/posts/${category}`
                 );
                 setProducts(response.data.result.SimplePostDtoList);
             } catch (error) {
