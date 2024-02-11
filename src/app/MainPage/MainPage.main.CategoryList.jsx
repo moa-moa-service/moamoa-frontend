@@ -5,10 +5,10 @@ function CategoryList() {
     return(
         <>
             <itemS.CategoryListContainer>
-                <Category />
-                <Category />
-                <Category />
-                <Category />
+                <Category category='ranking'/>
+                <Category category='latest'/>
+                <Category category='near'/>
+                <Category category='recent-keyword'/>
             </itemS.CategoryListContainer>
         </>
     )
