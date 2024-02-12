@@ -62,15 +62,8 @@ function SearchPageMain() {
     }
 
     const searchKeywordHandle = async() => {
-        try {
-            const response = await client(auth).get(
-                `/posts?keyword=${searchKeyword}`
-            ) ;
-            navigate(`/search/${searchKeyword}`) ;
-        } catch(error) {
-            console.log(error) ;
-        }
-    } ;
+        navigate(`/search/${searchKeyword}`) ;
+    }
 
     const onEnterKeyPress = (e) => {
         if (e.key === 'Enter') {
