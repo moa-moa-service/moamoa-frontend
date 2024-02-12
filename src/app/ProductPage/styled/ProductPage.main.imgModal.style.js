@@ -26,6 +26,11 @@ export const ImgModal = styled.div`
     border-radius: 13px;
     background-color: #D9D9D9;
     box-shadow: 3px 7px 30px black ;
+
+    img {
+        width: 100% ;
+        height: 100%;
+    }
 `
 
 export const ImgPageIconContainer = styled.div`

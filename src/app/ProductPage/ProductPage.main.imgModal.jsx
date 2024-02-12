@@ -1,16 +1,18 @@
 import * as itemS from "./styled/ProductPage.main.imgModal.style"
 
-function ImgModal({openImgModalHandler}) {
-
+function ImgModal({openImgModalHandler, imgUrl}) {
     return(
         <>
             <itemS.ImgModalContainer onClick={openImgModalHandler} >
-                <itemS.ImgModal></itemS.ImgModal>
+                {imgUrl.map((url, index) => (
+                    <itemS.ImgModal key={index}>
+                        <img src={url} />
+                    </itemS.ImgModal>
+                ))}
                 <itemS.ImgPageIconContainer>
-                    <itemS.ImgPageIcon type="Current"></itemS.ImgPageIcon>
-                    <itemS.ImgPageIcon></itemS.ImgPageIcon>
-                    <itemS.ImgPageIcon></itemS.ImgPageIcon>
-                    <itemS.ImgPageIcon></itemS.ImgPageIcon>
+                    {imgUrl.map((url, index) => (
+                        <itemS.ImgPageIcon key={index} type="Current" />
+                    ))}
                 </itemS.ImgPageIconContainer>
             </itemS.ImgModalContainer>
         </>

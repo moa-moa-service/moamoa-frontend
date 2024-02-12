@@ -23,7 +23,7 @@ function ProductPage() {
     const [product, setProduct] = useState(null) ;
 
     useEffect(() => {
-        const auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImlkIjoyLCJleHAiOjE3MDc3MDA3MDB9.yBVp2K-xYMkUbkPRLgibn_NC30LeTjWoBQIN--4QZApdJrNEwApSJcYravajCsZ4dAP8nCxR_fGeydXiY1rgkA" ;
+        const auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImlkIjoyLCJleHAiOjE3MDc3MDQ3MzZ9.8r1hHhkASflLCdv8swJ4z_krv8iAwcFISpFwYtFfPzrT_k-f5zey-i7fw-RT5H7F04iCtAMbUoOK1RJppnRYaA" ;
     
         const fetchData = async () => {
             try {
@@ -69,7 +69,7 @@ function ProductPage() {
     return (
         <> 
             <itemS.ProductPageContainer>
-                {imgOpen && <ImgModal openImgModalHandler={openImgModalHandler}/> }
+                {imgOpen && <ImgModal openImgModalHandler={openImgModalHandler} imgUrl={product.postDto.imageUrl} /> }
                 {copyNoticeOpen && <CopyLinkModal openCopyNoticeModalHandler={openCopyNoticeModalHandler} /> }
                 {quantityOpen && <QuantityModal openQuantityModalHandler={openQuantityModalHandler} />}
                 <CompleteModal></CompleteModal>
