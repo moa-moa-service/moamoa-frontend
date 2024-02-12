@@ -7,10 +7,15 @@ import client from "../../client"
 function SearchPageMain() {
     const navigate = useNavigate();
 
+    const [searchKeyword, setSearchKeyword] = useState("") ;
     const [rankingKeyword, setRankingKeyword] = useState([]) ;
     const [recentKeyword, setRecentKeyword] = useState([]) ;
 
     const auth = import.meta.env.VITE_AUTH ;
+
+    const onChangeKeyword = (e) => {
+        setSearchKeyword(e.target.value) ;
+    }
 
     const rankingKeywordFetchData = async () => {
         try {
@@ -34,7 +39,7 @@ function SearchPageMain() {
         }
     };
     
-    const deleteRecentKeyword = async (keyword) => {
+    const deleteRecentKeywordHandle = async (keyword) => {
         try {
             const response = await client(auth).delete(
                 `keywords/${keyword}`
@@ -45,7 +50,7 @@ function SearchPageMain() {
         }
     } ;
 
-    const deleteAllRecentKeyword = async() => {
+    const deleteAllRecentKeywordHandle = async() => {
         try {
             await Promise.all(recentKeyword.map(async (keyword) => {
                 await client(auth).delete(`keywords/${keyword.keyword}`) ;
@@ -55,6 +60,23 @@ function SearchPageMain() {
             console.log(error) ;
         }
     }
+
+    const searchKeywordHandle = async() => {
+        try {
+            const response = await client(auth).get(
+                `/posts?keyword=${searchKeyword}`
+            ) ;
+            navigate(`/search/${searchKeyword}`) ;
+        } catch(error) {
+            console.log(error) ;
+        }
+    } ;
+
+    const onEnterKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            searchKeywordHandle() ;
+        }
+    } ;
 
     useEffect(() => {
         rankingKeywordFetchData() ;
@@ -70,8 +92,8 @@ function SearchPageMain() {
             <C.SearchPageContainer>
                 <C.SearchContainer>
                     <img src="../../../public/SearchPage/backIcon.png" alt="뒤로가기" onClick={() => navigate(-1)} />
-                    <C.SearchBox></C.SearchBox>
-                    <img src="../../../public/SearchPage/searchIcon.png" alt="검색" />
+                    <C.SearchBox onChange={onChangeKeyword} onKeyPress={onEnterKeyPress}/>
+                    <img src="../../../public/SearchPage/searchIcon.png" alt="검색" onClick={() => searchKeywordHandle() }/>
                 </C.SearchContainer>
                 <C.MainContainer>
                     <itemS.KeywordTitle>우리 동네 인기 검색어</itemS.KeywordTitle>
@@ -82,12 +104,12 @@ function SearchPageMain() {
                     </C.KeywordContainer>
                     <itemS.KeywordTitle>
                         최근 검색어
-                        <itemS.deleteText onClick={deleteAllRecentKeyword}>전체 삭제</itemS.deleteText>
+                        <itemS.deleteText onClick={() => deleteAllRecentKeywordHandle()}>전체 삭제</itemS.deleteText>
                     </itemS.KeywordTitle>
                     {recentKeyword.map((keyword, index) => (
                         <itemS.RecentKeywordContainer key={index}>
                             <itemS.RecentKeyword onClick={() => {navigate(`/search/${keyword.keyword}`)}}>{keyword.keyword}</itemS.RecentKeyword>
-                            <itemS.RecentKeywordDelete onClick={() => deleteRecentKeyword(keyword.keyword)}>X</itemS.RecentKeywordDelete>
+                            <itemS.RecentKeywordDelete onClick={() => deleteRecentKeywordHandle(keyword.keyword)}>X</itemS.RecentKeywordDelete>
                         </itemS.RecentKeywordContainer>
                     ))}
                 </C.MainContainer>
