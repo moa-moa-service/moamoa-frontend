@@ -34,7 +34,7 @@ function SearchPageMain() {
         }
     };
     
-    const deleteHandle = async (keyword) => {
+    const deleteRecentKeyword = async (keyword) => {
         try {
             const response = await client(auth).delete(
                 `keywords/${keyword}`
@@ -44,6 +44,17 @@ function SearchPageMain() {
             console.error(error) ;
         }
     } ;
+
+    const deleteAllRecentKeyword = async() => {
+        try {
+            await Promise.all(recentKeyword.map(async (keyword) => {
+                await client(auth).delete(`keywords/${keyword.keyword}`) ;
+            })) ;
+            await recentKeywordFetchData() ;
+        } catch (error) {
+            console.log(error) ;
+        }
+    }
 
     useEffect(() => {
         rankingKeywordFetchData() ;
@@ -71,12 +82,12 @@ function SearchPageMain() {
                     </C.KeywordContainer>
                     <itemS.KeywordTitle>
                         최근 검색어
-                        <itemS.deleteText>전체 삭제</itemS.deleteText>
+                        <itemS.deleteText onClick={deleteAllRecentKeyword}>전체 삭제</itemS.deleteText>
                     </itemS.KeywordTitle>
                     {recentKeyword.map((keyword, index) => (
                         <itemS.RecentKeywordContainer key={index}>
                             <itemS.RecentKeyword onClick={() => {navigate(`/search/${keyword.keyword}`)}}>{keyword.keyword}</itemS.RecentKeyword>
-                            <itemS.RecentKeywordDelete onClick={() => deleteHandle(keyword.keyword)}>X</itemS.RecentKeywordDelete>
+                            <itemS.RecentKeywordDelete onClick={() => deleteRecentKeyword(keyword.keyword)}>X</itemS.RecentKeywordDelete>
                         </itemS.RecentKeywordContainer>
                     ))}
                 </C.MainContainer>
