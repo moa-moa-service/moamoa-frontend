@@ -12,19 +12,31 @@ export const ProductPageContainer = styled.div`
 export const ImgContainer = styled.div`
     width: 100%;
     height: 470px;
-    /* margin: 67px 25px 25px 25px; */
     margin-top: 52px;
     background-color: #D9D9D9;
     border-radius: 15px;
 `
 
+export const ProductImg = styled.img`
+    width: inherit;
+`
+
 export const IconContainer = styled.div`
-    height: 50px;
-    margin: 15px 20px;
+    width: inherit;
+    height: 9%;
+    padding: 15px 10px;
+    box-sizing: border-box;
     border-radius: 15px;
     display: flex;
     justify-content: space-between;
+    position: absolute;
+    top: 60px;
+
+    @media screen and (min-width:431px){
+        width: 430px;
+    }
 `
+
 export const BtnContainer = styled.div`
     width: 100%;
     height: 50px;
@@ -50,4 +62,11 @@ export const Btn = styled.div`
     align-items: center;
     font-size: 14px;
     font-weight: 500;
+`
+
+export const Loading = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `
