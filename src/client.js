@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const client = (token) => axios.create({
-    baseURL: "http://develop.moa-moa.site/api" ,
+    baseURL: import.meta.env.VITE_ENDPOINT,
     headers: {
         "Content-Type" : `applicaiton/json;charset=UTF-8`,
         "Accept" : "application/json",
