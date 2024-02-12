@@ -10,31 +10,23 @@ const LoginPageComponent = () => {
     // 2 - Address Setup
 
     const handleNextStep = () => {
-        setStep(step + 1); // 다음 단계로 이동
+        setStep(step + 1) // 다음 단계로 이동
     };
 
     const renderStep = () => {
         switch (step) {
             case 0:
-                return <Welcome onNextStep={handleNextStep} />;
-            // case 1:
-            //     return <BasicInformation onNextStep={handleNextStep} />;
+                return <Welcome onNextStep={handleNextStep} />
             case 1:
-                return <BasicInformation onNextStep={handleNextStep} />;
+                return <BasicInformation onNextStep={handleNextStep} />
             default:
-                return <AddressSetup onNextStep={handleNextStep} />;
+                return <AddressSetup onNextStep={handleNextStep} />
         }
-    };
+    }
 
     return (
-        /** 
-        <LoginPageContainer>
-            {renderStep()}
-        </LoginPageContainer>
-        */
-        
        renderStep()
-    );
+    )
 };
 
 export default LoginPageComponent;
