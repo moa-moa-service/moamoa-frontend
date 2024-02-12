@@ -30,14 +30,14 @@ const Welcome = ({
 
             <WelcomeFooterWrapper>
                 <WelcomeFooterTitleWrapper>
-                    <WelcomeFooterTitle onClick={() => {
-                            onNextStep()
-                        }}>
+                    <WelcomeFooterTitle>
                         SNS계정으로 시작하기
                     </WelcomeFooterTitle>
                 </WelcomeFooterTitleWrapper>
                 <WelcomeFooterContentWrapper>
-                        <WelcomeFooterContentLogoWrapper>
+                        <WelcomeFooterContentLogoWrapper onClick={() => {
+                            onNextStep()
+                        }}>
                             <WelcomeFooterContentLogo src={naverSnsButton} />
                         </WelcomeFooterContentLogoWrapper>
                     
