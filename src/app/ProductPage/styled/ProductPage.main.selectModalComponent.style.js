@@ -40,6 +40,10 @@ export const SelectModal = styled.div`
     align-items: center;
     padding: 60px 0 20px 0;
     box-sizing: border-box;
+
+    @media screen and (min-height:360px) {
+        height: 360px;
+    }
 `
 
 export const Icon = styled.div`

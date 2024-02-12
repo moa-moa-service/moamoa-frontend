@@ -1,9 +1,19 @@
 import * as itemS from "./styled/ProductPage.main.noticeModal.style"
 
-function CompleteModal() {
+function CompleteModal({openCompleteModalHandler}) {
+
+    const removeHandler = () => {
+        setTimeout(function(){
+            openCompleteModalHandler() ;
+        }, 2000)
+        clearTimeout() ;
+    }
+
+    removeHandler() ;
+
     return(
         <>
-            <itemS.NoticeModalContainer type="Hidden"> 
+            <itemS.NoticeModalContainer onClick={openCompleteModalHandler}> 
                 <itemS.NoticeIcon>
                     <img src="../../../public/ProductPage/check.png" alt="체크 표시" />
                 </itemS.NoticeIcon>

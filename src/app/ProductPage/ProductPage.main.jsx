@@ -21,9 +21,10 @@ function ProductPage() {
     const [copyNoticeOpen, setCopyNoticeOpen] = useState(false) ;
     const [quantityOpen, setQuantityOpen] = useState(false) ;
     const [product, setProduct] = useState(null) ;
+    const [completeModalOpen, setCompleteModalOpen] = useState(false) ;
 
     useEffect(() => {
-        const auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImlkIjoyLCJleHAiOjE3MDc3MDQ3MzZ9.8r1hHhkASflLCdv8swJ4z_krv8iAwcFISpFwYtFfPzrT_k-f5zey-i7fw-RT5H7F04iCtAMbUoOK1RJppnRYaA" ;
+        const auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImlkIjoyLCJleHAiOjE3MDc3MTgyODh9.uhTAH9tKFHWmmnbP1W_ZBilAUrBdWr_DRNLwq7mE-smN_lFIkEqBKc3Ad-k6aBGchERZvulQ0MluVXKOobCv4g" ;
     
         const fetchData = async () => {
             try {
@@ -31,7 +32,6 @@ function ProductPage() {
                     `/posts/${id}`
                 ) ;
                 setProduct(response.data.result) ;
-                console.log("성공") ;
             } catch (error) {
                 console.error("실패", error);
             }
@@ -62,6 +62,10 @@ function ProductPage() {
         setQuantityOpen(!quantityOpen) ;
     }
 
+    const openCompleteModalHandler = () => {
+        setCompleteModalOpen(!completeModalOpen) ;
+    }
+
     if (!product) {
         return <itemS.Loading>Loading..</itemS.Loading>
     }
@@ -71,8 +75,8 @@ function ProductPage() {
             <itemS.ProductPageContainer>
                 {imgOpen && <ImgModal openImgModalHandler={openImgModalHandler} imgUrl={product.postDto.imageUrl} /> }
                 {copyNoticeOpen && <CopyLinkModal openCopyNoticeModalHandler={openCopyNoticeModalHandler} /> }
-                {quantityOpen && <QuantityModal openQuantityModalHandler={openQuantityModalHandler} />}
-                <CompleteModal></CompleteModal>
+                {quantityOpen && <QuantityModal openQuantityModalHandler={openQuantityModalHandler} id={id} openCompleteModalHandler={openCompleteModalHandler}/>}
+                {completeModalOpen && <CompleteModal openCompleteModalHandler={openCompleteModalHandler} />}
                 <CancelModal></CancelModal>
                 <itemS.ImgContainer onClick={openImgModalHandler} >
                     <itemS.ProductImg src={product.postDto.imageUrl} />
