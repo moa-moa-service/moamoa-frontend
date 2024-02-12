@@ -7,12 +7,24 @@ import client from "../../client"
 function SearchPageMain() {
     const navigate = useNavigate();
 
+    const [rankingKeyword, setRankingKeyword] = useState([]) ;
     const [recentKeyword, setRecentKeyword] = useState([]) ;
 
     useEffect(() => {
         const auth = import.meta.env.VITE_AUTH ;
 
-        const fetchData = async () => {
+        const rankingKeywordFetchDaya = async () => {
+            try {
+                const response = await client(auth).get(
+                    `keywords/ranking`
+                ) ;
+                setRankingKeyword(response.data.result.keywords) ;
+            } catch (error) {
+                console.error(error) ;
+            }
+        } ;
+
+        const recentKeywordFetchData = async () => {
             try {
                 const response = await client(auth).get(
                     `/keywords/recent`
@@ -22,10 +34,12 @@ function SearchPageMain() {
                 console.error(error) ;
             }
         };
-        fetchData() ;
+
+        rankingKeywordFetchDaya() ;
+        recentKeywordFetchData() ;
     }, []) ;
 
-    if(!recentKeyword) {
+    if(!recentKeyword || !rankingKeyword) {
         return <itemS.Loading>Loading..</itemS.Loading>
     }
 
@@ -40,11 +54,9 @@ function SearchPageMain() {
                 <C.MainContainer>
                     <itemS.KeywordTitle>우리 동네 인기 검색어</itemS.KeywordTitle>
                     <C.KeywordContainer>
-                        <C.Keyword>캘린더</C.Keyword>
-                        <C.Keyword>보조배터리</C.Keyword>
-                        <C.Keyword>다이어리</C.Keyword>
-                        <C.Keyword>행거</C.Keyword>
-                        <C.Keyword>김치</C.Keyword>
+                        {rankingKeyword.map((keyword, index) => (
+                            <C.Keyword key={index} onClick={() => {navigate(`/search/${keyword.keyword}`)}}>{keyword.keyword}</C.Keyword>
+                        ))}
                     </C.KeywordContainer>
                     <itemS.KeywordTitle>
                         최근 검색어

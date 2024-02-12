@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const KeywordTitle = styled.div`
-    margin: 0 20px 20px 20px;
+    margin: 0 20px 20px 10px;
     font-size: 18px;
     font-weight: 600;
     color: #000000;
