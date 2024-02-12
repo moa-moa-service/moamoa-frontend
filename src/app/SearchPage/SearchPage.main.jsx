@@ -1,9 +1,34 @@
 import { useNavigate } from "react-router-dom";
 import * as itemS from "./styled/SearchPage.main.style"
 import * as C from "./styled/SearchPage.component.style"
+import { useEffect, useState } from "react";
+import client from "../../client"
 
 function SearchPageMain() {
     const navigate = useNavigate();
+
+    const [recentKeyword, setRecentKeyword] = useState([]) ;
+
+    useEffect(() => {
+        const auth = import.meta.env.VITE_AUTH ;
+
+        const fetchData = async () => {
+            try {
+                const response = await client(auth).get(
+                    `/keywords/recent`
+                ) ;
+                setRecentKeyword(response.data.result.keywords) ;
+            } catch (error) {
+                console.error(error) ;
+            }
+        };
+        fetchData() ;
+    }, []) ;
+
+    if(!recentKeyword) {
+        return <itemS.Loading>Loading..</itemS.Loading>
+    }
+
     return (
         <>
             <C.SearchPageContainer>
@@ -25,18 +50,12 @@ function SearchPageMain() {
                         최근 검색어
                         <itemS.deleteText>전체 삭제</itemS.deleteText>
                     </itemS.KeywordTitle>
-                    <itemS.RecentKeywordContainer>
-                        <itemS.RecentKeyword onClick={() => { navigate('/search/:keyword'); }}>2024년 달력</itemS.RecentKeyword>
-                        <itemS.RecentKeywordDelete>X</itemS.RecentKeywordDelete>
-                    </itemS.RecentKeywordContainer>
-                    <itemS.RecentKeywordContainer>
-                        <itemS.RecentKeyword>올리브유</itemS.RecentKeyword>
-                        <itemS.RecentKeywordDelete>X</itemS.RecentKeywordDelete>
-                    </itemS.RecentKeywordContainer>
-                    <itemS.RecentKeywordContainer>
-                        <itemS.RecentKeyword>텀블러</itemS.RecentKeyword>
-                        <itemS.RecentKeywordDelete>X</itemS.RecentKeywordDelete>
-                    </itemS.RecentKeywordContainer>
+                    {recentKeyword.map((keyword, index) => (
+                        <itemS.RecentKeywordContainer key={index}>
+                            <itemS.RecentKeyword onClick={() => {navigate(`/search/${keyword.keyword}`)}}>{keyword.keyword}</itemS.RecentKeyword>
+                            <itemS.RecentKeywordDelete>X</itemS.RecentKeywordDelete>
+                        </itemS.RecentKeywordContainer>
+                    ))}
                 </C.MainContainer>
             </C.SearchPageContainer>
         </>

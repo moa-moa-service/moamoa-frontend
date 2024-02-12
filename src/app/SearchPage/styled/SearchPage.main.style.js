@@ -32,3 +32,10 @@ export const RecentKeywordDelete = styled.div`
     height: 15px;
     color: #D2D2D2;
 `
+
+export const Loading = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`
