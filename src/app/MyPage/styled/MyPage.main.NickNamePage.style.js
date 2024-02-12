@@ -131,6 +131,10 @@ const NickNamePageContentWrapper = styled.div`
     flex-direction: column;
     width: 95%;
     gap: 5px;
+
+    > * {
+        cursor: pointer;
+    }
 `
 const NickNamePageContent = styled.div`
     display: flex;
