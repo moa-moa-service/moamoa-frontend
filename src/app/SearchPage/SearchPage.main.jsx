@@ -10,32 +10,43 @@ function SearchPageMain() {
     const [rankingKeyword, setRankingKeyword] = useState([]) ;
     const [recentKeyword, setRecentKeyword] = useState([]) ;
 
+    const auth = import.meta.env.VITE_AUTH ;
+
+    const rankingKeywordFetchData = async () => {
+        try {
+            const response = await client(auth).get(
+                `keywords/ranking`
+            ) ;
+            setRankingKeyword(response.data.result.keywords) ;
+        } catch (error) {
+            console.error(error) ;
+        }
+    } ;
+
+    const recentKeywordFetchData = async () => {
+        try {
+            const response = await client(auth).get(
+                `/keywords/recent`
+            ) ;
+            setRecentKeyword(response.data.result.keywords) ;
+        } catch (error) {
+            console.error(error) ;
+        }
+    };
+    
+    const deleteHandle = async (keyword) => {
+        try {
+            const response = await client(auth).delete(
+                `keywords/${keyword}`
+            ) ;
+            await recentKeywordFetchData() ;
+        } catch(error) {
+            console.error(error) ;
+        }
+    } ;
+
     useEffect(() => {
-        const auth = import.meta.env.VITE_AUTH ;
-
-        const rankingKeywordFetchDaya = async () => {
-            try {
-                const response = await client(auth).get(
-                    `keywords/ranking`
-                ) ;
-                setRankingKeyword(response.data.result.keywords) ;
-            } catch (error) {
-                console.error(error) ;
-            }
-        } ;
-
-        const recentKeywordFetchData = async () => {
-            try {
-                const response = await client(auth).get(
-                    `/keywords/recent`
-                ) ;
-                setRecentKeyword(response.data.result.keywords) ;
-            } catch (error) {
-                console.error(error) ;
-            }
-        };
-
-        rankingKeywordFetchDaya() ;
+        rankingKeywordFetchData() ;
         recentKeywordFetchData() ;
     }, []) ;
 
@@ -65,7 +76,7 @@ function SearchPageMain() {
                     {recentKeyword.map((keyword, index) => (
                         <itemS.RecentKeywordContainer key={index}>
                             <itemS.RecentKeyword onClick={() => {navigate(`/search/${keyword.keyword}`)}}>{keyword.keyword}</itemS.RecentKeyword>
-                            <itemS.RecentKeywordDelete>X</itemS.RecentKeywordDelete>
+                            <itemS.RecentKeywordDelete onClick={() => deleteHandle(keyword.keyword)}>X</itemS.RecentKeywordDelete>
                         </itemS.RecentKeywordContainer>
                     ))}
                 </C.MainContainer>
