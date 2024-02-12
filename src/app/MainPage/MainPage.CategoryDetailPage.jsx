@@ -14,7 +14,7 @@ function CategoryDetailPage() {
     const [categoryText, setCategoryText] = useState('');
 
     useEffect(() => {
-        const auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImlkIjozLCJleHAiOjE3MDc2NjkyMTJ9.kCcWyzYmzD7bmWWe4L5VmzTqveektLDd-Tixd3XvrTx7l43mDU7GOd985GUmoXRBrz8GG0PFU7DH-3y0T7DjLQ";
+        const auth =import.meta.env.VITE_AUTH;
         const currentURL = window.location.href;
         const pathParts = currentURL.split("/");
         const category = pathParts[pathParts.length - 1];
@@ -41,8 +41,9 @@ function CategoryDetailPage() {
         const fetchData = async () => {
             try {
                 const response = await client(auth).get(
-                    `http://develop.moa-moa.site/api/posts/${category}`
+                    `/posts/${category}`
                 );
+                console.log(response.data.result.SimplePostDtoList);
                 setProducts(response.data.result.SimplePostDtoList);
             } catch (error) {
                 console.error('안된다!!:', error);
@@ -59,11 +60,11 @@ function CategoryDetailPage() {
                     <itemS.CategoryTitle>{categoryText}</itemS.CategoryTitle>
                 </itemS.CategoryTitleContainer>
                 <itemCategory.CategoryListContainer>
-                    {products.map((product, index) => (
-                        <>
-                            <ProductItem key={index} product={product} />
+                    {products.map(product => (
+                        <div key={product.postId}>
+                            <ProductItem product={product} onClick={() => { navigate(`/product/${product.postId}`); }}/>
                             <itemS.ContourLine />
-                        </>
+                        </div>
                     ))}
                 </itemCategory.CategoryListContainer>
             </itemMain.MainPageContainer>
