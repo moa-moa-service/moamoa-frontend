@@ -24,7 +24,7 @@ function ProductPage() {
     const [completeModalOpen, setCompleteModalOpen] = useState(false) ;
 
     useEffect(() => {
-        const auth = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJBY2Nlc3NUb2tlbiIsImlkIjoyLCJleHAiOjE3MDc3MTgyODh9.uhTAH9tKFHWmmnbP1W_ZBilAUrBdWr_DRNLwq7mE-smN_lFIkEqBKc3Ad-k6aBGchERZvulQ0MluVXKOobCv4g" ;
+        const auth = import.meta.env.VITE_AUTH ;
     
         const fetchData = async () => {
             try {
