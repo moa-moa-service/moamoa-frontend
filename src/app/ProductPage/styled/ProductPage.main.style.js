@@ -35,6 +35,11 @@ export const IconContainer = styled.div`
     @media screen and (min-width:431px){
         width: 430px;
     }
+
+    img {
+        width: 50px;
+        height: 50px;
+    }
 `
 
 export const BtnContainer = styled.div`
