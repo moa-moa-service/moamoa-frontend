@@ -9,6 +9,7 @@ import FilterPeriod from "./SearchPage.search.filter.period"
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import client from "../../client"
+import { max } from "date-fns"
 
 function Search() {
 
@@ -24,13 +25,19 @@ function Search() {
     const [quantityFilter, setQuantityFilter] = useState(false) ;
     const [priceFilter, setPriceFilter] = useState(false) ;
 
+    const [categoryId, setCategoryId] = useState('') ;
+    const [dDay, setDDay] = useState('') ;
+    const [total, setTotal] = useState('') ;
+    const [minPrice, setMinPrice] = useState('') ;
+    const [maxPrice, setMaxPrice] = useState('') ; 
+
     const auth = import.meta.env.VITE_AUTH ;
 
     const searchKeywordHandle = async () => {
         setSearchKeyword(inputKeyword) ;
         try {
             const response = await client(auth).get(
-                `/posts?keyword=${searchKeyword}`
+                `/posts?keyword=${searchKeyword}&categoryId=${categoryId}&dDay=${dDay}&total=${total}&minPrice=${minPrice}&maxPrice=${maxPrice}`
             )
             setSearchKeywordList(response.data.result.SimplePostDtoList) ;
             navigate(`/search/${searchKeyword}`) ;
@@ -41,7 +48,7 @@ function Search() {
 
     useEffect(() => {
         searchKeywordHandle() ;
-    }, [searchKeyword])
+    }, [searchKeyword, categoryId, dDay, total, minPrice, maxPrice])
 
     const onChangeKeyword = (e) => {
         setInputKeyword(e.target.value) ;
@@ -67,6 +74,23 @@ function Search() {
 
     const openPriceFilter = () => {
         setPriceFilter(!priceFilter) ;
+    }
+
+    const chageCategoryId = (value) => {
+        setCategoryId(value) ;
+    }
+
+    const chageDDay = (value) => {
+        setDDay(value) ;
+    }
+
+    const chageTotal = (value) => {
+        setTotal(value) ;
+    }
+
+    const chagePrice = (minValue, maxValue) => {
+        setMinPrice(minValue) ;
+        setMaxPrice(maxValue) ;
     }
 
     if (!searchKeywordList) {
@@ -99,7 +123,7 @@ function Search() {
             {categoryFilter && <FilterCategory openCategoryFilter={openCategoryFilter}/>}
             {periodFilter && <FilterPeriod openPeriodFilter={openPeriodFilter} /> }
             {quantityFilter && <FilterQuantity openQuantityFilter={openQuantityFilter} />}
-            {priceFilter && <FilterPrice openPriceFilter={openPriceFilter} />}
+            {priceFilter && <FilterPrice openPriceFilter={openPriceFilter} chagePrice={chagePrice}/>}
         </C.SearchPageContainer>
         </>
     )
