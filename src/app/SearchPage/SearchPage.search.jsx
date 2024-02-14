@@ -117,10 +117,26 @@ function Search() {
             <C.MainContainer>
                 <C.KeywordContainer>
                     <C.Keyword select="true">지역명</C.Keyword>
-                    <C.Keyword onClick={openCategoryFilter}>카테고리</C.Keyword>
-                    <C.Keyword onClick={openPeriodFilter}>모집 기간</C.Keyword>
-                    <C.Keyword onClick={openQuantityFilter}>상품 수량</C.Keyword>
-                    <C.Keyword onClick={openPriceFilter}>상품 가격</C.Keyword>
+                    {categoryId === ''
+                        ? <C.Keyword onClick={openCategoryFilter}>카테고리</C.Keyword>
+                        : <C.Keyword select="true" onClick={openCategoryFilter}>{categoryId}</C.Keyword>
+                    }
+                    
+                    {dDay === '' 
+                        ? <C.Keyword onClick={openPeriodFilter}>모집 기간</C.Keyword>
+                        : <C.Keyword select="true" onClick={openPeriodFilter}>{dDay}일 이내</C.Keyword>
+                    }
+
+                    {total === ''
+                        ? <C.Keyword onClick={openQuantityFilter}>상품 수량</C.Keyword>
+                        : <C.Keyword select="true" onClick={openQuantityFilter}>{total}개 이상</C.Keyword>
+                    }
+
+                    {minPrice === '' && maxPrice === ''
+                        ? <C.Keyword onClick={openPriceFilter}>상품 가격</C.Keyword>
+                        : <C.Keyword select="true" onClick={openPriceFilter}>{minPrice} ~ {maxPrice}원</C.Keyword>
+                    }
+                    
                 </C.KeywordContainer>
                 {searchKeywordList.map((product, index) => (
                     <div key={index}>
