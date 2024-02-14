@@ -9,7 +9,6 @@ import FilterPeriod from "./SearchPage.search.filter.period"
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import client from "../../client"
-import { max } from "date-fns"
 
 function Search() {
 
@@ -35,6 +34,7 @@ function Search() {
 
     const searchKeywordHandle = async () => {
         setSearchKeyword(inputKeyword) ;
+        
         try {
             const response = await client(auth).get(
                 `/posts?keyword=${searchKeyword}&categoryId=${categoryId}&dDay=${dDay}&total=${total}&minPrice=${minPrice}&maxPrice=${maxPrice}`
@@ -54,8 +54,17 @@ function Search() {
         setInputKeyword(e.target.value) ;
     }
 
+    const filterReset = () => {
+        setCategoryId('') ;
+        setDDay('') ;
+        setTotal('') ;
+        setMinPrice('') ;
+        setMaxPrice('') ;
+    }
+
     const onEnterKeyPress = (e) => {
         if (e.key === 'Enter') {
+            filterReset() ;
             searchKeywordHandle() ;
         }
     } ;
@@ -103,7 +112,7 @@ function Search() {
             <C.SearchContainer>
                 <img src="../../../public/SearchPage/backIcon.png" alt="뒤로가기" onClick={() => navigate(-1)}/>
                     <C.SearchBox onKeyPress={onEnterKeyPress} onChange={onChangeKeyword} />
-                    <img src="../../../public/SearchPage/searchIcon.png" alt="검색" onClick={() => searchKeywordHandle()}/>
+                    <img src="../../../public/SearchPage/searchIcon.png" alt="검색" onClick={() => onEnterKeyPress()}/>
             </C.SearchContainer>
             <C.MainContainer>
                 <C.KeywordContainer>
@@ -121,7 +130,7 @@ function Search() {
                 ))}
             </C.MainContainer>
             {categoryFilter && <FilterCategory openCategoryFilter={openCategoryFilter}/>}
-            {periodFilter && <FilterPeriod openPeriodFilter={openPeriodFilter} /> }
+            {periodFilter && <FilterPeriod openPeriodFilter={openPeriodFilter} chageDDay={chageDDay}/> }
             {quantityFilter && <FilterQuantity openQuantityFilter={openQuantityFilter} />}
             {priceFilter && <FilterPrice openPriceFilter={openPriceFilter} chagePrice={chagePrice}/>}
         </C.SearchPageContainer>

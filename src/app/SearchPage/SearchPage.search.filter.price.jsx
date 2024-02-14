@@ -6,8 +6,6 @@ function FilterPrice({openPriceFilter, chagePrice}) {
 
     const auth = import.meta.env.VITE_AUTH ;
 
-    const [minPrice, setMinPrice] = useState('') ;
-    const [maxPrice, setMaxPrice] = useState('') ;
     const [minPriceInput, setMinPriceInput] = useState('') ;
     const [maxPriceInput, setMaxPriceInput] = useState('') ;
 
