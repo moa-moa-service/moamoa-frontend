@@ -14,8 +14,9 @@ function Info(product) {
     const [remainingTime, setRemainingTime] = useState(calculateRemaingingTime()) ;
 
     function calculateRemaingingTime() {
+
         const currentTime = new Date() ;
-        const deadlineTime = new Date(deadline[0], deadline[1] - 1, deadline[2], deadline[3], deadline[4], deadline[5], deadline[6]);
+        const deadlineTime = new Date(deadline);
 
         const difference = differenceInMilliseconds(deadlineTime, currentTime) ;
 
@@ -62,7 +63,12 @@ function Info(product) {
                             <itemS.UserAddress>{userInfo.townName}</itemS.UserAddress>
                         </itemS.UserText>
                     </itemS.UserInfo>
-                    <itemS.DoneIcon>모집완료</itemS.DoneIcon>
+                    {remainingTime.day === '00' && remainingTime.hours === '00' && remainingTime.minutes === '00' && remainingTime.seconds === '00' ?
+                        <itemS.DoneIcon>모집완료</itemS.DoneIcon>
+                        : 
+                        null
+                    }
+                    
                 </itemS.UserInfoContainer>
                 <itemS.ProductName>{productInfo.productName}</itemS.ProductName>
                 <itemS.ProductInfoContainer>
@@ -92,7 +98,7 @@ function Info(product) {
                 </itemS.ProductInfoContainer>
                 <itemS.Line />
                 <itemS.ProductInfoTitle>여기서 물건 받아요!</itemS.ProductInfoTitle>
-                <itemS.addressText>우성아파트</itemS.addressText>
+                <itemS.addressText>{productInfo.dealTown}</itemS.addressText>
                 <itemS.addressDetailText>{productInfo.dealLocation.name}</itemS.addressDetailText>
                 <itemS.Line />
                 <itemS.ProductInfoTitle>상세 설명</itemS.ProductInfoTitle>

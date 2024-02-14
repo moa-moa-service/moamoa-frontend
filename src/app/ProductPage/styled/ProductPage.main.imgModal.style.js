@@ -22,9 +22,9 @@ export const ImgModalContainer = styled.div`
 
 export const ImgModal = styled.div`
     width: 90%;
-    height: 55%;
+    /* height: 55%; */
     border-radius: 13px;
-    background-color: #D9D9D9;
+    background-color: #FFFFFF;
     box-shadow: 3px 7px 30px black ;
 
     img {

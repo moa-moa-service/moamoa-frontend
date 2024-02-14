@@ -13,7 +13,7 @@ export const ImgContainer = styled.div`
     width: 100%;
     height: 470px;
     margin-top: 52px;
-    background-color: #D9D9D9;
+    background-color: #FFFFFF;
     border-radius: 15px;
 `
 
