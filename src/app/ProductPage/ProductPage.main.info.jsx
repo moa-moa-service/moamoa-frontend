@@ -30,6 +30,7 @@ function Info(product) {
         } 
 
         const remain = intervalToDuration({start: currentTime, end: deadlineTime})  ;
+
         return {
             day: remain.days,
             hours: remain.hours !== undefined ? String(remain.hours).padStart(2, '0') : '00',
@@ -49,7 +50,14 @@ function Info(product) {
 
     useEffect(() => {
         calculateRemaingingTime() ;
+        checkPossible() ;
     }, []) ;
+
+    const checkPossible = () => {
+        if ((remainingTime.day === '00' && remainingTime.hours === '00' && remainingTime.minutes === '00' && remainingTime.seconds === '00') || productInfo.available <= 0) {
+            setPossibility(false) ;
+        }
+    }
 
     return(
         <>
@@ -63,12 +71,7 @@ function Info(product) {
                             <itemS.UserAddress>{userInfo.townName}</itemS.UserAddress>
                         </itemS.UserText>
                     </itemS.UserInfo>
-                    {remainingTime.day === '00' && remainingTime.hours === '00' && remainingTime.minutes === '00' && remainingTime.seconds === '00' ?
-                        <itemS.DoneIcon>모집완료</itemS.DoneIcon>
-                        : 
-                        null
-                    }
-                    
+                    {!possibility ? <itemS.DoneIcon>모집완료</itemS.DoneIcon> : null }
                 </itemS.UserInfoContainer>
                 <itemS.ProductName>{productInfo.productName}</itemS.ProductName>
                 <itemS.ProductInfoContainer>
@@ -78,7 +81,9 @@ function Info(product) {
                     </itemS.ProductInfo>
                     <itemS.ProductInfo>
                         <itemS.ProductInfoTitle>참여 가능한 인원</itemS.ProductInfoTitle>
-                        <itemS.ProductInfoValue type="InProgress">{productInfo.available}명</itemS.ProductInfoValue>
+                        {!possibility ? <itemS.ProductInfoValue type="Done">마감</itemS.ProductInfoValue>
+                        : <itemS.ProductInfoValue type="InProgress">{productInfo.available}명</itemS.ProductInfoValue>
+                        }
                     </itemS.ProductInfo>
                     <itemS.ProductInfo>
                         <itemS.ProductInfoTitle>가격</itemS.ProductInfoTitle>
