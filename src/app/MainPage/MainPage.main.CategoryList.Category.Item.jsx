@@ -9,7 +9,7 @@ function Item(props) {
                         <itemS.ItemImg src={props.item.imageUrl} />
                         <itemS.ItemRecruitContainer>
                             <itemS.ItemRecruitTextContainer>
-                                <itemS.ItemRecruitText type='People'>모집 {props.item.personnel}명</itemS.ItemRecruitText>
+                                <itemS.ItemRecruitText type='People'>모집 {props.item.personnel}개</itemS.ItemRecruitText>
                                 <itemS.ItemRecruitText type='Deadline'>D-{props.item.dDay}</itemS.ItemRecruitText>
                             </itemS.ItemRecruitTextContainer>
                         </itemS.ItemRecruitContainer>

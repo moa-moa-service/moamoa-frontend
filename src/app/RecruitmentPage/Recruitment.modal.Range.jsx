@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 function Range(props) {
     const {onSelectPeople} = props;
-    const [people, setPeople] = useState(1);
+    const [people, setPeople] = useState(0);
 
     const handleChange = (event) => {
         setPeople(event.target.value);
@@ -16,18 +16,18 @@ function Range(props) {
                 e.stopPropagation();
             }}>
                 <itemS.Wrapper>
-                    <itemS.ModalText type='bold'>모집 인원</itemS.ModalText>
+                    <itemS.ModalText type='bold'>상품 수량</itemS.ModalText>
                 </itemS.Wrapper>
                 <itemS.RangeWrapper>
                     <itemS.Range
                         type="range"
-                        min="1"
+                        min="0"
                         max="10"
                         value={people}
                         onChange={handleChange}
                     />
                     <itemS.ModalTextWrapper>
-                        <itemS.ModalText type='bold'>{people}명</itemS.ModalText>
+                        <itemS.ModalText type='bold'>{people}개</itemS.ModalText>
                     </itemS.ModalTextWrapper>
                 </itemS.RangeWrapper>
             </itemS.Background>

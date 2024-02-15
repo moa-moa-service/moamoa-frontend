@@ -16,7 +16,7 @@ function Recruitment() {
     // const date = new Date(Date.now);
 
     const [formData, setFormData] = useState({
-        'deadline': "2024-02-16T05:51:42.013Z",
+        'deadline': "2024-02-15T00:00:00.000Z",
     });
     const [selectedCategory, setSelectedCategory] = useState();
 
@@ -181,13 +181,13 @@ function Recruitment() {
                             {formData.personnel ? (
                                 <>
                                     <itemS.FilterWrapper style={{ background: "#2B4760" }}>
-                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('category')}>{formData.personnel}명</itemS.FilterText>
+                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('people')}>{formData.personnel}명</itemS.FilterText>
                                     </itemS.FilterWrapper>
                                 </>
                             ) : (
                                 <>
                                     <itemS.FilterWrapper>
-                                        <itemS.FilterText onClick={() => toggleModal('people')}>모집 인원 선택</itemS.FilterText>
+                                        <itemS.FilterText onClick={() => toggleModal('people')}>상품 수량 선택</itemS.FilterText>
                                     </itemS.FilterWrapper>
                                 </>
                             )}
