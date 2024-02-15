@@ -11,6 +11,7 @@ import NoticeWritePage from './app/NoticePage/NoticePage.write.jsx'
 import NoticePage from './app/NoticePage/NoticePage.notice.jsx'
 import AddressSetup from './app/LoginPage/LoginPage.main.AddressSetup.jsx'
 import MyTown from './app/MyTownPage/MyTownPage.main.jsx'
+import MemberInfoComponent from './app/LoginPage/LoginPage.main.MemberInfo.jsx'
 
 import {
   Route,
@@ -33,6 +34,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path='/post/:category' element={<CategoryDetailPage />} />
             <Route path="/login" element={<LoginPageComponent />} />
+            <Route path="/member-info" element={<MemberInfoComponent />} />
             <Route path="/recruitment" element={<RecruitmentPage />} />
             <Route path="/search" element={<SearchPageMain />} />
             <Route path="/search/:keyword" element={<Search />} />
