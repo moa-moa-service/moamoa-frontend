@@ -4,9 +4,14 @@ import CategoryList from "./MainPage.main.CategoryList"
 import MenuNav from "../MenuNav/MenuNav.main"
 
 import { useNavigate } from "react-router-dom"
+import { AuthAtom } from '../../recoil/atoms/AuthAtom'
+import { useRecoilState } from 'recoil'
 
 function MainPage() {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
+    const [accessToken] = useRecoilState(AuthAtom)
+    console.log(accessToken)
+    
     return (
         <>
             <itemS.MainPageContainer>
