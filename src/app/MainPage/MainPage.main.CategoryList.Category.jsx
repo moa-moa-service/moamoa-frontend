@@ -34,7 +34,14 @@ function Category(props) {
                 const response = await client(auth).get(
                     `/posts/${props.category}`
                 );
-                setItems(response.data.result.SimplePostDtoList);
+                if (props.category === 'near') {
+                    const simplePostDTOs = response.data.result.SimplePostDtoList.map(item => item.simplePostDTO);
+                    setItems(simplePostDTOs);
+                } else {
+                    // console.log(response.data.result.SimplePostDtoList);
+                    setItems(response.data.result.SimplePostDtoList);
+                }
+
             } catch (error) {
                 console.error('안된다!!:', error);
             }
