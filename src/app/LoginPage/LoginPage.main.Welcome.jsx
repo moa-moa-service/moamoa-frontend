@@ -12,10 +12,13 @@ import {
     WelcomeFooterContentLogoWrapper,
     WelcomeFooterContentLogo
 } from "./styled/LoginPage.main.Welcome.style";
+import useLoginAction from './LoginPage.service';
 
 const Welcome = ({
     onNextStep
 }) => {
+    const { handleLogin } = useLoginAction()
+
     return (
         <WelcomeContainer>
             <WelcomeContentWrapper>
@@ -36,7 +39,7 @@ const Welcome = ({
                 </WelcomeFooterTitleWrapper>
                 <WelcomeFooterContentWrapper>
                         <WelcomeFooterContentLogoWrapper onClick={() => {
-                            onNextStep()
+                            handleLogin()
                         }}>
                             <WelcomeFooterContentLogo src={naverSnsButton} />
                         </WelcomeFooterContentLogoWrapper>
