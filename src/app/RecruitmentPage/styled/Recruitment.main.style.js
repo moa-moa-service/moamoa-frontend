@@ -117,6 +117,15 @@ align-items: center;
 position: fixed;
 left: 5%;
 bottom: 25px;
+${(props) => 
+    props.type === 'complete' ?
+    `
+    background-color: #FF424D;
+    color: #FFF;
+    ` : `
+    background-color: #C4C4C4;
+    `
+}
 
 color: #888;
 font-family: Inter;
