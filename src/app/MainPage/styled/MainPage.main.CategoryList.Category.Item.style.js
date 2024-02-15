@@ -12,22 +12,31 @@ flex-direction: column;
 margin: 12px 5px 0 5px;
 `
 
-export const ItemImg = styled.div`
+export const ItemImg = styled.img`
 width: 100%;
 height: 160px;
-background-color: pink;
 border-radius: 15px;
 `
 
+export const ItemImgContainer = styled.div`
+position: relative;
+`
+
 export const ItemRecruitContainer = styled.div`
-display: flex;
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
 height: 32.57px;
 background-color: #212732;
 border-radius: 0 0 15px 15px;
 margin-top: 127.43px;
-justify-content: space-between;
 `
 
+export const ItemRecruitTextContainer = styled.div`
+display: flex;
+justify-content: space-between;
+`
 export const ItemRecruitText = styled.span`
 height: 11px;
 ${(props) =>
