@@ -18,7 +18,12 @@ border: 1px solid #2B4760;
 display: flex;
 justify-content: center;
 align-items: center;
-overflow: hidden;
+${(props) =>
+        props.type === 'margin'
+            ? `
+             margin-right: 10px;
+    ` : `
+    `}
 `
 
 export const FilterText = styled.span`

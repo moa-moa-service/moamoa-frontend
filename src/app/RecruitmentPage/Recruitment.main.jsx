@@ -16,10 +16,21 @@ function Recruitment() {
     const [isModalOpen, setModalOpen] = useState(false);
     const [isTradingLocation, setIsTradingLocation] = useState(false);
     const [isType, setIsType] = useState('');
+
+    const [selectedCategory, setSelectedCategory] = useState();
+    const [selectedPeople, setSelectedPeople] = useState();
+
     const inputFileRef = useRef(null);
     const MAX_IMAGES = 10; // 최대 이미지 수
     const [selectedImages, setSelectedImages] = useState([]);
 
+    const handleCategory = (category) => {
+        setSelectedCategory(category);
+    };
+
+    const handlePeople = (value) => {
+        setSelectedPeople(value);
+    };
 
     const toggleModal = (type) => {
         setIsType(type);
@@ -43,6 +54,11 @@ function Recruitment() {
         }
     };
 
+    const submitBtn = () => {
+        console.log(selectedCategory.id);
+        console.log(selectedPeople);
+    }
+
     return (
         <>
             <itemMainPage.MainPageContainer>
@@ -50,13 +66,13 @@ function Recruitment() {
                 {isModalOpen && (
                     <>
                         <itemS.Backdrop onClick={toggleModal}>
-                            <RecruitmentModal data={isType} />
+                            <RecruitmentModal data={isType} onCategory={handleCategory} onPeople={handlePeople} />
                         </itemS.Backdrop>
                     </>
                 )}
                 {!isModalOpen && (
                     <>
-                        <itemS.CompleteBtn>모집 완료</itemS.CompleteBtn>
+                        <itemS.CompleteBtn onClick={submitBtn}>모집 완료</itemS.CompleteBtn>
                     </>
                 )}
                 {isTradingLocation && (
@@ -71,15 +87,35 @@ function Recruitment() {
                     </itemCategoryDetails.CategoryTitleContainer>
                     <itemCategory.CategoryListContainer>
                         <itemS.FiltersContainer>
-                            <itemS.FilterWrapper>
-                                <itemS.FilterText onClick={() => toggleModal('category')}>카테고리 선택</itemS.FilterText>
-                            </itemS.FilterWrapper>
-                            <itemS.FilterWrapper>
+                            {selectedCategory ? (
+                                <>
+                                    <itemS.FilterWrapper style={{ background: "#2B4760"}} type='margin'>
+                                        <itemS.FilterText style={{ color:"#FFF"}}onClick={() => toggleModal('category')}>{selectedCategory.name}</itemS.FilterText>
+                                    </itemS.FilterWrapper>
+                                </>
+                                ) : (
+                                    <>
+                                        <itemS.FilterWrapper type='margin'>
+                                            <itemS.FilterText onClick={() => toggleModal('category')}>카테고리 선택</itemS.FilterText>
+                                        </itemS.FilterWrapper>
+                                    </>
+                                )}
+                            <itemS.FilterWrapper type='margin'>
                                 <itemS.FilterText onClick={() => toggleModal('date')}>모집 기간 선택</itemS.FilterText>
                             </itemS.FilterWrapper>
-                            <itemS.FilterWrapper>
-                                <itemS.FilterText onClick={() => toggleModal('people')}>모집 인원 선택</itemS.FilterText>
-                            </itemS.FilterWrapper>
+                            {selectedPeople ? (
+                                <>
+                                    <itemS.FilterWrapper style={{ background: "#2B4760"}}>
+                                        <itemS.FilterText style={{ color:"#FFF"}}onClick={() => toggleModal('category')}>{selectedPeople}명</itemS.FilterText>
+                                    </itemS.FilterWrapper>
+                                </>
+                                ) : (
+                                    <>
+                                        <itemS.FilterWrapper>
+                                            <itemS.FilterText onClick={() => toggleModal('people')}>모집 인원 선택</itemS.FilterText>
+                                        </itemS.FilterWrapper>
+                                    </>
+                                )}
                         </itemS.FiltersContainer>
                         <itemS.ProductInfoContainer>
                             <itemS.InfoElementContainer>

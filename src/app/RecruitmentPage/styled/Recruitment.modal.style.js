@@ -42,6 +42,7 @@ ${(props) =>
     ? `
     font-size: 22px;
     font-weight: 700;
+    margin-left: 10px;
     ` : `
     font-size: 14.676px;
     font-weight: 500;
@@ -56,11 +57,13 @@ align-items: start;
 margin: 23px 0 23px 7px;
 height: 190px;
 justify-content: space-between;
+overflow: scroll;
 `
 export const CheckboxWrapper = styled.div`
 display: flex;
 align-items: center;
 flex-direction: row;
+margin-bottom: 8px;
 `
 
 export const ModalInput = styled.input.attrs({ type: 'checkbox' })`
@@ -104,13 +107,20 @@ ${(props) =>
 `
 
 export const RangeWrapper = styled.div`
-width: 370px;
-height: 15px;
-// background-color: red;
+width: 100%;
 margin: 28px 5px 45px 5px;
+display: flex;
+flex-direction: column;
+justify-content: space-between;
+`
+
+export const ModalTextWrapper = styled.div`
+display: flex;
+justify-content: end;
 `
 
 export const Range =styled.input.attrs({ type: 'range' })`
 width: 100%;
-
+min: 1;
+max: 7;
 `
