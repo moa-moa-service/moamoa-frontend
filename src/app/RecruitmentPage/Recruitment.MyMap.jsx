@@ -1,7 +1,7 @@
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps';
 import { useState, useEffect, useRef } from 'react';
 
-function MyMap({ onResponseChange, isTradingLocation }) {
+function MyMap({ onResponseChange, isTradingLocation, onLocationChange}) {
     const navermaps = useNavermaps();
     const mapRef = useRef(null);
 
@@ -35,7 +35,9 @@ function MyMap({ onResponseChange, isTradingLocation }) {
     };
 
     useEffect(() => {
+
         if (myLocation.lat !== null && myLocation.lng !== null) {
+            onLocationChange(myLocation);
             const geocoder = navermaps.Service.reverseGeocode(
                 {
                     coords: `${myLocation.lng},${myLocation.lat}`,

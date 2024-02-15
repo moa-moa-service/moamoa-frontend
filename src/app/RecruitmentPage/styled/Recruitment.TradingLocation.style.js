@@ -43,9 +43,6 @@ bottom: 0;
 border-radius: 15px 15px 0px 0px;
 background: #FFF;
 width: 430px;
-height: ${(props) =>
-    props.type === 'town'
-        ? '' : '214px;'};
 box-shadow: 0px -2px 10px 4px rgba(0, 0, 0, 0.09);
 `
 export const DetailAddressContainer = styled.div`
@@ -85,4 +82,15 @@ border: 3px solid #2B4760;
 margin-top: 5px;
 border-radius: 15px;
 padding: 9px 15px;
+`
+
+export const CompleteBtn = styled.div`
+height: 55px;
+border-radius: 7px;
+background-color: #FF424D;
+color: #FFF;
+display: flex;
+justify-content: center;
+align-items: center;
+margin-top: 30px;
 `

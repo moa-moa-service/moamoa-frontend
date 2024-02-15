@@ -6,19 +6,23 @@ import * as itemC from "../MainPage/styled/MainPage.main.CategoryList.Category.s
 
 import TradingLocation from "./Recruitment.TradingLocation"
 import RecruitmentModal from "./Recruitment.modal"
+import client from "../../client"
 
 import React, { useState, startTransition, useRef } from 'react';
 import { useNavigate } from "react-router-dom"
 
 function Recruitment() {
     const navigate = useNavigate();
+    // const date = new Date(Date.now);
+
+    const [formData, setFormData] = useState({
+        'deadline': "2024-02-15T05:51:42.013Z",
+    });
+    const [selectedCategory, setSelectedCategory] = useState();
 
     const [isModalOpen, setModalOpen] = useState(false);
     const [isTradingLocation, setIsTradingLocation] = useState(false);
     const [isType, setIsType] = useState('');
-
-    const [selectedCategory, setSelectedCategory] = useState();
-    const [selectedPeople, setSelectedPeople] = useState();
 
     const inputFileRef = useRef(null);
     const MAX_IMAGES = 10; // 최대 이미지 수
@@ -26,11 +30,51 @@ function Recruitment() {
 
     const handleCategory = (category) => {
         setSelectedCategory(category);
+        setFormData({
+            ...formData,
+            'categoryId': category.id,
+        });
     };
 
     const handlePeople = (value) => {
-        setSelectedPeople(value);
+        setFormData({
+            ...formData,
+            'personnel': parseInt(value, 10),
+        });
     };
+
+    const handleLocationData = (data) => {
+        setFormData({
+            ...formData,
+            'dealLocation': {
+                "name": data.roadAddress,
+                "latitude": data.myLocation.lat,
+                "longitude": data.myLocation.lng
+            },
+            'dealTown': data.dealTown,
+        });
+    };
+
+    const handleProductName = (e) => {
+        setFormData({
+            ...formData,
+            'productName': e.target.value,
+        });
+    }
+
+    const handlePrice = (e) => {
+        setFormData({
+            ...formData,
+            'price': e.target.value,
+        });
+    }
+
+    const handleDesc = (e) => {
+        setFormData({
+            ...formData,
+            'description': e.target.value,
+        });
+    }
 
     const toggleModal = (type) => {
         setIsType(type);
@@ -55,8 +99,34 @@ function Recruitment() {
     };
 
     const submitBtn = () => {
-        console.log(selectedCategory.id);
-        console.log(selectedPeople);
+        const auth = import.meta.env.VITE_AUTH;
+        const requestBody = new FormData();
+        console.log(formData);
+        // JSON 데이터를 Blob 형태로 변환하여 FormData에 추가
+        const jsonRecruitmentData = JSON.stringify(formData);
+        const jsonBlob = new Blob([jsonRecruitmentData], { type: 'application/json' });
+        requestBody.append('request', jsonBlob, 'json-data');
+        requestBody.append('files', selectedImages);
+
+        const fetchData = async () => {
+            try {
+                const response = await client(auth).post(
+                    '/posts',  // 요청을 보낼 엔드포인트 URL
+                    // 전송할 데이터
+                    requestBody,
+                    {
+                        headers: {
+                            "Content-Type": "multipart/form-data",  // 전송할 데이터의 타입
+                        }
+                    }
+                );
+                console.log('응답 받았다!', response);
+            } catch (error) {
+                console.error('안된다!!:', error);
+            }
+        };
+        console.log(requestBody);
+        fetchData();
     }
 
     return (
@@ -72,12 +142,17 @@ function Recruitment() {
                 )}
                 {!isModalOpen && (
                     <>
-                        <itemS.CompleteBtn onClick={submitBtn}>모집 완료</itemS.CompleteBtn>
+                        {formData.categoryId && formData.personnel && formData.productName && formData.dealLocation && formData.dealTown && formData.price && selectedImages ? (
+                            <itemS.CompleteBtn onClick={submitBtn} type='complete'>모집 완료</itemS.CompleteBtn>
+                        ) : (
+                            <itemS.CompleteBtn>모집 완료</itemS.CompleteBtn>
+                        )}
+
                     </>
                 )}
                 {isTradingLocation && (
                     <>
-                        <TradingLocation openTradingLocation={openTradingLocation} />
+                        <TradingLocation openTradingLocation={openTradingLocation} onLocationData={handleLocationData} />
                     </>
                 )}
                 {!isTradingLocation && (<>
@@ -89,38 +164,38 @@ function Recruitment() {
                         <itemS.FiltersContainer>
                             {selectedCategory ? (
                                 <>
-                                    <itemS.FilterWrapper style={{ background: "#2B4760"}} type='margin'>
-                                        <itemS.FilterText style={{ color:"#FFF"}}onClick={() => toggleModal('category')}>{selectedCategory.name}</itemS.FilterText>
+                                    <itemS.FilterWrapper style={{ background: "#2B4760" }} type='margin'>
+                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('category')}>{selectedCategory.name}</itemS.FilterText>
                                     </itemS.FilterWrapper>
                                 </>
-                                ) : (
-                                    <>
-                                        <itemS.FilterWrapper type='margin'>
-                                            <itemS.FilterText onClick={() => toggleModal('category')}>카테고리 선택</itemS.FilterText>
-                                        </itemS.FilterWrapper>
-                                    </>
-                                )}
+                            ) : (
+                                <>
+                                    <itemS.FilterWrapper type='margin'>
+                                        <itemS.FilterText onClick={() => toggleModal('category')}>카테고리 선택</itemS.FilterText>
+                                    </itemS.FilterWrapper>
+                                </>
+                            )}
                             <itemS.FilterWrapper type='margin'>
                                 <itemS.FilterText onClick={() => toggleModal('date')}>모집 기간 선택</itemS.FilterText>
                             </itemS.FilterWrapper>
-                            {selectedPeople ? (
+                            {formData.personnel ? (
                                 <>
-                                    <itemS.FilterWrapper style={{ background: "#2B4760"}}>
-                                        <itemS.FilterText style={{ color:"#FFF"}}onClick={() => toggleModal('category')}>{selectedPeople}명</itemS.FilterText>
+                                    <itemS.FilterWrapper style={{ background: "#2B4760" }}>
+                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('category')}>{formData.personnel}명</itemS.FilterText>
                                     </itemS.FilterWrapper>
                                 </>
-                                ) : (
-                                    <>
-                                        <itemS.FilterWrapper>
-                                            <itemS.FilterText onClick={() => toggleModal('people')}>모집 인원 선택</itemS.FilterText>
-                                        </itemS.FilterWrapper>
-                                    </>
-                                )}
+                            ) : (
+                                <>
+                                    <itemS.FilterWrapper>
+                                        <itemS.FilterText onClick={() => toggleModal('people')}>모집 인원 선택</itemS.FilterText>
+                                    </itemS.FilterWrapper>
+                                </>
+                            )}
                         </itemS.FiltersContainer>
                         <itemS.ProductInfoContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>상품명<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
-                                <itemS.ProductInput placeholder='상품명'></itemS.ProductInput>
+                                <itemS.ProductInput placeholder='상품명' onChange={handleProductName}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>이미지 선택<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
@@ -146,15 +221,15 @@ function Recruitment() {
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>거래 희망 장소<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
-                                <itemS.ProductInput placeholder='위치 추가' onClick={openTradingLocation}></itemS.ProductInput>
+                                <itemS.ProductInput placeholder='위치 추가' onClick={openTradingLocation} value={formData.dealTown ? formData.dealTown : ''} onChange={(e) => setFormData({ ...formData, dealTown: e.target.value })} ></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>가격<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
-                                <itemS.ProductInput placeholder='가격을 입력해 주세요'></itemS.ProductInput>
+                                <itemS.ProductInput placeholder='가격을 입력해 주세요' onChange={handlePrice}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>상세설명</itemS.ProductText>
-                                <itemS.ProductInput type='desc' placeholder='게시글 내용을 작성해 주세요'></itemS.ProductInput>
+                                <itemS.ProductInput type='desc' placeholder='게시글 내용을 작성해 주세요' onChange={handleDesc}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                         </itemS.ProductInfoContainer>
                     </itemCategory.CategoryListContainer>
