@@ -16,7 +16,7 @@ function Recruitment() {
     // const date = new Date(Date.now);
 
     const [formData, setFormData] = useState({
-        'deadline': "2024-02-15T05:51:42.013Z",
+        'deadline': "2024-02-16T05:51:42.013Z",
     });
     const [selectedCategory, setSelectedCategory] = useState();
 
@@ -101,12 +101,11 @@ function Recruitment() {
     const submitBtn = () => {
         const auth = import.meta.env.VITE_AUTH;
         const requestBody = new FormData();
-        console.log(formData);
         // JSON 데이터를 Blob 형태로 변환하여 FormData에 추가
         const jsonRecruitmentData = JSON.stringify(formData);
         const jsonBlob = new Blob([jsonRecruitmentData], { type: 'application/json' });
-        requestBody.append('request', jsonBlob, 'json-data');
-        requestBody.append('files', selectedImages);
+        requestBody.append('request', jsonBlob);
+        selectedImages.forEach(image=>requestBody.append('files', image));
 
         const fetchData = async () => {
             try {
@@ -121,11 +120,12 @@ function Recruitment() {
                     }
                 );
                 console.log('응답 받았다!', response);
+                alert('모집 글이 등록되었습니다!')
+                navigate('/');
             } catch (error) {
                 console.error('안된다!!:', error);
             }
         };
-        console.log(requestBody);
         fetchData();
     }
 
