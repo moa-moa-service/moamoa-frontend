@@ -7,8 +7,7 @@ import React, { useState } from 'react';
 function RecruitmentModal(props) {
     const {onCategory} = props;
     const {onPeople} = props;
-    const initialType = props.data; // 초기값 설정
-    const [isType] = useState(initialType);
+    const [isType] = useState(props.data);
     const [selectedCategory, setSelectedCategory] = useState();
     const [selectedPeople, setSelectedPeople] = useState();
 

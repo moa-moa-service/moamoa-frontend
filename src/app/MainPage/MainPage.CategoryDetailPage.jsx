@@ -43,8 +43,12 @@ function CategoryDetailPage() {
                 const response = await client(auth).get(
                     `/posts/${category}`
                 );
-                console.log(response.data.result.SimplePostDtoList);
-                setProducts(response.data.result.SimplePostDtoList);
+                if (category === 'near') {
+                    const simplePostDTOs = response.data.result.SimplePostDtoList.map(item => item.simplePostDTO);
+                    setProducts(simplePostDTOs);
+                } else {
+                    setProducts(response.data.result.SimplePostDtoList);
+                }
             } catch (error) {
                 console.error('안된다!!:', error);
             }
