@@ -142,7 +142,7 @@ function Recruitment() {
                 )}
                 {!isModalOpen && (
                     <>
-                        {formData.categoryId && formData.personnel && formData.productName && formData.dealLocation && formData.dealTown && formData.price && selectedImages ? (
+                        {formData.categoryId && formData.personnel && formData.productName && formData.dealLocation && formData.dealTown && formData.price && selectedImages.length !== 0 ? (
                             <itemS.CompleteBtn onClick={submitBtn} type='complete'>모집 완료</itemS.CompleteBtn>
                         ) : (
                             <itemS.CompleteBtn>모집 완료</itemS.CompleteBtn>
