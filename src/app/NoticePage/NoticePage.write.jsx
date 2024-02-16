@@ -4,17 +4,62 @@ import { useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import client from "../../client";
 import camera from  "../../../public/RecruitmentPage/camera.png"
+import { useEffect } from "react";
+import Loading from "../LoadingPage/LoadingPage.main";
 
 function NoticeWritePage() {
 
     const { id } = useParams() ;
+    const { noticeId } = useParams() ;
     const navigate = useNavigate() ;
 
     const [formData, setFormData] = useState({}) ;
+    const [importData, setImportData] = useState({}) ;
+    const [loading, setLoading] = useState('loading') ;
 
     const inputFileRef = useRef(null) ;
     const MAX_IMAGES = 10 ;
     const [selectedImages, setSelectedImages] = useState([]);
+
+    const auth = import.meta.env.VITE_AUTH;
+
+    useEffect(() => {
+        if (noticeId) {
+            const fetchData = async () => {
+                try {
+                    const response = await client(auth).get(
+                        `/notices/${noticeId}`
+                    ) ;
+                    setImportData(response.data.result.noticeDTO) ;
+                    setLoading('done') ;
+                } catch (error) {
+                    console.error("실패", error) ;
+                }
+            } ;
+            fetchData() ;
+        } else {
+            setLoading('done') ;
+        }
+    }, [noticeId]) ;
+
+    // if(noticeId) {
+    //     useEffect(() => {
+    //         const fetchData = async () => {
+    //             try {
+    //                 const response = await client(auth).get(
+    //                     `/notices/${noticeId}`
+    //                 ) ;
+    //                 setImportData(response.data.result.noticeDTO) ;
+    //                 setLoading('done') ;
+    //             } catch (error) {
+    //                 console.error("실패", error) ;
+    //             }
+    //         } ;
+    //         fetchData() ;
+    //     }, []) ;
+    // } else {
+    //     setLoading('done') ;
+    // };
 
     const handleTitle = (e) => {
         setFormData({
@@ -45,7 +90,6 @@ function NoticeWritePage() {
     };
 
     const handleSubmit = () => {
-        const auth = import.meta.env.VITE_AUTH;
         const requestBody = new FormData() ;
         // JSON 데이터를 Blob 형태로 변환하여 FormData에 추가
         const jsonRecruitmentData = JSON.stringify(formData);
@@ -53,23 +97,47 @@ function NoticeWritePage() {
         requestBody.append('request', jsonBlob);
         selectedImages.forEach(image => requestBody.append('file', image));
 
-        const fetchData = async () => {
-            try {
-                const response = await client(auth).post(
-                    `/posts/${id}/notices`, 
-                    requestBody, 
-                    {
-                        headers: {
-                            "Content-Type": "multipart/form-data", 
-                        },
-                    }
-                ) ;
-                navigate(`/product/${id}`) ;
-            } catch (error) {
-                console.error("실패", error) ;
-            }
-        } ;
-        fetchData() ;
+        if (!noticeId) {
+            const fetchData = async () => {
+                try {
+                    const response = await client(auth).post(
+                        `/posts/${id}/notices`, 
+                        requestBody, 
+                        {
+                            headers: {
+                                "Content-Type": "multipart/form-data", 
+                            },
+                        }
+                    ) ;
+                    navigate(`/product/${id}`) ;
+                } catch (error) {
+                    console.error("실패", error) ;
+                }
+            } ;
+            fetchData() ;
+        } else {
+            const fetchData = async () => {
+                try {
+                    const response = await client(auth).patch(
+                        `/posts/${id}/notices/${noticeId}`, 
+                        requestBody, 
+                        {
+                            headers: {
+                                "Content-Type": "multipart/form-data", 
+                            },
+                        }
+                    ) ;
+                    navigate(`/product/${id}`) ;
+                } catch (error) {
+                    console.error("실패", error) ;
+                }
+            } ;
+            fetchData() ;
+        }
+    }
+
+    if (loading !== 'done') {
+        return <Loading />
     }
 
     return(
@@ -84,7 +152,7 @@ function NoticeWritePage() {
                         <div>제목</div>
                         <itemS.EssentialIcon>*</itemS.EssentialIcon>
                     </itemS.Title>
-                    <itemS.TitleInput placeholder="제목을 입력해주세요." value={formData.title || ""} onChange={handleTitle}/>
+                    <itemS.TitleInput placeholder="제목을 입력해주세요." value={formData.title || importData.title} onChange={handleTitle}/>
                     <itemS.Title>이미지 첨부</itemS.Title>
                     
                     <itemS.ImgContainer>
@@ -116,7 +184,7 @@ function NoticeWritePage() {
                         <div>내용</div>
                         <itemS.EssentialIcon>*</itemS.EssentialIcon>
                     </itemS.Title>
-                    <itemS.ContentInput placeholder="내용을 입력해주세요." value={formData.content || ""} onChange={handleContent}/>
+                    <itemS.ContentInput placeholder="내용을 입력해주세요." value={formData.content || importData.content} onChange={handleContent}/>
                 </C.WriteContainer>
             </C.NoticeWriteContainer>
             <itemS.BtnContainer>

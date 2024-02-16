@@ -8,6 +8,7 @@ import client from "../../client";
 import { differenceInCalendarDays, intervalToDuration } from "date-fns";
 
 import Loading from "../LoadingPage/LoadingPage.main";
+import NoticeWritePage from "./NoticePage.write";
 
 function NoticePage() {
 
@@ -44,6 +45,10 @@ function NoticePage() {
         setModalOpen(!modalOpen) ;
     }
 
+    const modifyHandle = () => {
+        navigate(`/product/${id}/notice/${noticeId}/update`) ;
+    }
+
     const deleteNotice = async () => {
         try {
             const response = await client(auth).delete(
@@ -77,7 +82,7 @@ function NoticePage() {
                     { modalOpen && 
                         <itemS.ModalContainer>
                             <itemS.ModalContent>
-                                <div>수정하기</div>
+                                <div onClick={modifyHandle}>수정하기</div>
                                 <img src="../../../public/NoticePage/pencil.png" />
                                 </itemS.ModalContent>
                             <itemS.ModalContent color="red" onClick={deleteNotice}>
