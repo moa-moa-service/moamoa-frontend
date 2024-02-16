@@ -125,7 +125,7 @@ function NoticeWritePage() {
         <>
             <C.NoticeWriteContainer>
                 <C.NoticeHeader>
-                    <img src="../../../public/SearchPage/backIcon.png" alt="backIcon" />
+                    <img src="../../../public/SearchPage/backIcon.png" alt="backIcon" onClick={() => navigate(-1)}/>
                     <div>공지사항</div>
                 </C.NoticeHeader>
                 <C.WriteContainer>
