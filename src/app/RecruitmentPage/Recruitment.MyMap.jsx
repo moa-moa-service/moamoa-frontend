@@ -1,6 +1,8 @@
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps';
 import { useState, useEffect, useRef } from 'react';
 
+import Loading from '../LoadingPage/LoadingPage.main';
+
 function MyMap({ onResponseChange, isTradingLocation, onLocationChange }) {
     const navermaps = useNavermaps();
     const mapRef = useRef(null);
@@ -65,13 +67,7 @@ function MyMap({ onResponseChange, isTradingLocation, onLocationChange }) {
             height: '70vh',
         }}>
             {isMapLoading ? (
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%',
-                    width: '100%',
-                }}>Loading...</div>
+                <Loading/>
             ) : (
                 <NaverMap
                     ref={mapRef}

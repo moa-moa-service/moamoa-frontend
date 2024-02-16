@@ -1,5 +1,6 @@
 import * as itemS from './styled/Recruitment.TradingLocation.style'
 import MyMap from './Recruitment.MyMap'
+import BackIcon from '../../../public/SearchPage/backIcon.png'
 
 import { useState } from 'react';
 
@@ -35,7 +36,7 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
         <>
             <itemS.TopWrapper>
                 <itemS.TopContentContainer>
-                    <itemS.BackBtn onClick={openTradingLocation} />
+                    <itemS.BackBtn src={BackIcon} onClick={openTradingLocation} />
                     <itemS.Text>거래 희망 장소</itemS.Text>
                 </itemS.TopContentContainer>
             </itemS.TopWrapper>

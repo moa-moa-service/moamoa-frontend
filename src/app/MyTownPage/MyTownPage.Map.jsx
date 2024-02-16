@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from 'react';
 
 import client from '../../client';
 import BottomWrapper from './MyTownPage.main.BottomWrapper.jsx';
+import Loading from '../LoadingPage/LoadingPage.main.jsx';
 
 function Map( {onTown}) {
     const navermaps = useNavermaps();
@@ -78,13 +79,7 @@ function Map( {onTown}) {
             height: '80vh',
         }}>
             {isMapLoading ? (
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%',
-                    width: '100%',
-                }}>Loading...</div>
+                <Loading/>
             ) : (<>
                 <NaverMap
                     ref={mapRef}
