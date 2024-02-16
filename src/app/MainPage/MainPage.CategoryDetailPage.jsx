@@ -6,6 +6,7 @@ import * as itemMain from './styled/MainPage.main.style';
 import * as itemCategory from "./styled/MainPage.main.CategoryList.style";
 import * as itemS from './styled/MainPage.CategoryDatailPage.style';
 import ProductItem from './MainPage.CategoryDetailPage.Item';
+import BackIcon from '../../../public/SearchPage/backIcon.png'
 import client from "../../client";
 
 function CategoryDetailPage() {
@@ -60,7 +61,7 @@ function CategoryDetailPage() {
         <>
             <itemMain.MainPageContainer>
                 <itemS.CategoryTitleContainer>
-                    <itemS.BackBtn onClick={() => { navigate(-1); }} />
+                    <itemS.BackBtn src={BackIcon} onClick={() => { navigate(-1); }} />
                     <itemS.CategoryTitle>{categoryText}</itemS.CategoryTitle>
                 </itemS.CategoryTitleContainer>
                 <itemCategory.CategoryListContainer>

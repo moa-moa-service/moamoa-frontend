@@ -4,6 +4,7 @@ import * as itemCategoryDetails from "../MainPage/styled/MainPage.CategoryDatail
 import * as itemS from "./styled/Recruitment.main.style"
 import * as itemC from "../MainPage/styled/MainPage.main.CategoryList.Category.style";
 import camera from  "../../../public/RecruitmentPage/camera.png"
+import BackIcon from '../../../public/SearchPage/backIcon.png'
 
 
 import TradingLocation from "./Recruitment.TradingLocation"
@@ -163,7 +164,7 @@ function Recruitment() {
                 )}
                 {!isTradingLocation && (<>
                     <itemCategoryDetails.CategoryTitleContainer type='recruit'>
-                        <itemCategoryDetails.BackBtn onClick={() => { navigate(-1); }} />
+                        <itemCategoryDetails.BackBtn src={BackIcon} onClick={() => { navigate(-1); }} />
                         <itemCategoryDetails.CategoryTitle>모집하기</itemCategoryDetails.CategoryTitle>
                     </itemCategoryDetails.CategoryTitleContainer>
                     <itemCategory.CategoryListContainer>

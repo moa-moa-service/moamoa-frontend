@@ -1,6 +1,7 @@
 import * as itemRec from '../RecruitmentPage/styled/Recruitment.TradingLocation.style'
 import Map from './MyTownPage.Map.jsx';
 import * as itemS from './styled/MyTownPage.main.style.js'
+import BackIcon from '../../../public/SearchPage/backIcon.png'
 
 import { Suspense, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -18,7 +19,7 @@ function MyTown() {
         <>
             <itemRec.TopWrapper type='town'>
                 <itemRec.TopContentContainer>
-                    <itemRec.BackBtn type='town' onClick={() => (navigate(-1))} />
+                    <itemRec.BackBtn src={BackIcon} type='town' onClick={() => (navigate(-1))} />
                     <itemS.TopTextContainer>
                         <itemS.TopText>우리 동네 공동 구매 찾기</itemS.TopText>
                         <itemS.TopText type='bold'>{town}</itemS.TopText>
