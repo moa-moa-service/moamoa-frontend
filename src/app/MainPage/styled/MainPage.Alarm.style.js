@@ -9,6 +9,11 @@ display: flex;
 flex-direction: row;
 `
 
+export const AlarmImg = styled.img`
+width: 50px;
+height: 50px;
+`
+
 export const AlarmTextContainer = styled.div`
 width: 80%;
 // background: blue;
