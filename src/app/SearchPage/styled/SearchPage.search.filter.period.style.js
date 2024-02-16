@@ -65,9 +65,9 @@ export const dayText = styled.div`
     font-weight: 600;
 
     background-color: ${(props) => {
-        if(props.checkday === 'today') {
+        if(props.today === 'today') {
             return "#D9D9D9" ;
-        } else if (props.checkday === 'selectday') {
+        } else if (props.select === 'select') {
             return "#FF424D" ;
         }
     }} ;
@@ -75,7 +75,7 @@ export const dayText = styled.div`
     color : ${(props) => {
         if(props.color === 'gray') {
             return "#888888" ;
-        } else if (props.checkday === 'selectday') {
+        } else if (props.select === 'select') {
             return "#FFFFFF" ;
         } else {
             return "#000000" ;
