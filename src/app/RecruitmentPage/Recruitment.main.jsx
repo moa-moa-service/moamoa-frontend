@@ -204,7 +204,7 @@ function Recruitment() {
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>이미지 선택<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
                                 <itemS.ImgContainer>
-                                    <itemS.SelectImgLabel for='img'>
+                                    <itemS.SelectImgLabel htmlFor='img'>
                                         <itemS.SelectImg
                                             type="file"
                                             id='img'
