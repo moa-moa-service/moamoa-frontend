@@ -25,12 +25,59 @@ export const EssentialIcon = styled.div`
     margin-left: 3px;
 `
 
-export const ImgInput = styled.div`
-    width: 150px;
-    height: 150px;
-    border: 1.5px solid #2B4760;
-    border-radius: 15px;
+export const ImgContainer = styled.div`
+display: flex;
+flex-direction: row;
 `
+
+export const SelectImgLabel = styled.label`
+display: inline-block;
+width: 150px;
+height: 150px;
+border: 2px solid #2B4760;
+border-radius: 15px;
+position: relative;
+`
+
+export const CameraIcon = styled.img`
+width: 33.333px;
+height: 30px;
+margin: 60px 58px;
+`
+
+export const SelectImg = styled.input`
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0,0,0,0);
+border: 0;
+`
+
+export const ItemsContainer = styled.div`
+overflow-x: auto; /* 가로 스크롤을 가능하게 하는 속성 */
+white-space: nowrap; /* 자식 요소들이 가로로 나열되도록 함 */
+
+&::-webkit-scrollbar {
+    display: none;
+}
+`
+
+export const ImgWrapper = styled.div`
+width: 150px;
+height: 150px;
+margin-left: 8px;
+display: inline-block;
+`
+
+// export const ImgInput = styled.div`
+//     width: 150px;
+//     height: 150px;
+//     border: 1.5px solid #2B4760;
+//     border-radius: 15px;
+// `
 
 export const ContentInput = styled.input`
     width: 95%;
@@ -59,7 +106,6 @@ export const BtnContainer = styled.div`
 export const Btn = styled.div`
     width: 95%;
     height: 55px;
-    background-color: #C4C4C4;
     color: #888888;
     z-index: 999;
     border-radius: 15px;
@@ -67,4 +113,15 @@ export const Btn = styled.div`
     justify-content: center;
     align-items: center;
     margin: auto;
+
+    ${(props) => 
+        props.type === "complete" 
+        ? `
+        background-color: #FF424D;
+        color: #FFFFFF;
+        ` : `
+        background-color: #C4C4C4;
+        color: #888888;
+        `
+    }
 `

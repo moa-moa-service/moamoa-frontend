@@ -37,7 +37,7 @@ function App() {
           <Route path="/search/:keyword" element={<Search />} />
           <Route path="/product/:id" element={<ProductPage />} />
           <Route path="/product/:id/notice" element={<NoticePage />} />
-          <Route path="/product/notice/write" element={<NoticeWritePage />} />
+          <Route path="/product/:id/notice/write" element={<NoticeWritePage />} />
           <Route path="/alarm" element={<Alarm />} />
           <Route path="/mypage" element={<MyPageComponent />} />
           <Route path="/userpage" element={<UserPageComponent />} />
