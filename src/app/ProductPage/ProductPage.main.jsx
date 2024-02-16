@@ -90,8 +90,8 @@ function ProductPage() {
         } else if (product.joinStatus === "AUTHOR") {
             button = (
                 <>
-                    <itemS.SmallBtn color="white">상태변경</itemS.SmallBtn> ;
-                    <itemS.SmallBtn>수정하기</itemS.SmallBtn> ;
+                    <itemS.SmallBtn color="white">상태변경</itemS.SmallBtn>
+                    <itemS.SmallBtn>수정하기</itemS.SmallBtn>
                 </>
             )
         }

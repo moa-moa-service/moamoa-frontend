@@ -1,13 +1,14 @@
 import * as itemS from "./styled/NoticePage.write.style"
 import * as C from "./styled/NoticePage.component.style"
 import { useRef, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import client from "../../client";
 import camera from  "../../../public/RecruitmentPage/camera.png"
 
 function NoticeWritePage() {
 
     const { id } = useParams() ;
+    const navigate = useNavigate() ;
 
     const [formData, setFormData] = useState({}) ;
 
@@ -63,7 +64,7 @@ function NoticeWritePage() {
                         },
                     }
                 ) ;
-                console.log("성공", response.data) ;
+                navigate(`/product/${id}`) ;
             } catch (error) {
                 console.error("실패", error) ;
             }
