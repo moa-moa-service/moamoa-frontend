@@ -149,7 +149,7 @@ function Search() {
             </C.MainContainer>
             {categoryFilter && <FilterCategory openCategoryFilter={openCategoryFilter} chageCategory={chageCategory}/>}
             {periodFilter && <FilterPeriod openPeriodFilter={openPeriodFilter} chageDDay={chageDDay}/> }
-            {quantityFilter && <FilterQuantity openQuantityFilter={openQuantityFilter} />}
+            {quantityFilter && <FilterQuantity openQuantityFilter={openQuantityFilter} chageTotal={chageTotal}/>}
             {priceFilter && <FilterPrice openPriceFilter={openPriceFilter} chagePrice={chagePrice}/>}
         </C.SearchPageContainer>
         </>
