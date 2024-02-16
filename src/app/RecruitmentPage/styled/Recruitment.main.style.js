@@ -108,26 +108,26 @@ border-radius: 15px;
 
 export const CompleteBtn = styled.div`
 width: 90%;
+max-width: 430px;
 height: 55px;
 border-radius: 7px;
-background-color: #C4C4C4;
 display: flex;
 justify-content: center;
 align-items: center;
 position: fixed;
-left: 5%;
 bottom: 25px;
 ${(props) => 
     props.type === 'complete' ?
     `
     background-color: #FF424D;
     color: #FFF;
+    
     ` : `
     background-color: #C4C4C4;
+    color: #888;
     `
 }
 
-color: #888;
 font-family: Inter;
 font-size: 14.676px;
 font-style: normal;
