@@ -204,12 +204,15 @@ function Recruitment() {
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>이미지 선택<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
                                 <itemS.ImgContainer>
-                                    <itemS.SelectImg
-                                        type="file"
-                                        accept="image/*"
-                                        ref={inputFileRef}
-                                        onChange={handleFileChange}
-                                    />
+                                    <itemS.SelectImgLabel for='img'>
+                                        <itemS.SelectImg
+                                            type="file"
+                                            id='img'
+                                            accept="image/*"
+                                            ref={inputFileRef}
+                                            onChange={handleFileChange}
+                                        />
+                                    </itemS.SelectImgLabel>
                                     <itemC.ItemsContainer>
                                         {selectedImages.map((image, index) => (
                                             <itemS.ImgWrapper key={index} onClick={() => handleRemoveImage(index)}>
