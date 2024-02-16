@@ -186,7 +186,7 @@ function Recruitment() {
                             {formData.personnel ? (
                                 <>
                                     <itemS.FilterWrapper style={{ background: "#2B4760" }}>
-                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('people')}>{formData.personnel}명</itemS.FilterText>
+                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('people')}>{formData.personnel}개</itemS.FilterText>
                                     </itemS.FilterWrapper>
                                 </>
                             ) : (
