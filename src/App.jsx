@@ -11,6 +11,8 @@ import NoticeWritePage from './app/NoticePage/NoticePage.write.jsx'
 import NoticePage from './app/NoticePage/NoticePage.notice.jsx'
 import AddressSetup from './app/LoginPage/LoginPage.main.AddressSetup.jsx'
 import MyTown from './app/MyTownPage/MyTownPage.main.jsx'
+import Loading from './app/LoadingPage/LoadingPage.main.jsx'
+import Alarm from './app/MainPage/MainPage.Alarm.jsx'
 
 import {
   Route,
@@ -19,7 +21,6 @@ import {
 import { NavermapsProvider } from 'react-naver-maps'
 
 import './App.css'
-import Alarm from './app/MainPage/MainPage.Alarm.jsx'
 
 function App() {
   const ncpClientId = import.meta.env.VITE_CLIENT_ID
@@ -41,6 +42,7 @@ function App() {
           <Route path="/mypage" element={<MyPageComponent />} />
           <Route path="/userpage" element={<UserPageComponent />} />
           <Route path="/mytown" element={<MyTown />} />
+          <Route path='/loading' element={<Loading />} />
         </Routes>
       </NavermapsProvider>
     </div>
