@@ -3,7 +3,7 @@ import * as itemS from "./styled/ProductPage.main.info.style"
 import Notice from "./ProductPage.main.info.notice"
 import { useEffect, useState } from "react";
 import { differenceInMilliseconds, intervalToDuration } from "date-fns";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 function Info({product, id, changePossible, possibility}) {
     const navigate = useNavigate();
@@ -11,6 +11,7 @@ function Info({product, id, changePossible, possibility}) {
     const productInfo = product.postDto ;
     const userInfo = product.adminDto ;
     const joinStatus = product.joinStatus ;
+    const noticeList = product.simpleNoticeDtoList ;
 
     const { deadline } = productInfo ;
     const [remainingTime, setRemainingTime] = useState(calculateRemaingingTime()) ;
@@ -112,9 +113,9 @@ function Info({product, id, changePossible, possibility}) {
                 <itemS.ProductDetailText>{productInfo.description}</itemS.ProductDetailText>
                 <itemS.Line />
                 <itemS.Title>공지사항</itemS.Title>
-                <Notice />
-                <Notice />
-                <Notice />
+                {noticeList.map((notice, index) => (
+                    <Notice key={index} notice={notice} id={id}/>
+                ))}
                 {joinStatus === "AUTHOR" ?
                 <itemS.BtnContainer>
                     <itemS.Btn onClick={() => {navigate(`/product/${id}/notice/write`)}}>+</itemS.Btn>

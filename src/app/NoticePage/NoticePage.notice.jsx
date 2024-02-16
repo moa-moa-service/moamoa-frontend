@@ -17,7 +17,7 @@ function NoticePage() {
     const { id } = useParams() ;
     const { noticeId } = useParams() ;
     const [notice, setNotice] = useState() ;
-    const [comments, setComments] = useState() ;
+    const [comments, setComments] = useState([]) ;
     const [author, setAuthor] = useState() ;
     const [noticeImg, setNoticeImg] = useState([]) ;
 
@@ -84,14 +84,14 @@ function NoticePage() {
     }
 
     const imgRendering = () => {
-        if(typeof(noticeImg) === 'string') {
+        if(!noticeImg || typeof(noticeImg) === 'string') {
             return <img src={noticeImg} />
         } else {
             return (
                 <>
-                    {noticeImg.map((img, index) => {
+                    {noticeImg.map((img, index) => (
                         <img src={img} key={index} />
-                    })}
+                    ))}
                 </>
             )
         }
