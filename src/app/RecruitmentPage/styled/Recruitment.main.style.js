@@ -115,6 +115,12 @@ clip: rect(0,0,0,0);
 border: 0;
 `
 
+export const CameraIcon = styled.img`
+width: 33.333px;
+height: 30px;
+margin: 60px 58px;
+`
+
 export const CompleteBtn = styled.div`
 width: 90%;
 max-width: 430px;

@@ -3,6 +3,7 @@ import * as itemCategory from "../MainPage/styled/MainPage.main.CategoryList.sty
 import * as itemCategoryDetails from "../MainPage/styled/MainPage.CategoryDatailPage.style"
 import * as itemS from "./styled/Recruitment.main.style"
 import * as itemC from "../MainPage/styled/MainPage.main.CategoryList.Category.style";
+import camera from  "../../../public/RecruitmentPage/camera.png"
 
 import TradingLocation from "./Recruitment.TradingLocation"
 import RecruitmentModal from "./Recruitment.modal"
@@ -205,6 +206,7 @@ function Recruitment() {
                                 <itemS.ProductText>이미지 선택<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
                                 <itemS.ImgContainer>
                                     <itemS.SelectImgLabel htmlFor='img'>
+                                        <itemS.CameraIcon src={camera}/>
                                         <itemS.SelectImg
                                             type="file"
                                             id='img'
