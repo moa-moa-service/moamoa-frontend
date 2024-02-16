@@ -90,13 +90,13 @@ function Recruitment() {
     }
 
     const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (selectedImages.length < MAX_IMAGES) { // 이미지 수 제한 확인
-            setSelectedImages([...selectedImages, file]);
-        } else {
-            // 이미지 수 초과 처리
-            alert('이미지는 최대 열 개까지 선택할 수 있습니다.');
-        }
+        const files = event.target.files;
+    if (selectedImages.length + files.length <= MAX_IMAGES) { // 이미지 수 제한 확인
+        setSelectedImages([...selectedImages, ...files]);
+    } else {
+        // 이미지 수 초과 처리
+        alert('이미지는 최대 열 개까지 선택할 수 있습니다.');
+    }
     };
 
     const handleRemoveImage = (indexToRemove) => {
@@ -213,6 +213,7 @@ function Recruitment() {
                                             accept="image/*"
                                             ref={inputFileRef}
                                             onChange={handleFileChange}
+                                            multiple
                                         />
                                     </itemS.SelectImgLabel>
                                     <itemC.ItemsContainer>
