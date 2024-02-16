@@ -1,37 +1,29 @@
 import * as C from "./styled/SearchPage.search.filter.style"
 import * as itemS from "./styled/SearchPage.search.filter.category.style"
+import FilterCategoryModal from "../RecruitmentPage/Recruitment.modal.Category"
+import { useState } from 'react';
 
-function FilterCategory({openCategoryFilter}) {
+function FilterCategory({openCategoryFilter, chageCategory}) {
+
+    const [selectedCategory, setSelectedCategory] = useState();
+
+    const handleSelected = (value) => {
+        setSelectedCategory(value) ;
+    }
+
+    const searchHandle = () => {
+        chageCategory(selectedCategory) ;
+        openCategoryFilter() ;
+    }
+
     return(
         <>
         <C.FilterContainer>
              <C.FilterContent>
-                <C.FilterTitle>카테고리</C.FilterTitle>
-                <itemS.CategoryContainer>
-                    <itemS.CategoryList>
-                        <itemS.CategoryCheckbox />
-                        <itemS.CategoryText>생활가전</itemS.CategoryText>
-                    </itemS.CategoryList>
-                    <itemS.CategoryList>
-                        <itemS.CategoryCheckbox />
-                        <itemS.CategoryText>가구/인테리어</itemS.CategoryText>
-                    </itemS.CategoryList>
-                    <itemS.CategoryList>
-                        <itemS.CategoryCheckbox />
-                        <itemS.CategoryText>유아동</itemS.CategoryText>
-                    </itemS.CategoryList>
-                    <itemS.CategoryList>
-                        <itemS.CategoryCheckbox />
-                        <itemS.CategoryText>생활/주방</itemS.CategoryText>
-                    </itemS.CategoryList>
-                    <itemS.CategoryList>
-                        <itemS.CategoryCheckbox />
-                        <itemS.CategoryText>스포츠/레저</itemS.CategoryText>
-                    </itemS.CategoryList>
-                </itemS.CategoryContainer>
+                <FilterCategoryModal onSelectCategory={(value) => handleSelected(value)}/>
                 <C.BtnContainer>
                     <C.Btn onClick={openCategoryFilter}>취소</C.Btn>
-                    <C.Btn color="navy" onClick={openCategoryFilter}>선택 완료</C.Btn>
+                    <C.Btn color="navy" onClick={searchHandle}>선택 완료</C.Btn>
                 </C.BtnContainer>
             </C.FilterContent>
         </C.FilterContainer>

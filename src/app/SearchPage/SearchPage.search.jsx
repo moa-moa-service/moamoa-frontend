@@ -25,10 +25,11 @@ function Search() {
     const [priceFilter, setPriceFilter] = useState(false) ;
 
     const [categoryId, setCategoryId] = useState('') ;
+    const [categoryName, setCategoryName] = useState('') ;
     const [dDay, setDDay] = useState('') ;
     const [total, setTotal] = useState('') ;
     const [minPrice, setMinPrice] = useState('') ;
-    const [maxPrice, setMaxPrice] = useState('') ; 
+    const [maxPrice, setMaxPrice] = useState('') ;
 
     const auth = import.meta.env.VITE_AUTH ;
 
@@ -85,8 +86,9 @@ function Search() {
         setPriceFilter(!priceFilter) ;
     }
 
-    const chageCategoryId = (value) => {
-        setCategoryId(value) ;
+    const chageCategory = (value) => {
+        setCategoryId(value.id) ;
+        setCategoryName(value.name) ;
     }
 
     const chageDDay = (value) => {
@@ -119,7 +121,7 @@ function Search() {
                     <C.Keyword select="true">지역명</C.Keyword>
                     {categoryId === ''
                         ? <C.Keyword onClick={openCategoryFilter}>카테고리</C.Keyword>
-                        : <C.Keyword select="true" onClick={openCategoryFilter}>{categoryId}</C.Keyword>
+                        : <C.Keyword select="true" onClick={openCategoryFilter}>{categoryName}</C.Keyword>
                     }
                     
                     {dDay === '' 
@@ -145,7 +147,7 @@ function Search() {
                     </div>
                 ))}
             </C.MainContainer>
-            {categoryFilter && <FilterCategory openCategoryFilter={openCategoryFilter}/>}
+            {categoryFilter && <FilterCategory openCategoryFilter={openCategoryFilter} chageCategory={chageCategory}/>}
             {periodFilter && <FilterPeriod openPeriodFilter={openPeriodFilter} chageDDay={chageDDay}/> }
             {quantityFilter && <FilterQuantity openQuantityFilter={openQuantityFilter} />}
             {priceFilter && <FilterPrice openPriceFilter={openPriceFilter} chagePrice={chagePrice}/>}
