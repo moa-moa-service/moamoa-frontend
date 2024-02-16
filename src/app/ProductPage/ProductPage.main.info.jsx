@@ -5,14 +5,13 @@ import { useEffect, useState } from "react";
 import { differenceInMilliseconds, intervalToDuration } from "date-fns";
 import { useNavigate } from "react-router-dom";
 
-function Info({product, id}) {
+function Info({product, id, changePossible, possibility}) {
     const navigate = useNavigate();
 
     const productInfo = product.postDto ;
     const userInfo = product.adminDto ;
 
     const { deadline } = productInfo ;
-    const [ possibility, setPossibility ] = useState(true) ;
     const [remainingTime, setRemainingTime] = useState(calculateRemaingingTime()) ;
 
     function calculateRemaingingTime() {
@@ -57,7 +56,7 @@ function Info({product, id}) {
 
     const checkPossible = () => {
         if ((remainingTime.day === '00' && remainingTime.hours === '00' && remainingTime.minutes === '00' && remainingTime.seconds === '00') || productInfo.available <= 0) {
-            setPossibility(false) ;
+            changePossible(false) ;
         }
     }
 

@@ -17,12 +17,14 @@ function ProductPage() {
     const navigate = useNavigate() ;
     const { id } = useParams() ;
 
+    const [product, setProduct] = useState(null) ;
+
     const [imgOpen, setImgOpen] = useState(false) ;
     const [copyNoticeOpen, setCopyNoticeOpen] = useState(false) ;
     const [quantityOpen, setQuantityOpen] = useState(false) ;
-    const [product, setProduct] = useState(null) ;
     const [completeModalOpen, setCompleteModalOpen] = useState(false) ;
     const [cancelModalOpen, setCancelModalOpen] = useState(false) ;
+    const [possibility, setPossibility] = useState(true) ;
 
     useEffect(() => {
         const auth = import.meta.env.VITE_AUTH ;
@@ -38,7 +40,11 @@ function ProductPage() {
             }
         };
         fetchData() ;
-    },[product]) ;
+    },[]) ;
+
+    const changePossible = (value) => {
+        setPossibility(value) ;
+    }
 
     const location = useLocation() ;
 
@@ -77,7 +83,8 @@ function ProductPage() {
         return <itemS.Loading>Loading..</itemS.Loading>
     } else {
         if (product.joinStatus === null) {
-            button = <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn>;
+            possibility ? 
+            button = <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn> : null ;
         } else if (product.joinStatus === "PARTICIPATOR") {
             button = <itemS.Btn onClick={openCancelModalHandler}>참여 취소하기</itemS.Btn>;
         } else if (product.joinStatus === "AUTHOR") {
@@ -112,7 +119,7 @@ function ProductPage() {
                         }}/>
                     </itemS.IconContainer>
                 </itemS.ImgContainer>
-                <ProductInfo product={product} id={id} />
+                <ProductInfo product={product} id={id} changePossible={changePossible} possibility={possibility} />
                 <itemS.BtnContainer>
                     {button}
                 </itemS.BtnContainer>
