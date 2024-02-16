@@ -29,6 +29,7 @@ export const MoreIcon = styled.img`
     height: 20px;
     margin-left: 90%;
     margin-top: -20px;
+    position: relative;
 `
 
 export const Line = styled.hr`
@@ -104,4 +105,37 @@ export const DoneBtn = styled.div`
     align-items: center;
     position: fixed;
     right: 19%;
+`
+
+export const ModalContainer = styled.div`
+    width: 120px;
+    height: 75px;
+    border: 1px solid #E8E8E8;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: #FFFFFF;
+    right: 10%;
+`
+
+export const ModalContent = styled.div`
+    ${(props) => 
+        props.color === "red" 
+        ? `
+            color: #FF4242 ;
+        ` : `
+            color: #7D7D7D ;
+        `
+    }
+
+    height: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 15px ;
+    box-sizing: border-box;
+
+    &:first-child {
+        border-bottom: 1px solid #E8E8E8;
+    }
 `

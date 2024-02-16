@@ -16,6 +16,8 @@ function NoticePage() {
     const [comments, setComments] = useState() ;
     const [author, setAuthor] = useState() ;
 
+    const [modalOpen, setModalOpen] = useState(false) ;
+
     useEffect(() => {
         const auth = import.meta.env.VITE_AUTH ;
 
@@ -34,6 +36,9 @@ function NoticePage() {
         fetchData() ;
     }, []) ;
     
+    const modalHandle = () => {
+        setModalOpen(!modalOpen) ;
+    }
 
     if(!notice) {
         return <Loading />
@@ -53,7 +58,19 @@ function NoticePage() {
                         <div> | </div>
                         <div>{differenceInCalendarDays(new Date(), notice.createdAt)}일 전</div>
                     </itemS.WriteInfo>
-                    <itemS.MoreIcon src="../../../public/NoticePage/moreIcon.png" />
+                    <itemS.MoreIcon src="../../../public/NoticePage/moreIcon.png" onClick={modalHandle}/>
+                    { modalOpen && 
+                        <itemS.ModalContainer>
+                            <itemS.ModalContent>
+                                <div>수정하기</div>
+                                <img src="../../../public/NoticePage/pencil.png" />
+                                </itemS.ModalContent>
+                            <itemS.ModalContent color="red">
+                                <div>삭제하기</div>
+                                <img src="../../../public/NoticePage/delete.png" />
+                            </itemS.ModalContent>
+                        </itemS.ModalContainer>
+                    }
                     <itemS.Line />
                     <itemS.Content>{notice.content}</itemS.Content>
                     <itemS.Line />
