@@ -107,7 +107,7 @@ function ProductPage() {
                 {completeModalOpen && <CompleteModal openCompleteModalHandler={openCompleteModalHandler} />}
                 {cancelModalOpen && <CancelModal openCancelModalHandler={openCancelModalHandler} id={id} /> }
                 <itemS.ImgContainer onClick={openImgModalHandler} >
-                    <itemS.ProductImg src={product.postDto.imageUrl} />
+                    <itemS.ProductImg src={product.postDto.imageUrl[0]} />
                     <itemS.IconContainer>
                         <img src="../../../public/ProductPage/back.png" alt="back Icon" onClick={(e) => { 
                             e.stopPropagation() ;

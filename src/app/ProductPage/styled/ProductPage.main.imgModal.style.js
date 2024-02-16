@@ -26,10 +26,30 @@ export const ImgModal = styled.div`
     border-radius: 13px;
     background-color: #FFFFFF;
     box-shadow: 3px 7px 30px black ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
 
-    img {
+    img:nth-child(2) {
         width: 100% ;
         height: 100%;
+    }
+`
+
+export const angleIcon = styled.img`
+    width: 19px;
+    height: 35px;
+    position: absolute;
+    padding: 0 10px;
+    
+    &:first-child {
+        left: 0;
+    }
+
+    &:last-child {
+        right: 0;
     }
 `
 
