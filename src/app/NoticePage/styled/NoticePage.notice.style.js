@@ -43,6 +43,15 @@ export const Content = styled.div`
     padding: 10px 0;
 `
 
+export const NoticeImgContainer = styled.div`
+    width: 100%;
+    display: flex;
+
+    img {
+        width: 100%;
+    }
+`
+
 export const CommentContainer = styled.div`
     display: flex;
     flex-direction: column;

@@ -19,6 +19,7 @@ function NoticePage() {
     const [notice, setNotice] = useState() ;
     const [comments, setComments] = useState() ;
     const [author, setAuthor] = useState() ;
+    const [noticeImg, setNoticeImg] = useState([]) ;
 
     const [modalOpen, setModalOpen] = useState(false) ;
     const [inputComment, setInputComment] = useState('') ;
@@ -33,6 +34,7 @@ function NoticePage() {
                 setNotice(response.data.result.noticeDTO) ;
                 setComments(response.data.result.noticeDTO.commentDTOList) ;
                 setAuthor(response.data.result.author) ;
+                setNoticeImg(response.data.result.noticeDTO.imageUrl) ;
             } catch (error) {
                 console.error("실패", error) ;
             }
@@ -81,6 +83,20 @@ function NoticePage() {
         }
     }
 
+    const imgRendering = () => {
+        if(typeof(noticeImg) === 'string') {
+            return <img src={noticeImg} />
+        } else {
+            return (
+                <>
+                    {noticeImg.map((img, index) => {
+                        <img src={img} key={index} />
+                    })}
+                </>
+            )
+        }
+    }
+
 
     if(!notice) {
         return <Loading />
@@ -114,7 +130,12 @@ function NoticePage() {
                         </itemS.ModalContainer>
                     }
                     <itemS.Line />
-                    <itemS.Content>{notice.content}</itemS.Content>
+                    <itemS.Content>
+                        <div>{notice.content}</div>
+                        <itemS.NoticeImgContainer>
+                            {imgRendering()}
+                        </itemS.NoticeImgContainer>
+                    </itemS.Content>
                     <itemS.Line />
                     <itemS.CommentContainer>
                         <itemS.CommentHeader>
