@@ -112,7 +112,7 @@ function ProductPage() {
                         }}/>
                     </itemS.IconContainer>
                 </itemS.ImgContainer>
-                <ProductInfo product={product} />
+                <ProductInfo product={product} id={id} />
                 <itemS.BtnContainer>
                     {button}
                 </itemS.BtnContainer>

@@ -3,11 +3,13 @@ import * as itemS from "./styled/ProductPage.main.info.style"
 import Notice from "./ProductPage.main.info.notice"
 import { useEffect, useState } from "react";
 import { differenceInMilliseconds, intervalToDuration } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
-function Info(product) {
+function Info({product, id}) {
+    const navigate = useNavigate();
 
-    const productInfo = product.product.postDto ;
-    const userInfo = product.product.adminDto ;
+    const productInfo = product.postDto ;
+    const userInfo = product.adminDto ;
 
     const { deadline } = productInfo ;
     const [ possibility, setPossibility ] = useState(true) ;
@@ -113,6 +115,9 @@ function Info(product) {
                 <Notice />
                 <Notice />
                 <Notice />
+                <itemS.BtnContainer>
+                    <itemS.Btn onClick={() => {navigate(`/product/${id}/notice/write`)}}>+</itemS.Btn>
+                </itemS.BtnContainer>
             </itemS.InfoContainer>
         </>
     )
