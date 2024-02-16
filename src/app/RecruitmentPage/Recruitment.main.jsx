@@ -14,7 +14,6 @@ import { useNavigate } from "react-router-dom"
 
 function Recruitment() {
     const navigate = useNavigate();
-    // const date = new Date(Date.now);
 
     const [formData, setFormData] = useState({
         'deadline': "2024-02-15T00:00:00.000Z",
@@ -200,7 +199,7 @@ function Recruitment() {
                         <itemS.ProductInfoContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>상품명<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
-                                <itemS.ProductInput placeholder='상품명' onChange={handleProductName}></itemS.ProductInput>
+                                <itemS.ProductInput placeholder='상품명' value={formData.productName} onChange={handleProductName}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>이미지 선택<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
@@ -235,11 +234,11 @@ function Recruitment() {
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>가격<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
-                                <itemS.ProductInput placeholder='가격을 입력해 주세요' onChange={handlePrice}></itemS.ProductInput>
+                                <itemS.ProductInput placeholder='가격을 입력해 주세요' value={formData.price} onChange={handlePrice}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>상세설명</itemS.ProductText>
-                                <itemS.ProductInput type='desc' placeholder='게시글 내용을 작성해 주세요' onChange={handleDesc}></itemS.ProductInput>
+                                <itemS.ProductInput type='desc' placeholder='게시글 내용을 작성해 주세요' value={formData.description} onChange={handleDesc}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                         </itemS.ProductInfoContainer>
                     </itemCategory.CategoryListContainer>
