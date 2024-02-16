@@ -22,10 +22,11 @@ function ProductPage() {
     const [quantityOpen, setQuantityOpen] = useState(false) ;
     const [product, setProduct] = useState(null) ;
     const [completeModalOpen, setCompleteModalOpen] = useState(false) ;
+    const [cancelModalOpen, setCancelModalOpen] = useState(false) ;
 
     useEffect(() => {
         const auth = import.meta.env.VITE_AUTH ;
-    
+
         const fetchData = async () => {
             try {
                 const response = await client(auth).post(
@@ -37,13 +38,13 @@ function ProductPage() {
             }
         };
         fetchData() ;
-    },[]) ;
+    },[product]) ;
+
+    const location = useLocation() ;
 
     const openImgModalHandler = () => {
         setImgOpen(!imgOpen) ;
     } ;
-
-    const location = useLocation() ;
 
     const copyLink = async(link) => {
         try {
@@ -66,6 +67,10 @@ function ProductPage() {
         setCompleteModalOpen(!completeModalOpen) ;
     }
 
+    const openCancelModalHandler = () => {
+        setCancelModalOpen(!cancelModalOpen) ;
+    }
+
     let button;
 
     if (!product) {
@@ -74,7 +79,7 @@ function ProductPage() {
         if (product.joinStatus === null) {
             button = <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn>;
         } else if (product.joinStatus === "PARTICIPATOR") {
-            button = <itemS.Btn>참여 취소하기</itemS.Btn>;
+            button = <itemS.Btn onClick={openCancelModalHandler}>참여 취소하기</itemS.Btn>;
         } else if (product.joinStatus === "AUTHOR") {
             button = (
                 <>
@@ -92,7 +97,7 @@ function ProductPage() {
                 {copyNoticeOpen && <CopyLinkModal openCopyNoticeModalHandler={openCopyNoticeModalHandler} /> }
                 {quantityOpen && <QuantityModal openQuantityModalHandler={openQuantityModalHandler} id={id} openCompleteModalHandler={openCompleteModalHandler}/>}
                 {completeModalOpen && <CompleteModal openCompleteModalHandler={openCompleteModalHandler} />}
-                <CancelModal></CancelModal>
+                {cancelModalOpen && <CancelModal openCancelModalHandler={openCancelModalHandler} id={id} /> }
                 <itemS.ImgContainer onClick={openImgModalHandler} >
                     <itemS.ProductImg src={product.postDto.imageUrl} />
                     <itemS.IconContainer>
