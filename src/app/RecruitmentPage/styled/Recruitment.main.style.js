@@ -122,8 +122,7 @@ margin: 60px 58px;
 `
 
 export const CompleteBtn = styled.div`
-width: 90%;
-max-width: 430px;
+width: 400px;
 height: 55px;
 border-radius: 7px;
 display: flex;
@@ -131,6 +130,9 @@ justify-content: center;
 align-items: center;
 position: fixed;
 bottom: 25px;
+left: 50%;
+transform: translateX(-50%);
+
 ${(props) =>
         props.type === 'complete' ?
             `
