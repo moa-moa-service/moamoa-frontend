@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from 'react';
 import client from '../../client';
 import BottomWrapper from './MyTownPage.main.BottomWrapper.jsx';
 
-function Map() {
+function Map( {onTown}) {
     const navermaps = useNavermaps();
     const mapRef = useRef(null);
 
@@ -49,6 +49,26 @@ function Map() {
         };
         fetchData();
     }, []);
+
+    useEffect(() => {
+        if (myLocation.lat !== null && myLocation.lng !== null) {
+            const geocoder = navermaps.Service.reverseGeocode(
+                {
+                    coords: `${myLocation.lng},${myLocation.lat}`,
+                    orders: [
+                        navermaps.Service.OrderType.ADDR,
+                        navermaps.Service.OrderType.ROAD_ADDR
+                    ].join(',')
+                },
+                function (status, response) {
+                    if (status === navermaps.Service.Status.ERROR) {
+                        return alert('Something Wrong!');
+                    }
+                    onTown(response.v2.results[1].region.area3.name);
+                }
+            );
+        }
+    }, [myLocation.lat, myLocation.lng]);
 
 
 

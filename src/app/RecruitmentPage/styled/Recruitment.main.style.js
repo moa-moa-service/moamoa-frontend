@@ -95,39 +95,56 @@ ${(props) =>
     `}
 `
 
-export const SelectImg = styled.input`
+export const SelectImgLabel = styled.label`
+display: inline-block;
 width: 150px;
 height: 150px;
 border: 2px solid #2B4760;
 border-radius: 15px;
+position: relative;
+`
 
-&::-webkit-file-upload-button {
-    visibility: hidden;
-}
+export const SelectImg = styled.input`
+position: absolute;
+width: 1px;
+height: 1px;
+padding: 0;
+margin: -1px;
+overflow: hidden;
+clip: rect(0,0,0,0);
+border: 0;
+`
+
+export const CameraIcon = styled.img`
+width: 33.333px;
+height: 30px;
+margin: 60px 58px;
 `
 
 export const CompleteBtn = styled.div`
-width: 90%;
+width: 400px;
 height: 55px;
 border-radius: 7px;
-background-color: #C4C4C4;
 display: flex;
 justify-content: center;
 align-items: center;
 position: fixed;
-left: 5%;
 bottom: 25px;
-${(props) => 
-    props.type === 'complete' ?
-    `
+left: 50%;
+transform: translateX(-50%);
+
+${(props) =>
+        props.type === 'complete' ?
+            `
     background-color: #FF424D;
     color: #FFF;
+    
     ` : `
     background-color: #C4C4C4;
+    color: #888;
     `
-}
+    }
 
-color: #888;
 font-family: Inter;
 font-size: 14.676px;
 font-style: normal;

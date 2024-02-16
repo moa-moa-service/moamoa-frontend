@@ -3,6 +3,9 @@ import * as itemCategory from "../MainPage/styled/MainPage.main.CategoryList.sty
 import * as itemCategoryDetails from "../MainPage/styled/MainPage.CategoryDatailPage.style"
 import * as itemS from "./styled/Recruitment.main.style"
 import * as itemC from "../MainPage/styled/MainPage.main.CategoryList.Category.style";
+import camera from  "../../../public/RecruitmentPage/camera.png"
+import BackIcon from '../../../public/SearchPage/backIcon.png'
+
 
 import TradingLocation from "./Recruitment.TradingLocation"
 import RecruitmentModal from "./Recruitment.modal"
@@ -13,10 +16,9 @@ import { useNavigate } from "react-router-dom"
 
 function Recruitment() {
     const navigate = useNavigate();
-    // const date = new Date(Date.now);
 
     const [formData, setFormData] = useState({
-        'deadline': "2024-02-15T00:00:00.000Z",
+        'deadline': "2024-02-20T00:00:00.000Z",
     });
     const [selectedCategory, setSelectedCategory] = useState();
 
@@ -52,6 +54,7 @@ function Recruitment() {
                 "longitude": data.myLocation.lng
             },
             'dealTown': data.dealTown,
+            'town': data.town,
         });
     };
 
@@ -89,13 +92,17 @@ function Recruitment() {
     }
 
     const handleFileChange = (event) => {
-        const file = event.target.files[0];
-        if (selectedImages.length < MAX_IMAGES) { // 이미지 수 제한 확인
-            setSelectedImages([...selectedImages, file]);
-        } else {
-            // 이미지 수 초과 처리
-            alert('이미지는 최대 열 개까지 선택할 수 있습니다.');
-        }
+        const files = event.target.files;
+    if (selectedImages.length + files.length <= MAX_IMAGES) { // 이미지 수 제한 확인
+        setSelectedImages([...selectedImages, ...files]);
+    } else {
+        // 이미지 수 초과 처리
+        alert('이미지는 최대 열 개까지 선택할 수 있습니다.');
+    }
+    };
+
+    const handleRemoveImage = (indexToRemove) => {
+        setSelectedImages(selectedImages.filter((_, index) => index !== indexToRemove));
     };
 
     const submitBtn = () => {
@@ -105,7 +112,7 @@ function Recruitment() {
         const jsonRecruitmentData = JSON.stringify(formData);
         const jsonBlob = new Blob([jsonRecruitmentData], { type: 'application/json' });
         requestBody.append('request', jsonBlob);
-        selectedImages.forEach(image=>requestBody.append('files', image));
+        selectedImages.forEach(image => requestBody.append('files', image));
 
         const fetchData = async () => {
             try {
@@ -142,7 +149,7 @@ function Recruitment() {
                 )}
                 {!isModalOpen && (
                     <>
-                        {formData.categoryId && formData.personnel && formData.productName && formData.dealLocation && formData.dealTown && formData.price && selectedImages ? (
+                        {formData.categoryId && formData.personnel && formData.productName && formData.dealLocation && formData.dealTown && formData.price && selectedImages.length !== 0 ? (
                             <itemS.CompleteBtn onClick={submitBtn} type='complete'>모집 완료</itemS.CompleteBtn>
                         ) : (
                             <itemS.CompleteBtn>모집 완료</itemS.CompleteBtn>
@@ -157,7 +164,7 @@ function Recruitment() {
                 )}
                 {!isTradingLocation && (<>
                     <itemCategoryDetails.CategoryTitleContainer type='recruit'>
-                        <itemCategoryDetails.BackBtn onClick={() => { navigate(-1); }} />
+                        <itemCategoryDetails.BackBtn src={BackIcon} onClick={() => { navigate(-1); }} />
                         <itemCategoryDetails.CategoryTitle>모집하기</itemCategoryDetails.CategoryTitle>
                     </itemCategoryDetails.CategoryTitleContainer>
                     <itemCategory.CategoryListContainer>
@@ -181,7 +188,7 @@ function Recruitment() {
                             {formData.personnel ? (
                                 <>
                                     <itemS.FilterWrapper style={{ background: "#2B4760" }}>
-                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('people')}>{formData.personnel}명</itemS.FilterText>
+                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('people')}>{formData.personnel}개</itemS.FilterText>
                                     </itemS.FilterWrapper>
                                 </>
                             ) : (
@@ -195,20 +202,25 @@ function Recruitment() {
                         <itemS.ProductInfoContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>상품명<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
-                                <itemS.ProductInput placeholder='상품명' onChange={handleProductName}></itemS.ProductInput>
+                                <itemS.ProductInput placeholder='상품명' value={formData.productName} onChange={handleProductName}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>이미지 선택<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
                                 <itemS.ImgContainer>
-                                    <itemS.SelectImg
-                                        type="file"
-                                        accept="image/*"
-                                        ref={inputFileRef}
-                                        onChange={handleFileChange}
-                                    />
+                                    <itemS.SelectImgLabel htmlFor='img'>
+                                        <itemS.CameraIcon src={camera}/>
+                                        <itemS.SelectImg
+                                            type="file"
+                                            id='img'
+                                            accept="image/*"
+                                            ref={inputFileRef}
+                                            onChange={handleFileChange}
+                                            multiple
+                                        />
+                                    </itemS.SelectImgLabel>
                                     <itemC.ItemsContainer>
                                         {selectedImages.map((image, index) => (
-                                            <itemS.ImgWrapper key={index}>
+                                            <itemS.ImgWrapper key={index} onClick={() => handleRemoveImage(index)}>
                                                 <img
                                                     src={URL.createObjectURL(image)}
                                                     alt={`Image ${index}`}
@@ -225,11 +237,11 @@ function Recruitment() {
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>가격<itemS.ProductText type='asterisk'>*</itemS.ProductText></itemS.ProductText>
-                                <itemS.ProductInput placeholder='가격을 입력해 주세요' onChange={handlePrice}></itemS.ProductInput>
+                                <itemS.ProductInput placeholder='가격을 입력해 주세요' value={formData.price} onChange={handlePrice}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                             <itemS.InfoElementContainer>
                                 <itemS.ProductText>상세설명</itemS.ProductText>
-                                <itemS.ProductInput type='desc' placeholder='게시글 내용을 작성해 주세요' onChange={handleDesc}></itemS.ProductInput>
+                                <itemS.ProductInput type='desc' placeholder='게시글 내용을 작성해 주세요' value={formData.description} onChange={handleDesc}></itemS.ProductInput>
                             </itemS.InfoElementContainer>
                         </itemS.ProductInfoContainer>
                     </itemCategory.CategoryListContainer>

@@ -15,7 +15,7 @@ display: flex;
 align-items: center;
 `;
 
-export const BackBtn = styled.div`
+export const BackBtn = styled.img`
 width: 50px;
 height: 50px;
 background-color: #FF424D;

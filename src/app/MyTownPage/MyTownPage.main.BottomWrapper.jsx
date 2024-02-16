@@ -14,7 +14,7 @@ function BottomWrapper(product) {
                             <itemS.ProductText type='price'>{product.product.simplePostDTO.price}원</itemS.ProductText>
                         </itemS.ProductTextTop>
                         <itemS.ProductTextMiddle>
-                            <itemS.ProductText type='place'>행복약국</itemS.ProductText>
+                            <itemS.ProductText type='place'>{product.product.simplePostDTO.dealTown}</itemS.ProductText>
                             <itemS.ProductText type='location'>{product.product.address.name}</itemS.ProductText>
                         </itemS.ProductTextMiddle>
                         <itemS.ProductTextBottom>
