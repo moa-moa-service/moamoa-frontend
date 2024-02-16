@@ -63,10 +63,14 @@ function Search() {
         setMaxPrice('') ;
     }
 
+    const searchHandle = () => {
+        filterReset() ;
+        searchKeywordHandle() ;
+    }
+
     const onEnterKeyPress = (e) => {
         if (e.key === 'Enter') {
-            filterReset() ;
-            searchKeywordHandle() ;
+            searchHandle() ;
         }
     } ;
 
@@ -114,7 +118,7 @@ function Search() {
             <C.SearchContainer>
                 <img src="../../../public/SearchPage/backIcon.png" alt="뒤로가기" onClick={() => navigate(-1)}/>
                     <C.SearchBox onKeyPress={onEnterKeyPress} onChange={onChangeKeyword} />
-                    <img src="../../../public/SearchPage/searchIcon.png" alt="검색" onClick={() => onEnterKeyPress()}/>
+                    <img src="../../../public/SearchPage/searchIcon.png" alt="검색" onClick={() => searchHandle()}/>
             </C.SearchContainer>
             <C.MainContainer>
                 <C.KeywordContainer>

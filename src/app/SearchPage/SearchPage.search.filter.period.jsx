@@ -39,8 +39,6 @@ function FilterPeriod({openPeriodFilter, chageDDay}) {
     }
 
     const dayClickHandle = (e) => {
-        console.log(selectDay) ;
-        console.log(currentDate) ;
         chageDDay(differenceInCalendarDays(selectDay, new Date())) ;
         openPeriodFilter() ;
     }
