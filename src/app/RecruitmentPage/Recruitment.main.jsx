@@ -5,6 +5,7 @@ import * as itemS from "./styled/Recruitment.main.style"
 import * as itemC from "../MainPage/styled/MainPage.main.CategoryList.Category.style";
 import camera from  "../../../public/RecruitmentPage/camera.png"
 
+
 import TradingLocation from "./Recruitment.TradingLocation"
 import RecruitmentModal from "./Recruitment.modal"
 import client from "../../client"
@@ -16,7 +17,7 @@ function Recruitment() {
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({
-        'deadline': "2024-02-15T00:00:00.000Z",
+        'deadline': "2024-02-20T00:00:00.000Z",
     });
     const [selectedCategory, setSelectedCategory] = useState();
 
@@ -52,6 +53,7 @@ function Recruitment() {
                 "longitude": data.myLocation.lng
             },
             'dealTown': data.dealTown,
+            'town': data.town,
         });
     };
 

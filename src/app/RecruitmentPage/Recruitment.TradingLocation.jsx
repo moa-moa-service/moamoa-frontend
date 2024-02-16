@@ -25,7 +25,8 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
         onLocationData({
             dealTown: dealTown,
             roadAddress: response.v2.address.roadAddress,
-            myLocation: myLocation
+            myLocation: myLocation,
+            town: response.v2.results[1].region.area3.name,
         });
         openTradingLocation();
     }
