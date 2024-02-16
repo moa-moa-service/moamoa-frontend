@@ -2,7 +2,7 @@ import * as C from "./styled/NoticePage.component.style"
 import * as itemS from "./styled/NoticePage.notice.style"
 
 import Comment from "./NoticePage.notice.comment"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react";
 import client from "../../client";
 import { differenceInCalendarDays, intervalToDuration } from "date-fns";
@@ -11,6 +11,9 @@ import Loading from "../LoadingPage/LoadingPage.main";
 
 function NoticePage() {
 
+    const navigate = useNavigate() ;
+
+    const { id } = useParams() ;
     const { noticeId } = useParams() ;
     const [notice, setNotice] = useState() ;
     const [comments, setComments] = useState() ;
@@ -18,8 +21,9 @@ function NoticePage() {
 
     const [modalOpen, setModalOpen] = useState(false) ;
 
+    const auth = import.meta.env.VITE_AUTH ;
+
     useEffect(() => {
-        const auth = import.meta.env.VITE_AUTH ;
 
         const fetchData = async () => {
             try {
@@ -38,6 +42,17 @@ function NoticePage() {
     
     const modalHandle = () => {
         setModalOpen(!modalOpen) ;
+    }
+
+    const deleteNotice = async () => {
+        try {
+            const response = await client(auth).delete(
+                `/notices/${noticeId}`
+            ) ;
+            navigate(`/product/${id}`) ;
+        } catch (error) {
+            console.log("실패", error) ;
+        }
     }
 
     if(!notice) {
@@ -65,7 +80,7 @@ function NoticePage() {
                                 <div>수정하기</div>
                                 <img src="../../../public/NoticePage/pencil.png" />
                                 </itemS.ModalContent>
-                            <itemS.ModalContent color="red">
+                            <itemS.ModalContent color="red" onClick={deleteNotice}>
                                 <div>삭제하기</div>
                                 <img src="../../../public/NoticePage/delete.png" />
                             </itemS.ModalContent>
