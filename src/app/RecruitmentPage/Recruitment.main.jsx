@@ -98,6 +98,10 @@ function Recruitment() {
         }
     };
 
+    const handleRemoveImage = (indexToRemove) => {
+        setSelectedImages(selectedImages.filter((_, index) => index !== indexToRemove));
+    };
+
     const submitBtn = () => {
         const auth = import.meta.env.VITE_AUTH;
         const requestBody = new FormData();
@@ -105,7 +109,7 @@ function Recruitment() {
         const jsonRecruitmentData = JSON.stringify(formData);
         const jsonBlob = new Blob([jsonRecruitmentData], { type: 'application/json' });
         requestBody.append('request', jsonBlob);
-        selectedImages.forEach(image=>requestBody.append('files', image));
+        selectedImages.forEach(image => requestBody.append('files', image));
 
         const fetchData = async () => {
             try {
@@ -208,7 +212,7 @@ function Recruitment() {
                                     />
                                     <itemC.ItemsContainer>
                                         {selectedImages.map((image, index) => (
-                                            <itemS.ImgWrapper key={index}>
+                                            <itemS.ImgWrapper key={index} onClick={() => handleRemoveImage(index)}>
                                                 <img
                                                     src={URL.createObjectURL(image)}
                                                     alt={`Image ${index}`}
