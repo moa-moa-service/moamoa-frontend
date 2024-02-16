@@ -10,6 +10,7 @@ function Info({product, id, changePossible, possibility}) {
 
     const productInfo = product.postDto ;
     const userInfo = product.adminDto ;
+    const joinStatus = product.joinStatus ;
 
     const { deadline } = productInfo ;
     const [remainingTime, setRemainingTime] = useState(calculateRemaingingTime()) ;
@@ -114,9 +115,12 @@ function Info({product, id, changePossible, possibility}) {
                 <Notice />
                 <Notice />
                 <Notice />
+                {joinStatus === "AUTHOR" ?
                 <itemS.BtnContainer>
                     <itemS.Btn onClick={() => {navigate(`/product/${id}/notice/write`)}}>+</itemS.Btn>
                 </itemS.BtnContainer>
+                : null
+                }
             </itemS.InfoContainer>
         </>
     )
