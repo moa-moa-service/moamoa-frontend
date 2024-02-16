@@ -42,25 +42,6 @@ function NoticeWritePage() {
         }
     }, [noticeId]) ;
 
-    // if(noticeId) {
-    //     useEffect(() => {
-    //         const fetchData = async () => {
-    //             try {
-    //                 const response = await client(auth).get(
-    //                     `/notices/${noticeId}`
-    //                 ) ;
-    //                 setImportData(response.data.result.noticeDTO) ;
-    //                 setLoading('done') ;
-    //             } catch (error) {
-    //                 console.error("실패", error) ;
-    //             }
-    //         } ;
-    //         fetchData() ;
-    //     }, []) ;
-    // } else {
-    //     setLoading('done') ;
-    // };
-
     const handleTitle = (e) => {
         setFormData({
             ...formData,

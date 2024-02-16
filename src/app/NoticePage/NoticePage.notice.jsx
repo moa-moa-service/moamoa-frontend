@@ -21,11 +21,10 @@ function NoticePage() {
     const [author, setAuthor] = useState() ;
 
     const [modalOpen, setModalOpen] = useState(false) ;
-
+    const [inputComment, setInputComment] = useState('') ;
     const auth = import.meta.env.VITE_AUTH ;
 
     useEffect(() => {
-
         const fetchData = async () => {
             try {
                 const response = await client(auth).get(
@@ -59,6 +58,29 @@ function NoticePage() {
             console.log("실패", error) ;
         }
     }
+
+    const commentInputHandle = (e) => {
+        setInputComment(e.target.value) ;
+    }
+
+    const commentSubmit = async () => {
+        try {
+            const response = await client(auth).post(
+                `/notices/${noticeId}/comments`, {
+                    'content': inputComment, 
+                },
+                {
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                }
+            ) ;
+            console.log(response) ;
+        } catch (error) {
+            console.error("실패", error) ;
+        }
+    }
+
 
     if(!notice) {
         return <Loading />
@@ -106,8 +128,8 @@ function NoticePage() {
                 </C.WriteContainer>
                 <itemS.WriteCommentContainer>
                     <itemS.UserImg />
-                    <itemS.CommentInput placeholder="댓글을 입력해 주세요." />
-                    <itemS.DoneBtn>완료</itemS.DoneBtn>
+                    <itemS.CommentInput placeholder="댓글을 입력해 주세요." onChange={commentInputHandle}/>
+                    <itemS.DoneBtn onClick={commentSubmit}>완료</itemS.DoneBtn>
                 </itemS.WriteCommentContainer>
             </C.NoticeWriteContainer>
         </>
