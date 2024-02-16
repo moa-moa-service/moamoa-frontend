@@ -65,8 +65,32 @@ export const Btn = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
+`
+
+export const SmallBtn = styled.div`
+    width: 40%;
+    background-color: blue;
+    border-radius: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 500;
+    border: 2px solid #2B4760;
+
+
+    ${(props) => 
+        props.color === "white" 
+        ? `
+            background-color: #FFFFFF;
+            color: #2B4760;
+        ` : `
+            background-color: #2B4760;
+            color: #FFFFFF;
+        `
+    }
 `
 
 export const Loading = styled.div`

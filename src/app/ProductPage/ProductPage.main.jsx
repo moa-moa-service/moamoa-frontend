@@ -66,8 +66,23 @@ function ProductPage() {
         setCompleteModalOpen(!completeModalOpen) ;
     }
 
+    let button;
+
     if (!product) {
         return <itemS.Loading>Loading..</itemS.Loading>
+    } else {
+        if (product.joinStatus === null) {
+            button = <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn>;
+        } else if (product.joinStatus === "PARTICIPATOR") {
+            button = <itemS.Btn>참여 취소하기</itemS.Btn>;
+        } else if (product.joinStatus === "AUTHOR") {
+            button = (
+                <>
+                    <itemS.SmallBtn color="white">상태변경</itemS.SmallBtn> ;
+                    <itemS.SmallBtn>수정하기</itemS.SmallBtn> ;
+                </>
+            )
+        }
     }
 
     return (
@@ -94,7 +109,7 @@ function ProductPage() {
                 </itemS.ImgContainer>
                 <ProductInfo product={product} />
                 <itemS.BtnContainer>
-                    <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn>
+                    {button}
                 </itemS.BtnContainer>
             </itemS.ProductPageContainer>
         </>
