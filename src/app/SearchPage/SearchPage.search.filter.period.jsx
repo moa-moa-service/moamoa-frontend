@@ -1,7 +1,7 @@
 import * as C from "./styled/SearchPage.search.filter.style"
 import * as itemS from "./styled/SearchPage.search.filter.period.style"
 import { useState } from "react"
-import { format, addDays, endOfMonth, endOfWeek, startOfMonth, startOfWeek, isSameMonth, isSameDay, subMonths } from "date-fns" 
+import { format, addDays, endOfMonth, endOfWeek, startOfMonth, startOfWeek, isSameMonth, isSameDay, subMonths, differenceInCalendarDays } from "date-fns" 
 
 function FilterPeriod({openPeriodFilter, chageDDay}) {
 
@@ -30,19 +30,26 @@ function FilterPeriod({openPeriodFilter, chageDDay}) {
     let day = startWeek ;
 
     const selectDayHandle = (e) => {
-        setSelectDay(e.target.innerText) ;
+        const sYear = currentDate.getFullYear() ;
+        const sMonth = currentDate.getMonth()+1 ;
+        const sDay = e.target.innerText ;
+
+        const fullSelectDay = `${sYear}-${sMonth}-${sDay}`
+        setSelectDay(new Date(fullSelectDay)) ;
     }
 
     const dayClickHandle = (e) => {
-        chageDDay(selectDay-currentDate.getDate()) ;
+        console.log(selectDay) ;
+        console.log(currentDate) ;
+        chageDDay(differenceInCalendarDays(selectDay, new Date())) ;
         openPeriodFilter() ;
     }
 
     while(day <= endWeek) {
         for(let i=0; i<7; i++) {
 
-            const today = isSameDay(day, currentDate) ? 'today' : null ;
-            const select = (selectDay == day.getDate()) ? 'select' : null ;
+            const today = isSameDay(day, new Date()) ? 'today' : null ;
+            const select = isSameDay(selectDay, day) ? 'select' : null ;
 
             days.push(
                 <itemS.day key={day}>
@@ -66,7 +73,7 @@ function FilterPeriod({openPeriodFilter, chageDDay}) {
              <C.FilterContent>
                 <C.FilterTitle>
                     <div>모집 기간</div>
-                    <div>1일</div>
+                    <div> {selectDay ? `${differenceInCalendarDays(selectDay, new Date())}일` : "0일"} </div>
                 </C.FilterTitle>
                 <itemS.CalendarContainer>
                     <itemS.CalendarNav>
