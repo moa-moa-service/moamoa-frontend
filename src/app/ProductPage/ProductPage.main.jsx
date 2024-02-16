@@ -10,6 +10,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { useEffect } from "react"
 import client from "../../client"
+import Loading from "../LoadingPage/LoadingPage.main";
 
 
 function ProductPage() {
@@ -80,7 +81,7 @@ function ProductPage() {
     let button;
 
     if (!product) {
-        return <itemS.Loading>Loading..</itemS.Loading>
+        return <Loading />
     } else {
         if (product.joinStatus === null) {
             possibility ? 

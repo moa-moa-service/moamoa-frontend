@@ -3,6 +3,7 @@ import * as itemS from "./styled/SearchPage.main.style"
 import * as C from "./styled/SearchPage.component.style"
 import { useEffect, useState } from "react";
 import client from "../../client"
+import Loading from "../LoadingPage/LoadingPage.main";
 
 function SearchPageMain() {
     const navigate = useNavigate();
@@ -77,7 +78,7 @@ function SearchPageMain() {
     }, []) ;
 
     if(!recentKeyword || !rankingKeyword) {
-        return <itemS.Loading>Loading..</itemS.Loading>
+        return <Loading/>
     }
 
     return (
