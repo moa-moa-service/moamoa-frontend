@@ -19,7 +19,7 @@ function NoticeWritePage() {
     const [loading, setLoading] = useState('loading') ;
 
     const inputFileRef = useRef(null) ;
-    const MAX_IMAGES = 10 ;
+    const MAX_IMAGES = 1 ;
     const [selectedImages, setSelectedImages] = useState([]);
 
     const auth = import.meta.env.VITE_AUTH;
@@ -69,15 +69,16 @@ function NoticeWritePage() {
     const handleFileChange = (event) => {
         const files = event.target.files;
     if (selectedImages.length + files.length <= MAX_IMAGES) { // 이미지 수 제한 확인
-        setSelectedImages([...selectedImages, ...files]);
+        setSelectedImages([...files]);
     } else {
         // 이미지 수 초과 처리
-        alert('이미지는 최대 열 개까지 선택할 수 있습니다.');
+        alert('이미지는 한 개만 선택할 수 있습니다.');
+        setSelectedImages([]);
     }
     };
 
-    const handleRemoveImage = (indexToRemove) => {
-        setSelectedImages(selectedImages.filter((_, index) => index !== indexToRemove));
+    const handleRemoveImage = () => {
+        setSelectedImages([]);
     };
 
     const handleSubmit = () => {
@@ -160,7 +161,7 @@ function NoticeWritePage() {
                         </itemS.SelectImgLabel>
                         <itemS.ItemsContainer>
                             {selectedImages.map((image, index) => (
-                                <itemS.ImgWrapper key={index} onClick={() => handleRemoveImage(index)}>
+                                <itemS.ImgWrapper key={index} onClick={() => handleRemoveImage()}>
                                     <img
                                         src={URL.createObjectURL(image)}
                                         alt={`Image ${index}`}

@@ -72,22 +72,15 @@ margin-left: 8px;
 display: inline-block;
 `
 
-// export const ImgInput = styled.div`
-//     width: 150px;
-//     height: 150px;
-//     border: 1.5px solid #2B4760;
-//     border-radius: 15px;
-// `
-
-export const ContentInput = styled.input`
+export const ContentInput = styled.textarea`
     width: 95%;
     height: 300px;
     border: 1.5px solid #2B4760;
     border-radius: 10px;
+    padding: 10px;
 
     &::placeholder {
         color: #B9B9B9 ;
-        padding: 5px;
     }
 
 `
