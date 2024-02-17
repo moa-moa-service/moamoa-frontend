@@ -22,7 +22,6 @@ import {
 import { NavermapsProvider } from 'react-naver-maps'
 
 import './App.css'
-import Alarm from './app/MainPage/MainPage.Alarm.jsx'
 import { RecoilRoot } from 'recoil'
 import BasicInformation from './app/LoginPage/LoginPage.main.BasicInformation.jsx'
 
