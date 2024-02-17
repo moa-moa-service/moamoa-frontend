@@ -2,7 +2,7 @@ import * as itemS from "./styled/SearchPage.search.style"
 import * as C from "./styled/SearchPage.component.style"
 
 import ProductItem from '../MainPage/MainPage.CategoryDetailPage.Item'
-import FilterCategory from "./SearchPage.search.Filter.Category"
+import FilterCategory from "./SearchPage.search.filter.category"
 import FilterQuantity from "./SearchPage.search.filter.quantity"
 import FilterPrice from "./SearchPage.search.filter.price"
 import FilterPeriod from "./SearchPage.search.filter.period"
