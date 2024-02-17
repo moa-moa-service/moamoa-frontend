@@ -1,16 +1,20 @@
 import * as itemS from "./styled/NoticePage.notice.comment.style"
+import { format } from "date-fns" ;
 
-function Comment() {
+function Comment({comment}) {
+
+    const createDate = format(comment.createdAt, 'yyyy.MM.dd HH:mm') ;
+
     return(
         <>
             <itemS.CommentContainer>
                 <itemS.UserImg />
                 <itemS.TextContainer>
                     <itemS.WriteInfo>
-                        <itemS.UserName>KIKI</itemS.UserName>
-                        <itemS.Date>2023.12.02 11:29</itemS.Date>
+                        <itemS.UserName>{comment.nickname}</itemS.UserName>
+                        <itemS.Date>{createDate}</itemS.Date>
                     </itemS.WriteInfo>
-                    <itemS.Comment>확인했습니다!</itemS.Comment>
+                    <itemS.Comment>{comment.content}</itemS.Comment>
                     <itemS.ReplyBtn>답글</itemS.ReplyBtn>
                 </itemS.TextContainer>
             </itemS.CommentContainer>

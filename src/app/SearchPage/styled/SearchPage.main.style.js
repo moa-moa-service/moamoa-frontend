@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const KeywordTitle = styled.div`
-    margin: 0 20px 20px 20px;
+    margin: 0 20px 20px 10px;
     font-size: 18px;
     font-weight: 600;
     color: #000000;
@@ -31,4 +31,11 @@ export const RecentKeywordDelete = styled.div`
     width: 15px;
     height: 15px;
     color: #D2D2D2;
+`
+
+export const Loading = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 `

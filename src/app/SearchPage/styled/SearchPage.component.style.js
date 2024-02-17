@@ -76,3 +76,10 @@ export const Keyword = styled.div`
     border-radius: 20px;
     border: 1px solid #2B4760;
 `
+
+export const Loading = styled.div`
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+`

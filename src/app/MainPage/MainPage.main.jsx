@@ -1,7 +1,7 @@
 import * as itemS from "./styled/MainPage.main.style"
-// import SearchImg from "./public/MainPage/Search.png"
 import CategoryList from "./MainPage.main.CategoryList"
 import MenuNav from "../MenuNav/MenuNav.main"
+import BellIcon from "../../../public/MainPage/Bell.png"
 
 import { useNavigate, useLocation } from "react-router-dom"
 import { AuthAtom } from '../../recoil/atoms/AuthAtom'
@@ -30,7 +30,9 @@ function MainPage() {
                     <itemS.LocalText>
                         설정 지역명
                     </itemS.LocalText>
-                    <itemS.SearchImg onClick={() => {navigate("/alarm")}}></itemS.SearchImg>
+                    <itemS.SearchImgWrapper onClick={() => {navigate("/alarm")}}>
+                        <itemS.BellImg src={BellIcon}></itemS.BellImg>
+                    </itemS.SearchImgWrapper>
                 </itemS.SearchContainer>
                 <CategoryList />
             </itemS.MainPageContainer>

@@ -6,6 +6,7 @@ import * as itemMain from './styled/MainPage.main.style';
 import * as itemCategory from "./styled/MainPage.main.CategoryList.style";
 import * as itemS from './styled/MainPage.CategoryDatailPage.style';
 import ProductItem from './MainPage.CategoryDetailPage.Item';
+import BackIcon from '../../../public/SearchPage/backIcon.png'
 import client from "../../client";
 
 function CategoryDetailPage() {
@@ -43,8 +44,12 @@ function CategoryDetailPage() {
                 const response = await client(auth).get(
                     `/posts/${category}`
                 );
-                console.log(response.data.result.SimplePostDtoList);
-                setProducts(response.data.result.SimplePostDtoList);
+                if (category === 'near') {
+                    const simplePostDTOs = response.data.result.SimplePostDtoList.map(item => item.simplePostDTO);
+                    setProducts(simplePostDTOs);
+                } else {
+                    setProducts(response.data.result.SimplePostDtoList);
+                }
             } catch (error) {
                 console.error('안된다!!:', error);
             }
@@ -56,13 +61,13 @@ function CategoryDetailPage() {
         <>
             <itemMain.MainPageContainer>
                 <itemS.CategoryTitleContainer>
-                    <itemS.BackBtn onClick={() => { navigate(-1); }} />
+                    <itemS.BackBtn src={BackIcon} onClick={() => { navigate(-1); }} />
                     <itemS.CategoryTitle>{categoryText}</itemS.CategoryTitle>
                 </itemS.CategoryTitleContainer>
                 <itemCategory.CategoryListContainer>
                     {products.map(product => (
-                        <div key={product.postId}>
-                            <ProductItem product={product} onClick={() => { navigate(`/product/${product.postId}`); }}/>
+                        <div key={product.postId} onClick={() => { navigate(`/product/${product.postId}`); }}>
+                            <ProductItem product={product} />
                             <itemS.ContourLine />
                         </div>
                     ))}

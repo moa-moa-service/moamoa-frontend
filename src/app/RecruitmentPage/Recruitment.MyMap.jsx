@@ -1,7 +1,9 @@
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps';
 import { useState, useEffect, useRef } from 'react';
 
-function MyMap({ onResponseChange, isTradingLocation }) {
+import Loading from '../LoadingPage/LoadingPage.main';
+
+function MyMap({ onResponseChange, isTradingLocation, onLocationChange }) {
     const navermaps = useNavermaps();
     const mapRef = useRef(null);
 
@@ -36,6 +38,7 @@ function MyMap({ onResponseChange, isTradingLocation }) {
 
     useEffect(() => {
         if (myLocation.lat !== null && myLocation.lng !== null) {
+            onLocationChange(myLocation);
             const geocoder = navermaps.Service.reverseGeocode(
                 {
                     coords: `${myLocation.lng},${myLocation.lat}`,
@@ -54,25 +57,24 @@ function MyMap({ onResponseChange, isTradingLocation }) {
         }
     }, [myLocation.lat, myLocation.lng]);
 
+    const handleDragEnd = () => {
+        handleCenterChanged();
+    };
+
     return (
         <MapDiv style={{
             width: '100%',
             height: '70vh',
         }}>
             {isMapLoading ? (
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    height: '100%',
-                    width: '100%',
-                }}>Loading...</div>
+                <Loading/>
             ) : (
                 <NaverMap
                     ref={mapRef}
                     defaultCenter={new navermaps.LatLng(myLocation.lat, myLocation.lng)}
                     defaultZoom={20}
-                    onCenterChanged={isTradingLocation ? handleCenterChanged : undefined}
+                    onDragend={isTradingLocation ? handleDragEnd : undefined}
+                    // 드래그 종료 이벤트 핸들러 추가
                 >
                     {myLocation.lat && myLocation.lng && (
                         <Marker

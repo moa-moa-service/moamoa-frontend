@@ -12,6 +12,8 @@ import NoticePage from './app/NoticePage/NoticePage.notice.jsx'
 import AddressSetup from './app/LoginPage/LoginPage.main.AddressSetup.jsx'
 import MyTown from './app/MyTownPage/MyTownPage.main.jsx'
 import MemberInfoComponent from './app/LoginPage/LoginPage.main.MemberInfo.jsx'
+import Loading from './app/LoadingPage/LoadingPage.main.jsx'
+import Alarm from './app/MainPage/MainPage.Alarm.jsx'
 
 import {
   Route,
@@ -42,12 +44,14 @@ function App() {
             <Route path="/search" element={<SearchPageMain />} />
             <Route path="/search/:keyword" element={<Search />} />
             <Route path="/product/:id" element={<ProductPage />} />
-            <Route path="/product/:id/notice" element={<NoticePage />} />
-            <Route path="/product/notice/write" element={<NoticeWritePage />} />
+            <Route path="/product/:id/notice/:noticeId" element={<NoticePage />} />
+            <Route path="/product/:id/notice/write" element={<NoticeWritePage />} />
+            <Route path="/product/:id/notice/:noticeId/update" element={<NoticeWritePage />} />
             <Route path="/alarm" element={<Alarm />} />
             <Route path="/mypage" element={<MyPageComponent />} />
             <Route path="/userpage" element={<UserPageComponent />} />
             <Route path="/mytown" element={<MyTown />} />
+            <Route path='/loading' element={<Loading />} />
           </Routes>
         </NavermapsProvider>
       </div>

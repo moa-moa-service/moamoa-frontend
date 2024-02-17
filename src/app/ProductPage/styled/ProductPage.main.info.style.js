@@ -39,7 +39,7 @@ export const UserInfo = styled.div`
     display: flex;
 `
 
-export const UserIcon = styled.div`
+export const UserIcon = styled.img`
     width: 50px;
     height: 50px;
     border-radius: 50%;
@@ -153,4 +153,27 @@ export const Title = styled.div`
     font-size: 20px;
     font-weight: 700;
     margin-bottom: 20px;
+`
+
+export const BtnContainer = styled.div`
+    width: 100%;
+    height: 50px;
+    display: flex;
+    background-color: #FFFFFF;
+
+    @media screen and (min-width:431px){
+        width: 430px;
+    }
+`
+
+export const Btn = styled.div`
+    width: 90%;
+    background-color: #FF424D;
+    border-radius: 13px;
+    color: #FFFFFF ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+    font-weight: 500;
 `

@@ -26,9 +26,15 @@ margin: 12px 0px 12px 0px;
 letter-spacing: -0.577px;
 `
 
-export const SearchImg = styled.div`
+export const SearchImgWrapper = styled.div`
 width: 50px;
 height: 50px;
 border-radius: 15px;
 background-color: #FF424D;
+`
+
+export const BellImg = styled.img`
+width: 24px;
+height: 24px;
+margin: 13px;
 `

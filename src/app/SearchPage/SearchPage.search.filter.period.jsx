@@ -1,10 +1,11 @@
 import * as C from "./styled/SearchPage.search.filter.style"
 import * as itemS from "./styled/SearchPage.search.filter.period.style"
 import { useState } from "react"
-import { format, addDays, endOfMonth, endOfWeek, startOfMonth, startOfWeek, isSameMonth, isSameDay, subMonths } from "date-fns" 
+import { format, addDays, endOfMonth, endOfWeek, startOfMonth, startOfWeek, isSameMonth, isSameDay, subMonths, differenceInCalendarDays } from "date-fns" 
 
-function FilterPeriod({openPeriodFilter}) {
+function FilterPeriod({openPeriodFilter, chageDDay}) {
 
+    const [selectDay, setSelectDay] = useState('') ;
     const [currentDate, setCurrentDate] = useState(new Date()) ;  // 현재 날짜
 
     // 이전 달로 이동하는 함수
@@ -28,16 +29,30 @@ function FilterPeriod({openPeriodFilter}) {
     let days = [] ;
     let day = startWeek ;
 
+    const selectDayHandle = (e) => {
+        const sYear = currentDate.getFullYear() ;
+        const sMonth = currentDate.getMonth()+1 ;
+        const sDay = e.target.innerText ;
+
+        const fullSelectDay = `${sYear}-${sMonth}-${sDay}`
+        setSelectDay(new Date(fullSelectDay)) ;
+    }
+
+    const dayClickHandle = (e) => {
+        chageDDay(differenceInCalendarDays(selectDay, new Date())) ;
+        openPeriodFilter() ;
+    }
+
     while(day <= endWeek) {
         for(let i=0; i<7; i++) {
 
-            const color = isSameMonth(day, currentDate) ? null : 'gray' ;
-            const checkday = isSameDay(day, Date()) ? 'today' : null ;
+            const today = isSameDay(day, new Date()) ? 'today' : null ;
+            const select = isSameDay(selectDay, day) ? 'select' : null ;
 
             days.push(
                 <itemS.day key={day}>
-                    <itemS.dayText color={color} checkday={checkday}>{format(day,'d')}</itemS.dayText>
-                    {checkday === 'today' && <itemS.todayText>Today</itemS.todayText> } 
+                    {(isSameMonth(day, currentDate)) && <itemS.dayText today={today} select={select} onClick={selectDayHandle}>{format(day,'d')}</itemS.dayText>}
+                    {today === 'today' && <itemS.todayText>Today</itemS.todayText> } 
                 </itemS.day>
             ) ;
             day = addDays(day, 1) ;
@@ -56,7 +71,7 @@ function FilterPeriod({openPeriodFilter}) {
              <C.FilterContent>
                 <C.FilterTitle>
                     <div>모집 기간</div>
-                    <div>1일</div>
+                    <div> {selectDay ? `${differenceInCalendarDays(selectDay, new Date())}일` : "0일"} </div>
                 </C.FilterTitle>
                 <itemS.CalendarContainer>
                     <itemS.CalendarNav>
@@ -83,7 +98,7 @@ function FilterPeriod({openPeriodFilter}) {
                 </itemS.CalendarContainer>
                 <C.BtnContainer>
                     <C.Btn onClick={openPeriodFilter}>취소</C.Btn>
-                    <C.Btn color="navy" onClick={openPeriodFilter}>선택 완료</C.Btn>
+                    <C.Btn color="navy" onClick={dayClickHandle}>선택 완료</C.Btn>
                 </C.BtnContainer>
             </C.FilterContent>
         </C.FilterContainer>

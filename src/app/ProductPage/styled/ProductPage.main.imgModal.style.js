@@ -22,10 +22,35 @@ export const ImgModalContainer = styled.div`
 
 export const ImgModal = styled.div`
     width: 90%;
-    height: 55%;
+    /* height: 55%; */
     border-radius: 13px;
-    background-color: #D9D9D9;
+    background-color: #FFFFFF;
     box-shadow: 3px 7px 30px black ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    
+
+    img:nth-child(2) {
+        width: 100% ;
+        height: 100%;
+    }
+`
+
+export const angleIcon = styled.img`
+    width: 19px;
+    height: 35px;
+    position: absolute;
+    padding: 0 10px;
+    
+    &:first-child {
+        left: 0;
+    }
+
+    &:last-child {
+        right: 0;
+    }
 `
 
 export const ImgPageIconContainer = styled.div`

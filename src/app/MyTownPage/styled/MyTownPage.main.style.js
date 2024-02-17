@@ -30,7 +30,7 @@ margin: 25px 20px 25px 20px;
 display: flex;
 `
 
-export const ProductImg = styled.div`
+export const ProductImg = styled.img`
 width: 114px;
 height: 114px;
 border-radius: 15px;
