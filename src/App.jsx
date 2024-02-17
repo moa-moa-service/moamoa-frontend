@@ -36,6 +36,7 @@ function App() {
             <Route path='/post/:category' element={<CategoryDetailPage />} />
             <Route path="/login" element={<LoginPageComponent />} />
             <Route path="/signup" element={<BasicInformation />} />
+            <Route path="/signup/address-setup" element={<AddressSetup />} />
             <Route path="/member-info" element={<MemberInfoComponent />} />
             <Route path="/recruitment" element={<RecruitmentPage />} />
             <Route path="/search" element={<SearchPageMain />} />

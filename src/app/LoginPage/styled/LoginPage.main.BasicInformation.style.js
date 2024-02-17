@@ -111,11 +111,16 @@ const BasicInformationFooterWrapper = styled.div`
         padding: 20px 0;
         text-align: center;
         border: transparent;
-        background-color: #888888;
+        background-color: #FF424D;
         color: #ffffff;
         font-weight: bold;
         font-size: 14px;
         border-radius: 8px;
+        cursor: pointer;
+
+        &:disabled {
+            background-color: #888888;
+        }
     }
 `
 
