@@ -20,10 +20,25 @@ function NoticePage() {
     const [comments, setComments] = useState([]) ;
     const [author, setAuthor] = useState() ;
     const [noticeImg, setNoticeImg] = useState([]) ;
+    const [userImg, setUserImg] = useState() ;
 
     const [modalOpen, setModalOpen] = useState(false) ;
     const [inputComment, setInputComment] = useState('') ;
     const auth = import.meta.env.VITE_AUTH ;
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await client(auth).get(
+                    `/members`
+                ) ;
+                setUserImg(response.data.result.memberDTO.profileImage) ;
+            } catch (error) {
+                console.error("실패", error) ;
+            }
+        } ;
+        fetchData() ;
+    }, []) ;
 
     useEffect(() => {
         const fetchData = async () => {
@@ -104,7 +119,7 @@ function NoticePage() {
     }
 
 
-    if(!notice) {
+    if(!notice && !userImg) {
         return <Loading />
     }
 
@@ -154,7 +169,7 @@ function NoticePage() {
                     </itemS.CommentContainer>
                 </C.WriteContainer>
                 <itemS.WriteCommentContainer>
-                    <itemS.UserImg />
+                    <itemS.UserImg src={userImg} />
                     <itemS.CommentInput placeholder="댓글을 입력해 주세요." onKeyPress={onEnterKeyPress} onChange={commentInputHandle}/>
                     <itemS.DoneBtn onClick={commentSubmit}>완료</itemS.DoneBtn>
                 </itemS.WriteCommentContainer>

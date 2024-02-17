@@ -82,7 +82,7 @@ export const WriteCommentContainer = styled.div`
     box-sizing: border-box;
 `
 
-export const UserImg = styled.div`
+export const UserImg = styled.img`
     width: 42px;
     height: 42px;
     border-radius: 50%;
