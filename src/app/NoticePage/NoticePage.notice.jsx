@@ -77,7 +77,7 @@ function NoticePage() {
                     }
                 }
             ) ;
-            console.log(response) ;
+            window.location.reload() ;
         } catch (error) {
             console.error("실패", error) ;
         }
