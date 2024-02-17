@@ -4,8 +4,9 @@ import { useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import client from "../../client";
 import camera from  "../../../public/RecruitmentPage/camera.png"
-import { useEffect } from "react";
-import Loading from "../LoadingPage/LoadingPage.main";
+import { useEffect } from "react"
+import Loading from "../LoadingPage/LoadingPage.main"
+import BackIcon from "../../../public/SearchPage/backIcon.png"
 
 function NoticeWritePage() {
 
@@ -18,11 +19,11 @@ function NoticeWritePage() {
     const [loading, setLoading] = useState('loading') ;
 
     const inputFileRef = useRef(null) ;
-    const MAX_IMAGES = 10 ;
+    const MAX_IMAGES = 1 ;
     const [selectedImages, setSelectedImages] = useState([]);
 
     const auth = import.meta.env.VITE_AUTH;
-
+    
     useEffect(() => {
         if (noticeId) {
             const fetchData = async () => {
@@ -42,6 +43,15 @@ function NoticeWritePage() {
         }
     }, [noticeId]) ;
 
+    useEffect(() => {
+        if (importData && Object.keys(importData).length > 0) {
+            setFormData({
+                title: importData.title || '',
+                content: importData.content || '',
+            });
+        }
+    }, [importData]);    
+
     const handleTitle = (e) => {
         setFormData({
             ...formData,
@@ -59,15 +69,16 @@ function NoticeWritePage() {
     const handleFileChange = (event) => {
         const files = event.target.files;
     if (selectedImages.length + files.length <= MAX_IMAGES) { // 이미지 수 제한 확인
-        setSelectedImages([...selectedImages, ...files]);
+        setSelectedImages([...files]);
     } else {
         // 이미지 수 초과 처리
-        alert('이미지는 최대 열 개까지 선택할 수 있습니다.');
+        alert('이미지는 한 개만 선택할 수 있습니다.');
+        setSelectedImages([]);
     }
     };
 
-    const handleRemoveImage = (indexToRemove) => {
-        setSelectedImages(selectedImages.filter((_, index) => index !== indexToRemove));
+    const handleRemoveImage = () => {
+        setSelectedImages([]);
     };
 
     const handleSubmit = () => {
@@ -125,7 +136,7 @@ function NoticeWritePage() {
         <>
             <C.NoticeWriteContainer>
                 <C.NoticeHeader>
-                    <img src="../../../public/SearchPage/backIcon.png" alt="backIcon" onClick={() => navigate(-1)}/>
+                    <img src={BackIcon} alt="backIcon" onClick={() => navigate(-1)}/>
                     <div>공지사항</div>
                 </C.NoticeHeader>
                 <C.WriteContainer>
@@ -133,7 +144,7 @@ function NoticeWritePage() {
                         <div>제목</div>
                         <itemS.EssentialIcon>*</itemS.EssentialIcon>
                     </itemS.Title>
-                    <itemS.TitleInput placeholder="제목을 입력해주세요." value={formData.title || importData.title} onChange={handleTitle}/>
+                    <itemS.TitleInput placeholder="제목을 입력해주세요." value={formData.title || ""} onChange={handleTitle}/>
                     <itemS.Title>이미지 첨부</itemS.Title>
                     
                     <itemS.ImgContainer>
@@ -150,7 +161,7 @@ function NoticeWritePage() {
                         </itemS.SelectImgLabel>
                         <itemS.ItemsContainer>
                             {selectedImages.map((image, index) => (
-                                <itemS.ImgWrapper key={index} onClick={() => handleRemoveImage(index)}>
+                                <itemS.ImgWrapper key={index} onClick={() => handleRemoveImage()}>
                                     <img
                                         src={URL.createObjectURL(image)}
                                         alt={`Image ${index}`}
@@ -165,7 +176,7 @@ function NoticeWritePage() {
                         <div>내용</div>
                         <itemS.EssentialIcon>*</itemS.EssentialIcon>
                     </itemS.Title>
-                    <itemS.ContentInput placeholder="내용을 입력해주세요." value={formData.content || importData.content} onChange={handleContent}/>
+                    <itemS.ContentInput placeholder="내용을 입력해주세요." value={formData.content || ""} onChange={handleContent}/>
                 </C.WriteContainer>
             </C.NoticeWriteContainer>
             <itemS.BtnContainer>
