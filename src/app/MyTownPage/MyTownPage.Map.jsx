@@ -1,11 +1,14 @@
 import { Container as MapDiv, NaverMap, Marker, useNavermaps } from 'react-naver-maps';
 import { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import client from '../../client';
 import BottomWrapper from './MyTownPage.main.BottomWrapper.jsx';
 import Loading from '../LoadingPage/LoadingPage.main.jsx';
 
-function Map( {onTown}) {
+
+function Map({ onTown }) {
+    const navigate = useNavigate();
     const navermaps = useNavermaps();
     const mapRef = useRef(null);
 
@@ -19,6 +22,9 @@ function Map( {onTown}) {
         setSelectedProduct(product);
     };
 
+    const handleClick = () => {
+        navigate(`/product/${selectedProduct.simplePostDTO.postId}`);
+    }
     useEffect(() => {
         setIsMapLoading(true);
         if (navigator.geolocation) {
@@ -79,7 +85,7 @@ function Map( {onTown}) {
             height: '80vh',
         }}>
             {isMapLoading ? (
-                <Loading/>
+                <Loading />
             ) : (<>
                 <NaverMap
                     ref={mapRef}
@@ -98,8 +104,11 @@ function Map( {onTown}) {
                         />
                     ))}
                     {selectedProduct && (
-                    <BottomWrapper product={selectedProduct} />
-                )}
+                        <div onClick={handleClick}>
+                            <BottomWrapper product={selectedProduct} />
+                        </div>
+
+                    )}
                 </NaverMap>
             </>
 

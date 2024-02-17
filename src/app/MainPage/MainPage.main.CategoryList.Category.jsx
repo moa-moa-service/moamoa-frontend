@@ -27,9 +27,14 @@ function Category(props) {
             categoryText = '';
     }
 
+    const handleClick = (id) => {
+        navigate(`/product/${id}`);
+    }
+
     useEffect(() => {
         const auth = import.meta.env.VITE_AUTH;
         const fetchData = async () => {
+
             try {
                 const response = await client(auth).get(
                     `/posts/${props.category}`
@@ -38,7 +43,6 @@ function Category(props) {
                     const simplePostDTOs = response.data.result.SimplePostDtoList.map(item => item.simplePostDTO);
                     setItems(simplePostDTOs);
                 } else {
-                    // console.log(response.data.result.SimplePostDtoList);
                     setItems(response.data.result.SimplePostDtoList);
                 }
 
@@ -61,8 +65,10 @@ function Category(props) {
                     </itemS.GreaterThanText>
                 </itemS.CategoryTextContainer>
                 <itemS.ItemsContainer>
-                    {items && items.map(item=> (
-                        <Item key={item.postId} item={item} onClick={() => { navigate(`/post/${props.category}`); }} />
+                    {items && items.map(item => (
+                        <div onClick={() => handleClick(item.postId)} style={{ display: 'inline' }}>
+                            <Item key={item.postId} item={item} />
+                        </div>
                     ))}
                 </itemS.ItemsContainer>
             </itemS.CategoryContainer>

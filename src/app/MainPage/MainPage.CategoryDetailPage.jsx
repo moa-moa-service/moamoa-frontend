@@ -66,8 +66,8 @@ function CategoryDetailPage() {
                 </itemS.CategoryTitleContainer>
                 <itemCategory.CategoryListContainer>
                     {products.map(product => (
-                        <div key={product.postId}>
-                            <ProductItem product={product} onClick={() => { navigate(`/product/${product.postId}`); }}/>
+                        <div key={product.postId} onClick={() => { navigate(`/product/${product.postId}`); }}>
+                            <ProductItem product={product} />
                             <itemS.ContourLine />
                         </div>
                     ))}
