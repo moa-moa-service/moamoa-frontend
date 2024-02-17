@@ -2,7 +2,6 @@ import * as itemRec from '../RecruitmentPage/styled/Recruitment.TradingLocation.
 import * as itemS from './styled/MyTownPage.main.style.js'
 
 function BottomWrapper(product) {
-    console.log(product);
     return (
         <>
             <itemRec.BottomWrapper type='town'>

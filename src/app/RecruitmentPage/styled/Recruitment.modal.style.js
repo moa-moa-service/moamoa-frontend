@@ -13,8 +13,10 @@ ${(props) =>
     props.type === 'category'
     ? `
     height: 389px;
+    ` : props.type === 'people' ?`
+    height: 269px;
     ` : `
-    height: 239px;
+    height: 470px;
     `}
 
 `
@@ -121,6 +123,4 @@ justify-content: end;
 
 export const Range =styled.input.attrs({ type: 'range' })`
 width: 100%;
-min: 1;
-max: 7;
 `
