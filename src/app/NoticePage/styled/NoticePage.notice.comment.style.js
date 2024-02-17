@@ -6,7 +6,7 @@ export const CommentContainer = styled.div`
     margin-top: 20px;
 `
 
-export const UserImg = styled.div`
+export const UserImg = styled.img`
     width: 42px;
     height: 42px;
     background-color: #2B4760;

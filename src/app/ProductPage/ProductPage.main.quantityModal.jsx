@@ -20,7 +20,7 @@ function QuantityModal({openQuantityModalHandler, id, openCompleteModalHandler})
 
         try{
             const response = await client(auth).post(`/posts/${id}/join`, {
-                amount : parseInt(quantityInput) ,
+                "amount" : parseInt(quantityInput) ,
             }, {
                 headers : {
                     "Content-Type" : "application/json" ,

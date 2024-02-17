@@ -3,14 +3,17 @@ import * as itemS from "./styled/ProductPage.main.info.style"
 import Notice from "./ProductPage.main.info.notice"
 import { useEffect, useState } from "react";
 import { differenceInMilliseconds, intervalToDuration } from "date-fns";
+import { useNavigate, useParams } from "react-router-dom";
 
-function Info(product) {
+function Info({product, id, changePossible, possibility}) {
+    const navigate = useNavigate();
 
-    const productInfo = product.product.postDto ;
-    const userInfo = product.product.adminDto ;
+    const productInfo = product.postDto ;
+    const userInfo = product.adminDto ;
+    const joinStatus = product.joinStatus ;
+    const noticeList = product.simpleNoticeDtoList ;
 
     const { deadline } = productInfo ;
-    const [ possibility, setPossibility ] = useState(true) ;
     const [remainingTime, setRemainingTime] = useState(calculateRemaingingTime()) ;
 
     function calculateRemaingingTime() {
@@ -55,7 +58,7 @@ function Info(product) {
 
     const checkPossible = () => {
         if ((remainingTime.day === '00' && remainingTime.hours === '00' && remainingTime.minutes === '00' && remainingTime.seconds === '00') || productInfo.available <= 0) {
-            setPossibility(false) ;
+            changePossible(false) ;
         }
     }
 
@@ -110,9 +113,15 @@ function Info(product) {
                 <itemS.ProductDetailText>{productInfo.description}</itemS.ProductDetailText>
                 <itemS.Line />
                 <itemS.Title>공지사항</itemS.Title>
-                <Notice />
-                <Notice />
-                <Notice />
+                {noticeList.map((notice, index) => (
+                    <Notice key={index} notice={notice} id={id}/>
+                ))}
+                {joinStatus === "AUTHOR" ?
+                <itemS.BtnContainer>
+                    <itemS.Btn onClick={() => {navigate(`/product/${id}/notice/write`)}}>+</itemS.Btn>
+                </itemS.BtnContainer>
+                : null
+                }
             </itemS.InfoContainer>
         </>
     )

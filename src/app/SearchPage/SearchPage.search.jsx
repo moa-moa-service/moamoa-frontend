@@ -9,6 +9,7 @@ import FilterPeriod from "./SearchPage.search.filter.period"
 import { useNavigate, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 import client from "../../client"
+import Loading from "../LoadingPage/LoadingPage.main";
 
 function Search() {
 
@@ -109,7 +110,7 @@ function Search() {
     }
 
     if (!searchKeywordList) {
-        return <C.Loading>Loading..</C.Loading>
+        return <Loading />
     }
 
     return(
