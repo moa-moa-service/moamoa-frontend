@@ -23,7 +23,7 @@ function NoticeWritePage() {
     const [selectedImages, setSelectedImages] = useState([]);
 
     const auth = import.meta.env.VITE_AUTH;
-
+    
     useEffect(() => {
         if (noticeId) {
             const fetchData = async () => {
@@ -42,6 +42,15 @@ function NoticeWritePage() {
             setLoading('done') ;
         }
     }, [noticeId]) ;
+
+    useEffect(() => {
+        if (importData && Object.keys(importData).length > 0) {
+            setFormData({
+                title: importData.title || '',
+                content: importData.content || '',
+            });
+        }
+    }, [importData]);    
 
     const handleTitle = (e) => {
         setFormData({
@@ -134,7 +143,7 @@ function NoticeWritePage() {
                         <div>제목</div>
                         <itemS.EssentialIcon>*</itemS.EssentialIcon>
                     </itemS.Title>
-                    <itemS.TitleInput placeholder="제목을 입력해주세요." value={formData.title || importData.title} onChange={handleTitle}/>
+                    <itemS.TitleInput placeholder="제목을 입력해주세요." value={formData.title || ""} onChange={handleTitle}/>
                     <itemS.Title>이미지 첨부</itemS.Title>
                     
                     <itemS.ImgContainer>
@@ -166,7 +175,7 @@ function NoticeWritePage() {
                         <div>내용</div>
                         <itemS.EssentialIcon>*</itemS.EssentialIcon>
                     </itemS.Title>
-                    <itemS.ContentInput placeholder="내용을 입력해주세요." value={formData.content || importData.content} onChange={handleContent}/>
+                    <itemS.ContentInput placeholder="내용을 입력해주세요." value={formData.content || ""} onChange={handleContent}/>
                 </C.WriteContainer>
             </C.NoticeWriteContainer>
             <itemS.BtnContainer>
