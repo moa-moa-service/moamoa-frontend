@@ -19,9 +19,12 @@ import {
     NickNamePageMapWrapper,
     NickNamePageFixedBottomButtonWrapper,
 } from './styled/MyPage.main.NickNamePage.style'
+import useMyPageAction from './MyPage.service';
 import MenuNav from '../MenuNav/MenuNav.main';
 
 const NickNamePage = () => {
+    const { handleLogout } = useMyPageAction()
+
     return (
         <NickNamePageContainer>
             <NickNamePageHeaderContainer>
@@ -61,7 +64,7 @@ const NickNamePage = () => {
                         <NickNamePageContent>
                             참여한 공동구매
                         </NickNamePageContent>
-                        <NickNamePageContent>
+                        <NickNamePageContent onClick={handleLogout}>
                             로그아웃
                         </NickNamePageContent>
                         <NickNamePageContent>

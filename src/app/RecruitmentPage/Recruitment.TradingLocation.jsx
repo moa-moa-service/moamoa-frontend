@@ -14,12 +14,15 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
         setDealTown(event.target.value);
     };
 
-    const handleLocationChange = (location) => {
-        setMyLocation(location);
-    };
-
     function handleResponseChange(response) {
         setResponse(response);
+        const townCoords = targetLocationData?.coords?.center
+        const lat = townCoords?.x
+        const lng = townCoords?.y
+        setMyLocation({
+            lat: lat,
+            lng: lng
+        });
     }
 
     const submitBtn = () => {
@@ -40,7 +43,7 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
                     <itemS.Text>거래 희망 장소</itemS.Text>
                 </itemS.TopContentContainer>
             </itemS.TopWrapper>
-            <MyMap onResponseChange={handleResponseChange} isTradingLocation={true} onLocationChange={handleLocationChange}/>
+            <MyMap onResponseChange={handleResponseChange} isTradingLocation={true}/>
             <itemS.BottomWrapper>
                 <itemS.DetailAddressContainer>
                     <itemS.DetailAddressText type='bold'>상세 주소</itemS.DetailAddressText>

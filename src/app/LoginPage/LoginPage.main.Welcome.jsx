@@ -12,10 +12,11 @@ import {
     WelcomeFooterContentLogoWrapper,
     WelcomeFooterContentLogo
 } from "./styled/LoginPage.main.Welcome.style";
+import useLoginAction from './LoginPage.service';
 
-const Welcome = ({
-    onNextStep
-}) => {
+const Welcome = () => {
+    const { handleLogin } = useLoginAction()
+
     return (
         <WelcomeContainer>
             <WelcomeContentWrapper>
@@ -30,14 +31,14 @@ const Welcome = ({
 
             <WelcomeFooterWrapper>
                 <WelcomeFooterTitleWrapper>
-                    <WelcomeFooterTitle onClick={() => {
-                            onNextStep()
-                        }}>
+                    <WelcomeFooterTitle>
                         SNS계정으로 시작하기
                     </WelcomeFooterTitle>
                 </WelcomeFooterTitleWrapper>
                 <WelcomeFooterContentWrapper>
-                        <WelcomeFooterContentLogoWrapper>
+                        <WelcomeFooterContentLogoWrapper onClick={() => {
+                            handleLogin()
+                        }}>
                             <WelcomeFooterContentLogo src={naverSnsButton} />
                         </WelcomeFooterContentLogoWrapper>
                     

@@ -5,6 +5,9 @@ import client from "../../client";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 
+import { AuthAtom } from '../../recoil/atoms/AuthAtom'
+import { useRecoilState } from 'recoil'
+
 function Category(props) {
     const navigate = useNavigate();
     const [items, setItems] = useState();
@@ -31,12 +34,13 @@ function Category(props) {
         navigate(`/product/${id}`);
     }
 
+    const auth = useRecoilState(AuthAtom);
+
     useEffect(() => {
-        const auth = import.meta.env.VITE_AUTH;
         const fetchData = async () => {
 
             try {
-                const response = await client(auth).get(
+                const response = await client(auth[0]).get(
                     `/posts/${props.category}`
                 );
                 if (props.category === 'near') {
