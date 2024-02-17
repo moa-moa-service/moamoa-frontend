@@ -119,7 +119,7 @@ function NoticePage() {
     }
 
 
-    if(!notice && !userImg) {
+    if(!notice || !userImg) {
         return <Loading />
     }
 

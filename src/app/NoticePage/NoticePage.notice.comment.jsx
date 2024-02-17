@@ -8,7 +8,7 @@ function Comment({comment}) {
     return(
         <>
             <itemS.CommentContainer>
-                <itemS.UserImg />
+                <itemS.UserImg src={comment.profileImage} />
                 <itemS.TextContainer>
                     <itemS.WriteInfo>
                         <itemS.UserName>{comment.nickname}</itemS.UserName>
