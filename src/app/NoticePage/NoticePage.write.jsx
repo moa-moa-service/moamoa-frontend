@@ -8,7 +8,11 @@ import { useEffect } from "react"
 import Loading from "../LoadingPage/LoadingPage.main"
 import BackIcon from "../../../public/SearchPage/backIcon.png"
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from "recoil";
+
 function NoticeWritePage() {
+    const [accessToken] = useRecoilState(AuthAtom);
 
     const { id } = useParams() ;
     const { noticeId } = useParams() ;
@@ -21,14 +25,12 @@ function NoticeWritePage() {
     const inputFileRef = useRef(null) ;
     const MAX_IMAGES = 1 ;
     const [selectedImages, setSelectedImages] = useState([]);
-
-    const auth = import.meta.env.VITE_AUTH;
     
     useEffect(() => {
         if (noticeId) {
             const fetchData = async () => {
                 try {
-                    const response = await client(auth).get(
+                    const response = await client(accessToken).get(
                         `/notices/${noticeId}`
                     ) ;
                     setImportData(response.data.result.noticeDTO) ;
@@ -92,7 +94,7 @@ function NoticeWritePage() {
         if (!noticeId) {
             const fetchData = async () => {
                 try {
-                    const response = await client(auth).post(
+                    const response = await client(accessToken).post(
                         `/posts/${id}/notices`, 
                         requestBody, 
                         {
@@ -110,7 +112,7 @@ function NoticeWritePage() {
         } else {
             const fetchData = async () => {
                 try {
-                    const response = await client(auth).patch(
+                    const response = await client(accessToken).patch(
                         `/posts/${id}/notices/${noticeId}`, 
                         requestBody, 
                         {

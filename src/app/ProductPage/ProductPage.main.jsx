@@ -12,8 +12,12 @@ import { useEffect } from "react"
 import client from "../../client"
 import Loading from "../LoadingPage/LoadingPage.main";
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from "recoil";
+
 
 function ProductPage() {
+    const [accessToken] = useRecoilState(AuthAtom);
 
     const navigate = useNavigate() ;
     const { id } = useParams() ;
@@ -28,11 +32,9 @@ function ProductPage() {
     const [possibility, setPossibility] = useState(true) ;
 
     useEffect(() => {
-        const auth = import.meta.env.VITE_AUTH ;
-
         const fetchData = async () => {
             try {
-                const response = await client(auth).post(
+                const response = await client(accessToken).post(
                     `/posts/${id}`
                 ) ;
                 setProduct(response.data.result) ;

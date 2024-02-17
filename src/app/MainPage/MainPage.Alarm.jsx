@@ -9,15 +9,18 @@ import client from '../../client'
 import { useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
+import { AuthAtom } from '../../recoil/atoms/AuthAtom'
+import { useRecoilState } from 'recoil'
+
 function Alarm() {
     const navigate = useNavigate();
     const [alarms, setAlarms] = useState();
+    const [accessToken] = useRecoilState(AuthAtom);
 
     useEffect(() => {
-        const auth = import.meta.env.VITE_AUTH;
         const fetchData = async () => {
             try {
-                const response = await client(auth).get(
+                const response = await client(accessToken).get(
                     '/notifications'
                 );
                 setAlarms(response.data.result.notificationDTOList);

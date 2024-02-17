@@ -34,13 +34,13 @@ function Category(props) {
         navigate(`/product/${id}`);
     }
 
-    const auth = useRecoilState(AuthAtom);
+    const [accessToken] = useRecoilState(AuthAtom);
 
     useEffect(() => {
         const fetchData = async () => {
 
             try {
-                const response = await client(auth[0]).get(
+                const response = await client(accessToken).get(
                     `/posts/${props.category}`
                 );
                 if (props.category === 'near') {

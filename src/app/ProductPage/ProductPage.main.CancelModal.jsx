@@ -4,9 +4,8 @@ import client from "../../client"
 function CancelModal({openCancelModalHandler, id}) {
 
     const cancelHandle = async() => {
-        const auth = import.meta.env.VITE_AUTH ;
         try {
-            const response = await client(auth).delete(
+            const response = await client().delete(
                 `/posts/${id}/cancel`
             ) ;
             openCancelModalHandler() ;

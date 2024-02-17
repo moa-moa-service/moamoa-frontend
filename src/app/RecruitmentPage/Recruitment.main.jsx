@@ -13,8 +13,11 @@ import client from "../../client"
 
 import React, { useState, startTransition, useRef } from 'react';
 import { useNavigate } from "react-router-dom"
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from'recoil';
 
 function Recruitment() {
+    const [accessToken] = useRecoilState(AuthAtom);
     const navigate = useNavigate();
 
     const [formData, setFormData] = useState({});
@@ -116,7 +119,6 @@ function Recruitment() {
     };
 
     const submitBtn = () => {
-        const auth = import.meta.env.VITE_AUTH;
         const requestBody = new FormData();
         // JSON 데이터를 Blob 형태로 변환하여 FormData에 추가
         const jsonRecruitmentData = JSON.stringify(formData);
@@ -126,7 +128,7 @@ function Recruitment() {
 
         const fetchData = async () => {
             try {
-                const response = await client(auth).post(
+                const response = await client(accessToken).post(
                     '/posts',  // 요청을 보낼 엔드포인트 URL
                     // 전송할 데이터
                     requestBody,

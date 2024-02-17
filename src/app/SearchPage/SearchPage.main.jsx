@@ -5,14 +5,16 @@ import { useEffect, useState } from "react";
 import client from "../../client"
 import Loading from "../LoadingPage/LoadingPage.main";
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from "recoil";
+
 function SearchPageMain() {
+    const [accessToken] = useRecoilState(AuthAtom);
     const navigate = useNavigate();
 
     const [searchKeyword, setSearchKeyword] = useState("") ;
     const [rankingKeyword, setRankingKeyword] = useState([]) ;
     const [recentKeyword, setRecentKeyword] = useState([]) ;
-
-    const auth = import.meta.env.VITE_AUTH ;
 
     const onChangeKeyword = (e) => {
         setSearchKeyword(e.target.value) ;
@@ -20,7 +22,7 @@ function SearchPageMain() {
 
     const rankingKeywordFetchData = async () => {
         try {
-            const response = await client(auth).get(
+            const response = await client(accessToken).get(
                 `keywords/ranking`
             ) ;
             setRankingKeyword(response.data.result.keywords) ;
@@ -31,7 +33,7 @@ function SearchPageMain() {
 
     const recentKeywordFetchData = async () => {
         try {
-            const response = await client(auth).get(
+            const response = await client(accessToken).get(
                 `/keywords/recent`
             ) ;
             setRecentKeyword(response.data.result.keywords) ;
@@ -42,7 +44,7 @@ function SearchPageMain() {
     
     const deleteRecentKeywordHandle = async (keyword) => {
         try {
-            const response = await client(auth).delete(
+            const response = await client(accessToken).delete(
                 `keywords/${keyword}`
             ) ;
             await recentKeywordFetchData() ;
@@ -54,7 +56,7 @@ function SearchPageMain() {
     const deleteAllRecentKeywordHandle = async() => {
         try {
             await Promise.all(recentKeyword.map(async (keyword) => {
-                await client(auth).delete(`keywords/${keyword.keyword}`) ;
+                await client(accessToken).delete(`keywords/${keyword.keyword}`) ;
             })) ;
             await recentKeywordFetchData() ;
         } catch (error) {
