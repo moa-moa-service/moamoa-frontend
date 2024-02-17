@@ -6,7 +6,13 @@ height: 110px;
 // background-color: #FF424D;
 padding: 20px 0;
 display: flex;
+justify-content: space-between;
 `
+
+export const AllProductInfoContainer = styled.div`
+display: flex;
+`
+
 export const ProductImg = styled.img`
 width: 110px;
 height: 110px;
@@ -44,5 +50,30 @@ ${(props) =>
         ` : `
             color: #888888;
             font-size: 14px;
-    `}
+    `}	
+`
+export const CloseWrapper = styled.div`
+display: flex;
+justify-content: center;
+align-items: center;
+
+`
+
+export const CloseTagWrapper = styled.div`
+width: 57px;
+height: 20px;
+border-radius: 15px;
+background-color: #FF424D;
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+export const CloseTagText = styled.span`
+font-family: Inter;
+font-size: 9px;
+font-weight: 500;
+line-height: 17px;
+letter-spacing: -0.39023357629776px;
+color: #FFFFFF;
 `
