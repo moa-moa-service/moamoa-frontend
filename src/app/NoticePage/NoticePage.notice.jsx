@@ -65,6 +65,12 @@ function NoticePage() {
         setInputComment(e.target.value) ;
     }
 
+    const onEnterKeyPress = (e) => {
+        if (e.key === 'Enter') {
+            commentSubmit() ;
+        }
+    }
+
     const commentSubmit = async () => {
         try {
             const response = await client(auth).post(
@@ -77,7 +83,7 @@ function NoticePage() {
                     }
                 }
             ) ;
-            console.log(response) ;
+            window.location.reload() ;
         } catch (error) {
             console.error("실패", error) ;
         }
@@ -149,7 +155,7 @@ function NoticePage() {
                 </C.WriteContainer>
                 <itemS.WriteCommentContainer>
                     <itemS.UserImg />
-                    <itemS.CommentInput placeholder="댓글을 입력해 주세요." onChange={commentInputHandle}/>
+                    <itemS.CommentInput placeholder="댓글을 입력해 주세요." onKeyPress={onEnterKeyPress} onChange={commentInputHandle}/>
                     <itemS.DoneBtn onClick={commentSubmit}>완료</itemS.DoneBtn>
                 </itemS.WriteCommentContainer>
             </C.NoticeWriteContainer>

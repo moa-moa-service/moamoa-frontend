@@ -14,7 +14,7 @@ function QuantityModal({openQuantityModalHandler, id, openCompleteModalHandler})
         const auth = import.meta.env.VITE_AUTH ;
     
         if(!quantityInput || isNaN(quantityInput)) {
-            console.log("수량이 입력되지 않았습니다.")
+            alert("수량이 입력되지 않았습니다.")
             return ;
         }
 
@@ -28,6 +28,7 @@ function QuantityModal({openQuantityModalHandler, id, openCompleteModalHandler})
             }) ;
             openQuantityModalHandler() ;
             openCompleteModalHandler() ;
+            window.location.reload() ;
         } catch (error) {
             console.error("실패" + error) ;
         }
