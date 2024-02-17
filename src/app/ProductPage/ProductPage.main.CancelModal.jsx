@@ -10,6 +10,7 @@ function CancelModal({openCancelModalHandler, id}) {
                 `/posts/${id}/cancel`
             ) ;
             openCancelModalHandler() ;
+            window.location.reload() ;
         } catch (error) {
             console.error("실패", error) ;
         }
