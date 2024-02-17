@@ -1,14 +1,19 @@
 import * as itemS from "./styled/ProductPage.main.info.notice.style"
+import { differenceInCalendarDays } from "date-fns";
+import { useNavigate } from "react-router-dom";
 
-function Notice() {
+function Notice({notice, id}) {
+
+    const navigate = useNavigate() ;
+
     return(
         <>
-            <itemS.NoticeContainer>
+            <itemS.NoticeContainer onClick={() => navigate(`/product/${id}/notice/${notice.noticeId}`)}>
                 <itemS.Notice>
-                    <itemS.Title>거래 날짜 및 시간 조정</itemS.Title>
-                    <itemS.Content>안녕하세요! 상품이 도착해서 공동구매 상품을</itemS.Content>
+                    <itemS.Title>{notice.title}</itemS.Title>
+                    <itemS.Content>{notice.content}</itemS.Content>
                 </itemS.Notice>
-                <itemS.Day>2일전</itemS.Day>
+                <itemS.Day>{differenceInCalendarDays(new Date(), notice.createdAt)}일 전</itemS.Day>
             </itemS.NoticeContainer>
         </>
     )

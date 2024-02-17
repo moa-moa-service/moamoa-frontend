@@ -10,6 +10,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
 import { useEffect } from "react"
 import client from "../../client"
+import Loading from "../LoadingPage/LoadingPage.main";
 
 
 function ProductPage() {
@@ -17,12 +18,14 @@ function ProductPage() {
     const navigate = useNavigate() ;
     const { id } = useParams() ;
 
+    const [product, setProduct] = useState(null) ;
+
     const [imgOpen, setImgOpen] = useState(false) ;
     const [copyNoticeOpen, setCopyNoticeOpen] = useState(false) ;
     const [quantityOpen, setQuantityOpen] = useState(false) ;
-    const [product, setProduct] = useState(null) ;
     const [completeModalOpen, setCompleteModalOpen] = useState(false) ;
     const [cancelModalOpen, setCancelModalOpen] = useState(false) ;
+    const [possibility, setPossibility] = useState(true) ;
 
     useEffect(() => {
         const auth = import.meta.env.VITE_AUTH ;
@@ -38,7 +41,11 @@ function ProductPage() {
             }
         };
         fetchData() ;
-    },[product]) ;
+    },[]) ;
+
+    const changePossible = (value) => {
+        setPossibility(value) ;
+    }
 
     const location = useLocation() ;
 
@@ -74,17 +81,18 @@ function ProductPage() {
     let button;
 
     if (!product) {
-        return <itemS.Loading>Loading..</itemS.Loading>
+        return <Loading />
     } else {
         if (product.joinStatus === null) {
-            button = <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn>;
+            possibility ? 
+            button = <itemS.Btn onClick={openQuantityModalHandler}>참여하기</itemS.Btn> : null ;
         } else if (product.joinStatus === "PARTICIPATOR") {
             button = <itemS.Btn onClick={openCancelModalHandler}>참여 취소하기</itemS.Btn>;
         } else if (product.joinStatus === "AUTHOR") {
             button = (
                 <>
-                    <itemS.SmallBtn color="white">상태변경</itemS.SmallBtn> ;
-                    <itemS.SmallBtn>수정하기</itemS.SmallBtn> ;
+                    <itemS.SmallBtn color="white">상태변경</itemS.SmallBtn>
+                    <itemS.SmallBtn>수정하기</itemS.SmallBtn>
                 </>
             )
         }
@@ -99,7 +107,7 @@ function ProductPage() {
                 {completeModalOpen && <CompleteModal openCompleteModalHandler={openCompleteModalHandler} />}
                 {cancelModalOpen && <CancelModal openCancelModalHandler={openCancelModalHandler} id={id} /> }
                 <itemS.ImgContainer onClick={openImgModalHandler} >
-                    <itemS.ProductImg src={product.postDto.imageUrl} />
+                    <itemS.ProductImg src={product.postDto.imageUrl[0]} />
                     <itemS.IconContainer>
                         <img src="../../../public/ProductPage/back.png" alt="back Icon" onClick={(e) => { 
                             e.stopPropagation() ;
@@ -112,7 +120,7 @@ function ProductPage() {
                         }}/>
                     </itemS.IconContainer>
                 </itemS.ImgContainer>
-                <ProductInfo product={product} />
+                <ProductInfo product={product} id={id} changePossible={changePossible} possibility={possibility} />
                 <itemS.BtnContainer>
                     {button}
                 </itemS.BtnContainer>
