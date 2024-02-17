@@ -4,8 +4,9 @@ import { useRef, useState } from "react"
 import { useNavigate, useParams } from "react-router-dom"
 import client from "../../client";
 import camera from  "../../../public/RecruitmentPage/camera.png"
-import { useEffect } from "react";
-import Loading from "../LoadingPage/LoadingPage.main";
+import { useEffect } from "react"
+import Loading from "../LoadingPage/LoadingPage.main"
+import BackIcon from "../../../public/SearchPage/backIcon.png"
 
 function NoticeWritePage() {
 
@@ -125,7 +126,7 @@ function NoticeWritePage() {
         <>
             <C.NoticeWriteContainer>
                 <C.NoticeHeader>
-                    <img src="../../../public/SearchPage/backIcon.png" alt="backIcon" onClick={() => navigate(-1)}/>
+                    <img src={BackIcon} alt="backIcon" onClick={() => navigate(-1)}/>
                     <div>공지사항</div>
                 </C.NoticeHeader>
                 <C.WriteContainer>
