@@ -14,9 +14,7 @@ import {
 } from "./styled/LoginPage.main.Welcome.style";
 import useLoginAction from './LoginPage.service';
 
-const Welcome = ({
-    onNextStep
-}) => {
+const Welcome = () => {
     const { handleLogin } = useLoginAction()
 
     return (

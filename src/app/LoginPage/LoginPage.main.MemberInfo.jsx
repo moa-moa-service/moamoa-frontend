@@ -15,7 +15,7 @@ const MemberInfoComponent = () => {
         const _accessToken = params.get('authorization')
         if (!!_accessToken) {
             setAccessToken(_accessToken)
-            navigate('/')
+            navigate('/signup')
         }
     }, [location])
 

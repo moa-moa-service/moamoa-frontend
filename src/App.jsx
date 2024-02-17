@@ -22,6 +22,7 @@ import { NavermapsProvider } from 'react-naver-maps'
 import './App.css'
 import Alarm from './app/MainPage/MainPage.Alarm.jsx'
 import { RecoilRoot } from 'recoil'
+import BasicInformation from './app/LoginPage/LoginPage.main.BasicInformation.jsx'
 
 function App() {
   const ncpClientId = import.meta.env.VITE_CLIENT_ID
@@ -34,6 +35,7 @@ function App() {
             <Route path="/" element={<MainPage />} />
             <Route path='/post/:category' element={<CategoryDetailPage />} />
             <Route path="/login" element={<LoginPageComponent />} />
+            <Route path="/signup" element={<BasicInformation />} />
             <Route path="/member-info" element={<MemberInfoComponent />} />
             <Route path="/recruitment" element={<RecruitmentPage />} />
             <Route path="/search" element={<SearchPageMain />} />

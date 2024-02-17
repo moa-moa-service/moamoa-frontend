@@ -13,9 +13,7 @@ import {
     BasicInformationFooterWrapper
 } from './styled/LoginPage.main.BasicInformation.style'
 
-const BasicInformation = ({
-    onNextStep
-}) => {
+const BasicInformation = () => {
     return (
         <BasicInformationContainer>
             <BasicInformationTitleWrapper>
