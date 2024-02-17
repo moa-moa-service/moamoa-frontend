@@ -123,7 +123,7 @@ function Search() {
             </C.SearchContainer>
             <C.MainContainer>
                 <C.KeywordContainer>
-                    <C.Keyword select="true">지역명</C.Keyword>
+                    <C.Keyword select="true" onClick={filterReset}>초기화</C.Keyword>
                     {categoryId === ''
                         ? <C.Keyword onClick={openCategoryFilter}>카테고리</C.Keyword>
                         : <C.Keyword select="true" onClick={openCategoryFilter}>{categoryName}</C.Keyword>
