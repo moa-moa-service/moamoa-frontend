@@ -19,7 +19,7 @@ function MainPage() {
         const _accessToken = params.get('authorization')
         if (_accessToken) {
             setAccessToken(_accessToken)
-            params.delete('authorization')
+            navigate('/', { replace: true })
         }
     }, [])
     
