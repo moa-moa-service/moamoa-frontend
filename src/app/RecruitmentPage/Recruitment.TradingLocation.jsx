@@ -16,6 +16,7 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
 
     function handleResponseChange(response) {
         setResponse(response);
+        const targetLocationData = response?.v2?.results[0]?.region?.area3
         const townCoords = targetLocationData?.coords?.center
         const lat = townCoords?.x
         const lng = townCoords?.y
