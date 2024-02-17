@@ -32,14 +32,34 @@ align-items: center;
 `
 
 export const MenuIconImgWrapper = styled.div`
-width: 35px;
-height: 35px;
-background-color: #F85A5A;
+width: 36px;
+height: 36px;
+background-color: ${(props) =>
+        props.type === 'current'
+            ? `
+            #FF424D;
+    ` : `
+    #ffffff;
+`}
 border-radius: 15px;
+display: flex;
+justify-content: center;
+align-items: center;
+`
+
+export const MenuIconImg = styled.img`
+width: 24px;
+height: 26px;
 `
 
 export const MenuIconText = styled.span`
-color: #2B4760;
+color: ${(props) =>
+        props.type === 'current'
+            ? `
+        #FF424D;
+` : `
+#2B4760;
+`}
 text-align: center;
 font-family: Inter;
 font-size: 11.351px;
