@@ -11,7 +11,7 @@ const client = (token) => {
     const config = {
         baseURL: ENDPOINT,
         headers: {
-            "Content-Type" : `applicaiton/json;charset=UTF-8`,
+            "Content-Type" : `application/json;charset=UTF-8`,
             "Accept" : "application/json",
             "Access-Control-Allow-Origin": `http://localhost:5173`,
             'Access-Control-Allow-Credentials':"true",
