@@ -15,7 +15,7 @@ function Comment({comment}) {
                         <itemS.Date>{createDate}</itemS.Date>
                     </itemS.WriteInfo>
                     <itemS.Comment>{comment.content}</itemS.Comment>
-                    <itemS.ReplyBtn>답글</itemS.ReplyBtn>
+                    {/* <itemS.ReplyBtn>답글</itemS.ReplyBtn> */}
                 </itemS.TextContainer>
             </itemS.CommentContainer>
         </>
