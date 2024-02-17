@@ -17,10 +17,9 @@ import { useNavigate } from "react-router-dom"
 function Recruitment() {
     const navigate = useNavigate();
 
-    const [formData, setFormData] = useState({
-        'deadline': "2024-02-20T00:00:00.000Z",
-    });
+    const [formData, setFormData] = useState({});
     const [selectedCategory, setSelectedCategory] = useState();
+    const [selectedPeriod, setSelectedPeriod] = useState();
 
     const [isModalOpen, setModalOpen] = useState(false);
     const [isTradingLocation, setIsTradingLocation] = useState(false);
@@ -42,6 +41,17 @@ function Recruitment() {
         setFormData({
             ...formData,
             'personnel': parseInt(value, 10),
+        });
+    };
+
+    const handlePeriod = (value) => {
+        setSelectedPeriod(value);
+    };
+
+    const handleDate = (value) => {
+        setFormData({
+            ...formData,
+            'deadline': value,
         });
     };
 
@@ -143,7 +153,7 @@ function Recruitment() {
                 {isModalOpen && (
                     <>
                         <itemS.Backdrop onClick={toggleModal}>
-                            <RecruitmentModal data={isType} onCategory={handleCategory} onPeople={handlePeople} />
+                            <RecruitmentModal data={isType} onCategory={handleCategory} onPeople={handlePeople} onPeriod={(handlePeriod)} onDate={handleDate}/>
                         </itemS.Backdrop>
                     </>
                 )}
@@ -182,9 +192,22 @@ function Recruitment() {
                                     </itemS.FilterWrapper>
                                 </>
                             )}
-                            <itemS.FilterWrapper type='margin'>
+                            {selectedPeriod ? (
+                                <>
+                                    <itemS.FilterWrapper type='margin' style={{ background: "#2B4760" }}>
+                                        <itemS.FilterText style={{ color: "#FFF" }} onClick={() => toggleModal('date')}>{selectedPeriod}일</itemS.FilterText>
+                                    </itemS.FilterWrapper>
+                                </>
+                            ) : (
+                                <>
+                                    <itemS.FilterWrapper  type='margin'>
+                                        <itemS.FilterText onClick={() => toggleModal('date')}>모집 기간 선택</itemS.FilterText>
+                                    </itemS.FilterWrapper>
+                                </>
+                            )}
+                            {/* <itemS.FilterWrapper type='margin'>
                                 <itemS.FilterText onClick={() => toggleModal('date')}>모집 기간 선택</itemS.FilterText>
-                            </itemS.FilterWrapper>
+                            </itemS.FilterWrapper> */}
                             {formData.personnel ? (
                                 <>
                                     <itemS.FilterWrapper style={{ background: "#2B4760" }}>

@@ -2,27 +2,39 @@ import styled from "styled-components";
 
 export const FilterContainer = styled.div`
     width: 100%;
-    height: 100%;
     display: flex ;
-    position: fixed;
-    top: 0;
     background-color: rgba(0,0,0,0.5);
 
     @media screen and (min-width:431px){
         width: 430px;
     }
+
+    ${(props) => {
+        props.type !== 'recruit'
+            ? `
+            height: 100%;
+        position: fixed;
+        top: 0;
+        ` : `
+        `
+    }}
 `
 
 export const FilterContent = styled.div`
-    width: inherit;
+width: inherit;
     background-color: #FFFFFF;
-    position: fixed;
-    bottom: 0;
     border-top-left-radius : 15px;
     border-top-right-radius: 15px;
     padding: 20px 0;
     box-sizing: border-box;
-    
+    ${(props) => {
+        props.type !== 'recruit'
+            ? `
+            position: fixed;
+        bottom: 0;
+        ` : `
+        `
+    }}
 `
 
 export const FilterTitle = styled.div`
