@@ -112,8 +112,8 @@ export const DoneBtn = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: fixed;
-    right: 19%;
+    position: absolute;
+    right: 25px;
 `
 
 export const ModalContainer = styled.div`
