@@ -13,6 +13,7 @@ import {
     WelcomeFooterContentLogo
 } from "./styled/LoginPage.main.Welcome.style";
 import useLoginAction from './LoginPage.service';
+import logo from '../../../public/LoginPage/logo.png'
 
 const Welcome = () => {
     const { handleLogin } = useLoginAction()
@@ -20,7 +21,7 @@ const Welcome = () => {
     return (
         <WelcomeContainer>
             <WelcomeContentWrapper>
-                <WelcomeLogoWrapper>
+                <WelcomeLogoWrapper src={logo}>
                     {/* Use the correct component name: AddressSetupLogoTitle */}
                 </WelcomeLogoWrapper>
                 <WelcomeLogoTitle>

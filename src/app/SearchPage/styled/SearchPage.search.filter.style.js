@@ -9,32 +9,33 @@ export const FilterContainer = styled.div`
         width: 430px;
     }
 
-    ${(props) => {
+    ${(props) => 
         props.type !== 'recruit'
-            ? `
+        ? `
             height: 100%;
-        position: fixed;
-        top: 0;
+            position: fixed;
+            top: 0;
         ` : `
         `
-    }}
+    }
 `
 
 export const FilterContent = styled.div`
-width: inherit;
+    width: inherit;
     background-color: #FFFFFF;
     border-top-left-radius : 15px;
     border-top-right-radius: 15px;
     padding: 20px 0;
     box-sizing: border-box;
-    ${(props) => {
+
+    ${(props) => 
         props.type !== 'recruit'
-            ? `
+        ? `
             position: fixed;
-        bottom: 0;
+            bottom: 0;
         ` : `
         `
-    }}
+    }
 `
 
 export const FilterTitle = styled.div`

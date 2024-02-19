@@ -2,7 +2,7 @@ import * as itemS from "./styled/SearchPage.search.style"
 import * as C from "./styled/SearchPage.component.style"
 
 import ProductItem from '../MainPage/MainPage.CategoryDetailPage.Item'
-import FilterCategory from "./SearchPage.search.Filter.Category"
+import FilterCategory from "./SearchPage.search.filter.category"
 import FilterQuantity from "./SearchPage.search.filter.quantity"
 import FilterPrice from "./SearchPage.search.filter.price"
 import FilterPeriod from "./SearchPage.search.filter.period"
@@ -11,7 +11,11 @@ import { useEffect, useState } from "react"
 import client from "../../client"
 import Loading from "../LoadingPage/LoadingPage.main";
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom"
+import { useRecoilState } from "recoil"
+
 function Search() {
+    const [accessToken] = useRecoilState(AuthAtom);
 
     const navigate = useNavigate() ;
 
@@ -32,13 +36,12 @@ function Search() {
     const [minPrice, setMinPrice] = useState('') ;
     const [maxPrice, setMaxPrice] = useState('') ;
 
-    const auth = import.meta.env.VITE_AUTH ;
 
     const searchKeywordHandle = async () => {
         setSearchKeyword(inputKeyword) ;
         
         try {
-            const response = await client(auth).get(
+            const response = await client(accessToken).get(
                 `/posts?keyword=${searchKeyword}&categoryId=${categoryId}&dDay=${dDay}&total=${total}&minPrice=${minPrice}&maxPrice=${maxPrice}`
             )
             setSearchKeywordList(response.data.result.SimplePostDtoList) ;
