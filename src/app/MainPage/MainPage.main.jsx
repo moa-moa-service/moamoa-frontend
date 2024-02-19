@@ -6,12 +6,14 @@ import BellIcon from "../../../public/MainPage/Bell.png"
 import { useNavigate, useLocation } from "react-router-dom"
 import { AuthAtom } from '../../recoil/atoms/AuthAtom'
 import { useRecoilState } from 'recoil'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import client from "../../client"
 
 function MainPage() {
     const navigate = useNavigate()
     const [_, setAccessToken] = useRecoilState(AuthAtom)
+    
+    const [memberInfo, setMemberInfo] = useState();
 
     const location = useLocation()
     const params = new URLSearchParams(location.search)
@@ -23,26 +25,32 @@ function MainPage() {
             navigate('/', { replace: true })
             window.location.reload();
         }
+    }, [])
+    const [accessToken] = useRecoilState(AuthAtom);
+
+    useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await client(_accessToken).get(
-                    `/member`
+                const response = await client(accessToken).get(
+                    `/members`
                 );
-                console.log(response);
+                setMemberInfo(response.data.result.memberDTO.townName);
             } catch (error) {
                 console.error('안된다!!:', error);
             }
         };
-        fetchData();
-
-    }, [])
+    
+        if (accessToken) {
+            fetchData();
+        }
+    }, [accessToken]);
     
     return (
         <>
             <itemS.MainPageContainer>
                 <itemS.SearchContainer>
                     <itemS.LocalText>
-                        남가좌동
+                        {memberInfo}
                     </itemS.LocalText>
                     <itemS.SearchImgWrapper onClick={() => {navigate("/alarm")}}>
                         <itemS.BellImg src={BellIcon}></itemS.BellImg>
