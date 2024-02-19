@@ -20,7 +20,7 @@ const WelcomeContentWrapper = styled.div`
     gap: 27px;
 `
 
-const WelcomeLogoWrapper = styled.div`
+const WelcomeLogoWrapper = styled.img`
     display: flex;
     width: 200px;
     height: 200px;

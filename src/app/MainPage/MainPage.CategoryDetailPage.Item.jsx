@@ -1,10 +1,14 @@
 import { useEffect } from 'react'
 import * as ItemS from './styled/MainPage.CategoryDetailPage.Item.style'
+import { useNavigate } from 'react-router-dom';
 
 function Item({ product }) {
+
+    const navigate = useNavigate() ;
+
     return (
         <>
-            <ItemS.ProductListContainer>
+            <ItemS.ProductListContainer onClick={() => navigate(`/product/${product.postId}`)}>
                 <ItemS.AllProductInfoContainer>
                     <ItemS.ProductImg src={product.imageUrl} />
                     <ItemS.ProductInfoContainer>

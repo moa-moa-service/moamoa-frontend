@@ -6,11 +6,15 @@ import client from '../../client';
 import BottomWrapper from './MyTownPage.main.BottomWrapper.jsx';
 import Loading from '../LoadingPage/LoadingPage.main.jsx';
 
+import { AuthAtom } from '../../recoil/atoms/AuthAtom';
+import { useRecoilState } from'recoil';
+
 
 function Map({ onTown }) {
     const navigate = useNavigate();
     const navermaps = useNavermaps();
     const mapRef = useRef(null);
+    const [accessToken] = useRecoilState(AuthAtom);
 
     const [isMapLoading, setIsMapLoading] = useState(true);
     const [myLocation, setMyLocation] = useState({ lat: null, lng: null });
@@ -43,10 +47,9 @@ function Map({ onTown }) {
             setIsMapLoading(false);
         }
 
-        const auth = import.meta.env.VITE_AUTH;
         const fetchData = async () => {
             try {
-                const response = await client(auth).get(
+                const response = await client(accessToken).get(
                     '/posts/near'
                 );
                 setProducts(response.data.result.SimplePostDtoList);

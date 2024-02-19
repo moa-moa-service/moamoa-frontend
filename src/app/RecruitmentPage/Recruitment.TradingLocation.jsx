@@ -5,7 +5,7 @@ import BackIcon from '../../../public/SearchPage/backIcon.png'
 import { useState } from 'react';
 
 
-function TradingLocation({ openTradingLocation, onLocationData }) {
+function TradingLocation({ openTradingLocation }) {
     const [response, setResponse] = useState({});
     const [dealTown, setDealTown] = useState('');
     const [myLocation, setMyLocation] = useState({ lat: null, lng: null });
@@ -14,12 +14,17 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
         setDealTown(event.target.value);
     };
 
-    const handleLocationChange = (location) => {
-        setMyLocation(location);
-    };
-
     function handleResponseChange(response) {
         setResponse(response);
+      
+        const targetLocationData = response?.v2?.results[0]?.region?.area3
+        const townCoords = targetLocationData?.coords?.center
+        const lat = townCoords?.x
+        const lng = townCoords?.y
+        setMyLocation({
+            lat: lat,
+            lng: lng
+        });
     }
 
     const submitBtn = () => {

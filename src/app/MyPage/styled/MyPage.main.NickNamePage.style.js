@@ -4,7 +4,7 @@ const NickNamePageContainer= styled.div`
     position: relative;
     width: 100%;
     height: 100vh;
-    min-width: 600px;
+    
 `
 
 const NickNamePageHeaderContainer= styled.div`
@@ -131,6 +131,10 @@ const NickNamePageContentWrapper = styled.div`
     flex-direction: column;
     width: 95%;
     gap: 5px;
+
+    > * {
+        cursor: pointer;
+    }
 `
 const NickNamePageContent = styled.div`
     display: flex;

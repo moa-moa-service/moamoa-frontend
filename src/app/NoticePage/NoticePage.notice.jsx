@@ -7,12 +7,16 @@ import { useEffect, useState } from "react";
 import client from "../../client";
 import { differenceInCalendarDays, intervalToDuration } from "date-fns";
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from "recoil";
+
 import Loading from "../LoadingPage/LoadingPage.main";
 import NoticeWritePage from "./NoticePage.write";
 
 function NoticePage() {
 
     const navigate = useNavigate() ;
+    const [accessToken] = useRecoilState(AuthAtom);
 
     const { id } = useParams() ;
     const { noticeId } = useParams() ;
@@ -24,26 +28,11 @@ function NoticePage() {
 
     const [modalOpen, setModalOpen] = useState(false) ;
     const [inputComment, setInputComment] = useState('') ;
-    const auth = import.meta.env.VITE_AUTH ;
-
+  
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await client(auth).get(
-                    `/members`
-                ) ;
-                setUserImg(response.data.result.memberDTO.profileImage) ;
-            } catch (error) {
-                console.error("실패", error) ;
-            }
-        } ;
-        fetchData() ;
-    }, []) ;
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await client(auth).get(
+                const response = await client(accessToken).get(
                     `/notices/${noticeId}`
                 ) ;
                 setNotice(response.data.result.noticeDTO) ;
@@ -67,7 +56,7 @@ function NoticePage() {
 
     const deleteNotice = async () => {
         try {
-            const response = await client(auth).delete(
+            const response = await client(accessToken).delete(
                 `/notices/${noticeId}`
             ) ;
             navigate(`/product/${id}`) ;
@@ -88,7 +77,7 @@ function NoticePage() {
 
     const commentSubmit = async () => {
         try {
-            const response = await client(auth).post(
+            const response = await client(accessToken).post(
                 `/notices/${noticeId}/comments`, {
                     'content': inputComment, 
                 },
@@ -127,7 +116,7 @@ function NoticePage() {
         <>
             <C.NoticeWriteContainer>
                 <C.NoticeHeader>
-                    <img src="../../../public/SearchPage/backIcon.png" alt="backIcon" />
+                    <img src="../../../public/SearchPage/backIcon.png" alt="backIcon" onClick={() => navigate(`/product/${id}`)} />
                     <div>공지사항</div>
                 </C.NoticeHeader>
                 <C.WriteContainer>

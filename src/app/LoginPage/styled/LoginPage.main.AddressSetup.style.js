@@ -118,23 +118,24 @@ const AddressSetupBottomButtonWrapper = styled.div`
     width: 100%;
     gap: 5px;
 `
-const AddressSetupBottomButton = styled.div`
+const AddressSetupBottomButton = styled.button`
     display: flex;
     flex-direction: column;
     padding: 20px;
     background-color: #FF424D;
     border-radius: 15px;
-    text-align: center;
-    color: #FFF;
+    color: #ffffff;
     font-family: Inter;
     font-size: 14.676px;
     font-style: normal;
     font-weight: 600;
     line-height: 25.382px; /* 172.943% */
     letter-spacing: -0.577px;
+    border: none;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 `
-
-
 
 export {
     AddressSetupContainer,

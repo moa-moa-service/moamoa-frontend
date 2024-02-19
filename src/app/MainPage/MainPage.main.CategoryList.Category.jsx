@@ -30,13 +30,14 @@ function Category(props) {
     const handleClick = (id) => {
         navigate(`/product/${id}`);
     }
-
+    
+    const [accessToken] = useRecoilState(AuthAtom)
     useEffect(() => {
-        const auth = import.meta.env.VITE_AUTH;
+
         const fetchData = async () => {
 
             try {
-                const response = await client(auth).get(
+                const response = await client(accessToken).get(
                     `/posts/${props.category}`
                 );
                 if (props.category === 'near') {
