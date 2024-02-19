@@ -53,6 +53,7 @@ function Map({ onTown }) {
                     '/posts/near'
                 );
                 setProducts(response.data.result.SimplePostDtoList);
+                console.log(response.data.result.SimplePostDtoList);
             } catch (error) {
                 console.error('안된다!!:', error);
             }
