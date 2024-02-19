@@ -133,4 +133,5 @@ justify-content: end;
 
 export const Range =styled.input.attrs({ type: 'range' })`
 width: 100%;
+accent-color: #2B4760;
 `
