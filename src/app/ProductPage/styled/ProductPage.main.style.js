@@ -44,10 +44,11 @@ export const IconContainer = styled.div`
 
 export const BtnContainer = styled.div`
     width: 100%;
-    height: 50px;
+height: 50px;
     display: flex;
     justify-content: space-evenly;
     position: fixed;
+
     background-color: #FFFFFF;
     padding: 0 0 15px 0;
     bottom: 0;
@@ -55,6 +56,26 @@ export const BtnContainer = styled.div`
     @media screen and (min-width:431px){
         width: 430px;
     }
+    ${(props) => {
+        props.type !== 'state' 
+        ? `
+        height: 50px;
+        ` : `
+        height: 200px;
+        flex-direction: column;
+        `
+    }}
+`
+
+export const submitBtns = styled.div`
+    width: 100%;
+    height: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    position: fixed;
+    background-color: #FFFFFF;
+    padding: 0 0 15px 0;
+    bottom: 0;
 `
 
 export const Btn = styled.div`
