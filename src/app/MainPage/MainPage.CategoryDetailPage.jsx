@@ -9,13 +9,16 @@ import ProductItem from './MainPage.CategoryDetailPage.Item';
 import BackIcon from '../../../public/SearchPage/backIcon.png'
 import client from "../../client";
 
+import { AuthAtom } from '../../recoil/atoms/AuthAtom';
+import { useRecoilState } from'recoil';
+
 function CategoryDetailPage() {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [categoryText, setCategoryText] = useState('');
+    const [accessToken] = useRecoilState(AuthAtom);
 
     useEffect(() => {
-        const auth =import.meta.env.VITE_AUTH;
         const currentURL = window.location.href;
         const pathParts = currentURL.split("/");
         const category = pathParts[pathParts.length - 1];
@@ -41,7 +44,7 @@ function CategoryDetailPage() {
 
         const fetchData = async () => {
             try {
-                const response = await client(auth).get(
+                const response = await client(accessToken).get(
                     `/posts/${category}`
                 );
                 if (category === 'near') {

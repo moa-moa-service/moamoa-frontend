@@ -1,12 +1,15 @@
 import * as itemS from "./styled/ProductPage.main.selectModalComponent.style"
 import client from "../../client"
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from "recoil";
+
 function CancelModal({openCancelModalHandler, id}) {
+    const [accessToken] = useRecoilState(AuthAtom);
 
     const cancelHandle = async() => {
-        const auth = import.meta.env.VITE_AUTH ;
         try {
-            const response = await client(auth).delete(
+            const response = await client(accessToken).delete(
                 `/posts/${id}/cancel`
             ) ;
             openCancelModalHandler() ;

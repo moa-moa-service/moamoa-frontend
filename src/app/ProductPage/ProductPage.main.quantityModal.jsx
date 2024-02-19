@@ -2,7 +2,11 @@ import { useState } from "react";
 import client from "../../client"
 import * as itemS from "./styled/ProductPage.main.selectModalComponent.style"
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from "recoil";
+
 function QuantityModal({openQuantityModalHandler, id, openCompleteModalHandler}) {
+    const [accessToken] = useRecoilState(AuthAtom);
 
     const [quantityInput, setQuantityInput] = useState('') ;
 
@@ -11,7 +15,6 @@ function QuantityModal({openQuantityModalHandler, id, openCompleteModalHandler})
     }
 
     const joinHandle = async() => {
-        const auth = import.meta.env.VITE_AUTH ;
     
         if(!quantityInput || isNaN(quantityInput)) {
             alert("수량이 입력되지 않았습니다.")
@@ -19,7 +22,7 @@ function QuantityModal({openQuantityModalHandler, id, openCompleteModalHandler})
         }
 
         try{
-            const response = await client(auth).post(`/posts/${id}/join`, {
+            const response = await client(accessToken).post(`/posts/${id}/join`, {
                 "amount" : parseInt(quantityInput) ,
             }, {
                 headers : {

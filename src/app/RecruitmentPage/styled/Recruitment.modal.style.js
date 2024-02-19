@@ -15,10 +15,11 @@ ${(props) =>
     height: 389px;
     ` : props.type === 'people' ?`
     height: 269px;
-    ` : `
+    ` : props.type === 'state' ?`
+    height: 246px;
+    ` :`
     height: 470px;
     `}
-
 `
 
 export const Background = styled.div`
@@ -29,6 +30,9 @@ padding: 25px;
 `
 
 export const Wrapper = styled.div`
+display: flex;
+flex-direction: column;
+justify-content: center;
 `
 
 export const ModalText = styled.span`
@@ -78,8 +82,14 @@ export const ModalBtns = styled.div`
 width: 380px;
 height: 49px;
 display: flex;
-margin-left: 25px;
 justify-content: space-between;
+
+${(props) => 
+    props.type === 'recruitment' ? `
+    margin: 28px 25px 44px;
+    ` : `
+    margin-left: 25px;
+    `}
 `
 
 export const ModalBtn = styled.button`

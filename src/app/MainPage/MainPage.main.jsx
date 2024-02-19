@@ -28,7 +28,7 @@ function MainPage() {
             <itemS.MainPageContainer>
                 <itemS.SearchContainer>
                     <itemS.LocalText>
-                        설정 지역명
+                        남가좌동
                     </itemS.LocalText>
                     <itemS.SearchImgWrapper onClick={() => {navigate("/alarm")}}>
                         <itemS.BellImg src={BellIcon}></itemS.BellImg>

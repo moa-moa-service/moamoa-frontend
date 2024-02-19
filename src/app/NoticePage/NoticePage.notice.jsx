@@ -7,12 +7,16 @@ import { useEffect, useState } from "react";
 import client from "../../client";
 import { differenceInCalendarDays, intervalToDuration } from "date-fns";
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from "recoil";
+
 import Loading from "../LoadingPage/LoadingPage.main";
 import NoticeWritePage from "./NoticePage.write";
 
 function NoticePage() {
 
     const navigate = useNavigate() ;
+    const [accessToken] = useRecoilState(AuthAtom);
 
     const { id } = useParams() ;
     const { noticeId } = useParams() ;
@@ -28,7 +32,7 @@ function NoticePage() {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await client(auth).get(
+                const response = await client(accessToken).get(
                     `/notices/${noticeId}`
                 ) ;
                 setNotice(response.data.result.noticeDTO) ;
@@ -52,7 +56,7 @@ function NoticePage() {
 
     const deleteNotice = async () => {
         try {
-            const response = await client(auth).delete(
+            const response = await client(accessToken).delete(
                 `/notices/${noticeId}`
             ) ;
             navigate(`/product/${id}`) ;
@@ -73,7 +77,7 @@ function NoticePage() {
 
     const commentSubmit = async () => {
         try {
-            const response = await client(auth).post(
+            const response = await client(accessToken).post(
                 `/notices/${noticeId}/comments`, {
                     'content': inputComment, 
                 },
