@@ -20,6 +20,7 @@ function MainPage() {
         if (_accessToken) {
             setAccessToken(_accessToken)
             navigate('/', { replace: true })
+            window.location.reload();
         }
     }, [])
     
