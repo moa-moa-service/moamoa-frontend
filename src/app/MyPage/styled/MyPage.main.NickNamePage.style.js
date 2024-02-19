@@ -4,7 +4,7 @@ const NickNamePageContainer= styled.div`
     position: relative;
     width: 100%;
     height: 100vh;
-    min-width: 600px;
+    
 `
 
 const NickNamePageHeaderContainer= styled.div`
