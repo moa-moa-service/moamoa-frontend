@@ -16,8 +16,9 @@ export const UserImg = styled.img`
 export const TextContainer = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    margin-left: 10px;
+    /* justify-content: space-between; */
+    margin-top: 2px;
+    margin-left: 13px;
 `
 
 export const WriteInfo = styled.div`
@@ -39,7 +40,8 @@ export const Date = styled.div`
 
 export const Comment = styled.div`
     color: #000000;
-    font-size: 13px;
+    font-size: 16px;
+    margin-top: 5px;
 `
 
 export const ReplyBtn = styled.div`

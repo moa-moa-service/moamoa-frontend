@@ -5,7 +5,7 @@ import BackIcon from '../../../public/SearchPage/backIcon.png'
 import { useState } from 'react';
 
 
-function TradingLocation({ openTradingLocation, onLocationData }) {
+function TradingLocation({ openTradingLocation }) {
     const [response, setResponse] = useState({});
     const [dealTown, setDealTown] = useState('');
     const [myLocation, setMyLocation] = useState({ lat: null, lng: null });
@@ -16,6 +16,7 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
 
     function handleResponseChange(response) {
         setResponse(response);
+      
         const targetLocationData = response?.v2?.results[0]?.region?.area3
         const townCoords = targetLocationData?.coords?.center
         const lat = townCoords?.x
@@ -44,7 +45,7 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
                     <itemS.Text>거래 희망 장소</itemS.Text>
                 </itemS.TopContentContainer>
             </itemS.TopWrapper>
-            <MyMap onResponseChange={handleResponseChange} isTradingLocation={true}/>
+            <MyMap onResponseChange={handleResponseChange} isTradingLocation={true} onLocationChange={handleLocationChange}/>
             <itemS.BottomWrapper>
                 <itemS.DetailAddressContainer>
                     <itemS.DetailAddressText type='bold'>상세 주소</itemS.DetailAddressText>
