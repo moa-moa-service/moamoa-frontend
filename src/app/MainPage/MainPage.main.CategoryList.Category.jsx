@@ -5,6 +5,9 @@ import client from "../../client";
 import { useNavigate } from 'react-router-dom';
 import { useEffect, useState } from "react";
 
+import { AuthAtom } from "../../recoil/atoms/AuthAtom";
+import { useRecoilState } from "recoil";
+
 function Category(props) {
     const navigate = useNavigate();
     const [items, setItems] = useState();
