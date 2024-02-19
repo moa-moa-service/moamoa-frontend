@@ -5,7 +5,7 @@ import BackIcon from '../../../public/SearchPage/backIcon.png'
 import { useState } from 'react';
 
 
-function TradingLocation({ openTradingLocation }) {
+function TradingLocation({ openTradingLocation, onLocationData }) {
     const [response, setResponse] = useState({});
     const [dealTown, setDealTown] = useState('');
     const [myLocation, setMyLocation] = useState({ lat: null, lng: null });
@@ -13,7 +13,9 @@ function TradingLocation({ openTradingLocation }) {
     const handleDealTownChange = (event) => {
         setDealTown(event.target.value);
     };
-
+    const handleLocationChange = (location) => {
+        setMyLocation(location);
+    };
     function handleResponseChange(response) {
         setResponse(response);
       

@@ -7,6 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom"
 import { AuthAtom } from '../../recoil/atoms/AuthAtom'
 import { useRecoilState } from 'recoil'
 import { useEffect } from 'react'
+import client from "../../client"
 
 function MainPage() {
     const navigate = useNavigate()
@@ -22,6 +23,18 @@ function MainPage() {
             navigate('/', { replace: true })
             window.location.reload();
         }
+        const fetchData = async () => {
+            try {
+                const response = await client(_accessToken).get(
+                    `/member`
+                );
+                console.log(response);
+            } catch (error) {
+                console.error('안된다!!:', error);
+            }
+        };
+        fetchData();
+
     }, [])
     
     return (
