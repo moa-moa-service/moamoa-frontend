@@ -8,14 +8,14 @@ function Comment({comment}) {
     return(
         <>
             <itemS.CommentContainer>
-                <itemS.UserImg />
+                <itemS.UserImg src={comment.profileImage} />
                 <itemS.TextContainer>
                     <itemS.WriteInfo>
                         <itemS.UserName>{comment.nickname}</itemS.UserName>
                         <itemS.Date>{createDate}</itemS.Date>
                     </itemS.WriteInfo>
                     <itemS.Comment>{comment.content}</itemS.Comment>
-                    <itemS.ReplyBtn>답글</itemS.ReplyBtn>
+                    {/* <itemS.ReplyBtn>답글</itemS.ReplyBtn> */}
                 </itemS.TextContainer>
             </itemS.CommentContainer>
         </>
