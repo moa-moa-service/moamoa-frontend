@@ -13,20 +13,13 @@ function TradingLocation({ openTradingLocation, onLocationData }) {
     const handleDealTownChange = (event) => {
         setDealTown(event.target.value);
     };
+
     const handleLocationChange = (location) => {
         setMyLocation(location);
     };
+
     function handleResponseChange(response) {
         setResponse(response);
-      
-        const targetLocationData = response?.v2?.results[0]?.region?.area3
-        const townCoords = targetLocationData?.coords?.center
-        const lat = townCoords?.x
-        const lng = townCoords?.y
-        setMyLocation({
-            lat: lat,
-            lng: lng
-        });
     }
 
     const submitBtn = () => {
